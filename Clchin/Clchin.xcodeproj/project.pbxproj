@@ -12,6 +12,14 @@
 		CCAF5FF92C6CE01100219873 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF5FF82C6CE01100219873 /* ViewController.swift */; };
 		CCAF5FFE2C6CE01200219873 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCAF5FFD2C6CE01200219873 /* Assets.xcassets */; };
 		CCAF60012C6CE01200219873 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CCAF60002C6CE01200219873 /* Base */; };
+		CCAF600A2C6CE13100219873 /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF60092C6CE13100219873 /* GooglePlaces */; };
+		CCAF600D2C6CE18600219873 /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF600C2C6CE18600219873 /* NMapsMap */; };
+		CCAF60102C6CE24800219873 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF600F2C6CE24800219873 /* Moya */; };
+		CCAF60122C6CE24800219873 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF60112C6CE24800219873 /* RxMoya */; };
+		CCAF60152C6CE26D00219873 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF60142C6CE26D00219873 /* RxCocoa */; };
+		CCAF60182C6CE28300219873 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF60172C6CE28300219873 /* Kingfisher */; };
+		CCAF601B2C6CE2A300219873 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF601A2C6CE2A300219873 /* SnapKit */; };
+		CCAF601E2C6CE2F300219873 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF601D2C6CE2F300219873 /* Then */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +37,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCAF60182C6CE28300219873 /* Kingfisher in Frameworks */,
+				CCAF600A2C6CE13100219873 /* GooglePlaces in Frameworks */,
+				CCAF600D2C6CE18600219873 /* NMapsMap in Frameworks */,
+				CCAF601E2C6CE2F300219873 /* Then in Frameworks */,
+				CCAF601B2C6CE2A300219873 /* SnapKit in Frameworks */,
+				CCAF60152C6CE26D00219873 /* RxCocoa in Frameworks */,
+				CCAF60122C6CE24800219873 /* RxMoya in Frameworks */,
+				CCAF60102C6CE24800219873 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +96,16 @@
 			dependencies = (
 			);
 			name = Clchin;
+			packageProductDependencies = (
+				CCAF60092C6CE13100219873 /* GooglePlaces */,
+				CCAF600C2C6CE18600219873 /* NMapsMap */,
+				CCAF600F2C6CE24800219873 /* Moya */,
+				CCAF60112C6CE24800219873 /* RxMoya */,
+				CCAF60142C6CE26D00219873 /* RxCocoa */,
+				CCAF60172C6CE28300219873 /* Kingfisher */,
+				CCAF601A2C6CE2A300219873 /* SnapKit */,
+				CCAF601D2C6CE2F300219873 /* Then */,
+			);
 			productName = Clchin;
 			productReference = CCAF5FF12C6CE01100219873 /* Clchin.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +134,15 @@
 				Base,
 			);
 			mainGroup = CCAF5FE82C6CE01100219873;
+			packageReferences = (
+				CCAF60082C6CE13100219873 /* XCRemoteSwiftPackageReference "ios-places-sdk" */,
+				CCAF600B2C6CE18600219873 /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */,
+				CCAF600E2C6CE24800219873 /* XCRemoteSwiftPackageReference "Moya" */,
+				CCAF60132C6CE26D00219873 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				CCAF60162C6CE28300219873 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				CCAF60192C6CE2A300219873 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				CCAF601C2C6CE2F300219873 /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = CCAF5FF22C6CE01100219873 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -361,6 +396,108 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CCAF60082C6CE13100219873 /* XCRemoteSwiftPackageReference "ios-places-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/ios-places-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		CCAF600B2C6CE18600219873 /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stleamist/NMapsMap-SwiftPM.git";
+			requirement = {
+				kind = exactVersion;
+				version = 3.11.0;
+			};
+		};
+		CCAF600E2C6CE24800219873 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+		CCAF60132C6CE26D00219873 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+		CCAF60162C6CE28300219873 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+		CCAF60192C6CE2A300219873 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		CCAF601C2C6CE2F300219873 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CCAF60092C6CE13100219873 /* GooglePlaces */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCAF60082C6CE13100219873 /* XCRemoteSwiftPackageReference "ios-places-sdk" */;
+			productName = GooglePlaces;
+		};
+		CCAF600C2C6CE18600219873 /* NMapsMap */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCAF600B2C6CE18600219873 /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */;
+			productName = NMapsMap;
+		};
+		CCAF600F2C6CE24800219873 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCAF600E2C6CE24800219873 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		CCAF60112C6CE24800219873 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCAF600E2C6CE24800219873 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+		CCAF60142C6CE26D00219873 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCAF60132C6CE26D00219873 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		CCAF60172C6CE28300219873 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCAF60162C6CE28300219873 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		CCAF601A2C6CE2A300219873 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCAF60192C6CE2A300219873 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		CCAF601D2C6CE2F300219873 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCAF601C2C6CE2F300219873 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CCAF5FE92C6CE01100219873 /* Project object */;
 }
