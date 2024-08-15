@@ -9,27 +9,40 @@
 /* Begin PBXBuildFile section */
 		CCAF5FF52C6CE01100219873 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF5FF42C6CE01100219873 /* AppDelegate.swift */; };
 		CCAF5FF72C6CE01100219873 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF5FF62C6CE01100219873 /* SceneDelegate.swift */; };
-		CCAF5FF92C6CE01100219873 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF5FF82C6CE01100219873 /* ViewController.swift */; };
 		CCAF5FFE2C6CE01200219873 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCAF5FFD2C6CE01200219873 /* Assets.xcassets */; };
 		CCAF60012C6CE01200219873 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CCAF60002C6CE01200219873 /* Base */; };
 		CCAF600A2C6CE13100219873 /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF60092C6CE13100219873 /* GooglePlaces */; };
-		CCAF600D2C6CE18600219873 /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF600C2C6CE18600219873 /* NMapsMap */; };
 		CCAF60102C6CE24800219873 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF600F2C6CE24800219873 /* Moya */; };
 		CCAF60122C6CE24800219873 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF60112C6CE24800219873 /* RxMoya */; };
 		CCAF60152C6CE26D00219873 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF60142C6CE26D00219873 /* RxCocoa */; };
 		CCAF60182C6CE28300219873 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF60172C6CE28300219873 /* Kingfisher */; };
 		CCAF601B2C6CE2A300219873 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF601A2C6CE2A300219873 /* SnapKit */; };
 		CCAF601E2C6CE2F300219873 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF601D2C6CE2F300219873 /* Then */; };
+		CCAF60202C6CE7ED00219873 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF601F2C6CE7ED00219873 /* API.swift */; };
+		CCAF60282C6CFECC00219873 /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF60272C6CFECC00219873 /* NMapsMap */; settings = {ATTRIBUTES = (Required, ); }; };
+		CCAF602B2C6DD10800219873 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF602A2C6DD10800219873 /* BaseViewController.swift */; };
+		CCAF602E2C6DD49700219873 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF602D2C6DD49700219873 /* RxGesture */; };
+		CCAF60312C6DD74C00219873 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60302C6DD74C00219873 /* BaseView.swift */; };
+		CCAF60332C6DD77E00219873 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60322C6DD77E00219873 /* BaseCollectionViewCell.swift */; };
+		CCAF60372C6DD7EC00219873 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60362C6DD7EC00219873 /* TabBarController.swift */; };
+		CCAF60392C6DD83000219873 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60382C6DD83000219873 /* NavigationController.swift */; };
+		CCAF603C2C6DDB2500219873 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF603B2C6DDB2500219873 /* UIImage+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CCAF5FF12C6CE01100219873 /* Clchin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clchin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCAF5FF42C6CE01100219873 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCAF5FF62C6CE01100219873 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CCAF5FF82C6CE01100219873 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CCAF5FFD2C6CE01200219873 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCAF60002C6CE01200219873 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCAF60022C6CE01200219873 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCAF601F2C6CE7ED00219873 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		CCAF602A2C6DD10800219873 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		CCAF60302C6DD74C00219873 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		CCAF60322C6DD77E00219873 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		CCAF60362C6DD7EC00219873 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		CCAF60382C6DD83000219873 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		CCAF603B2C6DDB2500219873 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,11 +51,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCAF60182C6CE28300219873 /* Kingfisher in Frameworks */,
+				CCAF602E2C6DD49700219873 /* RxGesture in Frameworks */,
 				CCAF600A2C6CE13100219873 /* GooglePlaces in Frameworks */,
-				CCAF600D2C6CE18600219873 /* NMapsMap in Frameworks */,
 				CCAF601E2C6CE2F300219873 /* Then in Frameworks */,
 				CCAF601B2C6CE2A300219873 /* SnapKit in Frameworks */,
 				CCAF60152C6CE26D00219873 /* RxCocoa in Frameworks */,
+				CCAF60282C6CFECC00219873 /* NMapsMap in Frameworks */,
 				CCAF60122C6CE24800219873 /* RxMoya in Frameworks */,
 				CCAF60102C6CE24800219873 /* Moya in Frameworks */,
 			);
@@ -70,14 +84,84 @@
 		CCAF5FF32C6CE01100219873 /* Clchin */ = {
 			isa = PBXGroup;
 			children = (
-				CCAF5FF42C6CE01100219873 /* AppDelegate.swift */,
-				CCAF5FF62C6CE01100219873 /* SceneDelegate.swift */,
-				CCAF5FF82C6CE01100219873 /* ViewController.swift */,
-				CCAF5FFD2C6CE01200219873 /* Assets.xcassets */,
-				CCAF5FFF2C6CE01200219873 /* LaunchScreen.storyboard */,
+				CCAF60212C6CE88200219873 /* Resources */,
+				CCAF60222C6CE88A00219873 /* Sources */,
 				CCAF60022C6CE01200219873 /* Info.plist */,
+				CCAF601F2C6CE7ED00219873 /* API.swift */,
 			);
 			path = Clchin;
+			sourceTree = "<group>";
+		};
+		CCAF60212C6CE88200219873 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF603A2C6DDB0100219873 /* Common */,
+				CCAF5FFF2C6CE01200219873 /* LaunchScreen.storyboard */,
+				CCAF5FFD2C6CE01200219873 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CCAF60222C6CE88A00219873 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF60242C6CE9AD00219873 /* Presenter */,
+				CCAF60232C6CE8A500219873 /* App */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		CCAF60232C6CE8A500219873 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF5FF42C6CE01100219873 /* AppDelegate.swift */,
+				CCAF5FF62C6CE01100219873 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CCAF60242C6CE9AD00219873 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF60342C6DD7C900219873 /* Component */,
+				CCAF60292C6DD0FD00219873 /* Base */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CCAF60292C6DD0FD00219873 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF602A2C6DD10800219873 /* BaseViewController.swift */,
+				CCAF60302C6DD74C00219873 /* BaseView.swift */,
+				CCAF60322C6DD77E00219873 /* BaseCollectionViewCell.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		CCAF60342C6DD7C900219873 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF60352C6DD7D700219873 /* Controller */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		CCAF60352C6DD7D700219873 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF60362C6DD7EC00219873 /* TabBarController.swift */,
+				CCAF60382C6DD83000219873 /* NavigationController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CCAF603A2C6DDB0100219873 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF603B2C6DDB2500219873 /* UIImage+Extension.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,13 +182,14 @@
 			name = Clchin;
 			packageProductDependencies = (
 				CCAF60092C6CE13100219873 /* GooglePlaces */,
-				CCAF600C2C6CE18600219873 /* NMapsMap */,
 				CCAF600F2C6CE24800219873 /* Moya */,
 				CCAF60112C6CE24800219873 /* RxMoya */,
 				CCAF60142C6CE26D00219873 /* RxCocoa */,
 				CCAF60172C6CE28300219873 /* Kingfisher */,
 				CCAF601A2C6CE2A300219873 /* SnapKit */,
 				CCAF601D2C6CE2F300219873 /* Then */,
+				CCAF60272C6CFECC00219873 /* NMapsMap */,
+				CCAF602D2C6DD49700219873 /* RxGesture */,
 			);
 			productName = Clchin;
 			productReference = CCAF5FF12C6CE01100219873 /* Clchin.app */;
@@ -142,6 +227,7 @@
 				CCAF60162C6CE28300219873 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CCAF60192C6CE2A300219873 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				CCAF601C2C6CE2F300219873 /* XCRemoteSwiftPackageReference "Then" */,
+				CCAF602C2C6DD49700219873 /* XCRemoteSwiftPackageReference "RxGesture" */,
 			);
 			productRefGroup = CCAF5FF22C6CE01100219873 /* Products */;
 			projectDirPath = "";
@@ -169,9 +255,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCAF5FF92C6CE01100219873 /* ViewController.swift in Sources */,
+				CCAF602B2C6DD10800219873 /* BaseViewController.swift in Sources */,
+				CCAF60332C6DD77E00219873 /* BaseCollectionViewCell.swift in Sources */,
 				CCAF5FF52C6CE01100219873 /* AppDelegate.swift in Sources */,
+				CCAF603C2C6DDB2500219873 /* UIImage+Extension.swift in Sources */,
+				CCAF60202C6CE7ED00219873 /* API.swift in Sources */,
+				CCAF60392C6DD83000219873 /* NavigationController.swift in Sources */,
+				CCAF60312C6DD74C00219873 /* BaseView.swift in Sources */,
 				CCAF5FF72C6CE01100219873 /* SceneDelegate.swift in Sources */,
+				CCAF60372C6DD7EC00219873 /* TabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +546,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		CCAF602C2C6DD49700219873 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -461,11 +561,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CCAF60082C6CE13100219873 /* XCRemoteSwiftPackageReference "ios-places-sdk" */;
 			productName = GooglePlaces;
-		};
-		CCAF600C2C6CE18600219873 /* NMapsMap */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CCAF600B2C6CE18600219873 /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */;
-			productName = NMapsMap;
 		};
 		CCAF600F2C6CE24800219873 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -496,6 +591,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CCAF601C2C6CE2F300219873 /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		CCAF60272C6CFECC00219873 /* NMapsMap */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCAF600B2C6CE18600219873 /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */;
+			productName = NMapsMap;
+		};
+		CCAF602D2C6DD49700219873 /* RxGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCAF602C2C6DD49700219873 /* XCRemoteSwiftPackageReference "RxGesture" */;
+			productName = RxGesture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
