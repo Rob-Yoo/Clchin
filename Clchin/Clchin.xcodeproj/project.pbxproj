@@ -27,6 +27,23 @@
 		CCAF60372C6DD7EC00219873 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60362C6DD7EC00219873 /* TabBarController.swift */; };
 		CCAF60392C6DD83000219873 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60382C6DD83000219873 /* NavigationController.swift */; };
 		CCAF603C2C6DDB2500219873 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF603B2C6DDB2500219873 /* UIImage+Extension.swift */; };
+		CCAF60412C6DE0DD00219873 /* ClimbingGymSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60402C6DE0DD00219873 /* ClimbingGymSearchViewController.swift */; };
+		CCAF60432C6DE10A00219873 /* ClimbingGymSearchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60422C6DE10A00219873 /* ClimbingGymSearchRootView.swift */; };
+		CCAF60462C6DF67E00219873 /* LocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60452C6DF67E00219873 /* LocationButton.swift */; };
+		CCAF60482C6DF8AE00219873 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60472C6DF8AE00219873 /* BaseButton.swift */; };
+		CCAF604A2C6E15CD00219873 /* ClimbingGymCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60492C6E15CD00219873 /* ClimbingGymCardView.swift */; };
+		CCAF604D2C6E190400219873 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF604C2C6E190400219873 /* Cosmos */; };
+		CCAF604F2C6E1B8100219873 /* BaseStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF604E2C6E1B8100219873 /* BaseStackView.swift */; };
+		CCAF60512C6E1F2900219873 /* ClimbingGymCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60502C6E1F2900219873 /* ClimbingGymCollectionViewCell.swift */; };
+		CCAF60552C6E1FFB00219873 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60542C6E1FFB00219873 /* NSObject+Extension.swift */; };
+		CCAF60582C6E2F2000219873 /* ClimbingGymSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60572C6E2F2000219873 /* ClimbingGymSearchViewModel.swift */; };
+		CCAF605B2C6E2F7200219873 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF605A2C6E2F7200219873 /* ViewModelType.swift */; };
+		CCAF605F2C6F292300219873 /* ClimbingGym.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF605E2C6F292300219873 /* ClimbingGym.swift */; };
+		CCAF60652C6F32BC00219873 /* ClimbingGymRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60642C6F32BC00219873 /* ClimbingGymRepository.swift */; };
+		CCAF60672C6F365200219873 /* DefaultClimbingGymRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60662C6F365200219873 /* DefaultClimbingGymRepository.swift */; };
+		CCAF60692C6F397800219873 /* SearchClimbingGymUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60682C6F397800219873 /* SearchClimbingGymUseCase.swift */; };
+		CCAF606C2C6F4C0B00219873 /* DateFormatManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF606B2C6F4C0B00219873 /* DateFormatManger.swift */; };
+		CCAF606E2C6F60E500219873 /* ClimbingGymItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF606D2C6F60E500219873 /* ClimbingGymItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +60,22 @@
 		CCAF60362C6DD7EC00219873 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CCAF60382C6DD83000219873 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		CCAF603B2C6DDB2500219873 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		CCAF60402C6DE0DD00219873 /* ClimbingGymSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymSearchViewController.swift; sourceTree = "<group>"; };
+		CCAF60422C6DE10A00219873 /* ClimbingGymSearchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymSearchRootView.swift; sourceTree = "<group>"; };
+		CCAF60452C6DF67E00219873 /* LocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationButton.swift; sourceTree = "<group>"; };
+		CCAF60472C6DF8AE00219873 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		CCAF60492C6E15CD00219873 /* ClimbingGymCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymCardView.swift; sourceTree = "<group>"; };
+		CCAF604E2C6E1B8100219873 /* BaseStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStackView.swift; sourceTree = "<group>"; };
+		CCAF60502C6E1F2900219873 /* ClimbingGymCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymCollectionViewCell.swift; sourceTree = "<group>"; };
+		CCAF60542C6E1FFB00219873 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		CCAF60572C6E2F2000219873 /* ClimbingGymSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymSearchViewModel.swift; sourceTree = "<group>"; };
+		CCAF605A2C6E2F7200219873 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		CCAF605E2C6F292300219873 /* ClimbingGym.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGym.swift; sourceTree = "<group>"; };
+		CCAF60642C6F32BC00219873 /* ClimbingGymRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymRepository.swift; sourceTree = "<group>"; };
+		CCAF60662C6F365200219873 /* DefaultClimbingGymRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultClimbingGymRepository.swift; sourceTree = "<group>"; };
+		CCAF60682C6F397800219873 /* SearchClimbingGymUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchClimbingGymUseCase.swift; sourceTree = "<group>"; };
+		CCAF606B2C6F4C0B00219873 /* DateFormatManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatManger.swift; sourceTree = "<group>"; };
+		CCAF606D2C6F60E500219873 /* ClimbingGymItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCAF604D2C6E190400219873 /* Cosmos in Frameworks */,
 				CCAF60182C6CE28300219873 /* Kingfisher in Frameworks */,
 				CCAF602E2C6DD49700219873 /* RxGesture in Frameworks */,
 				CCAF600A2C6CE13100219873 /* GooglePlaces in Frameworks */,
@@ -105,7 +139,11 @@
 		CCAF60222C6CE88A00219873 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CCAF60602C6F31F100219873 /* Data */,
+				CCAF605C2C6F173C00219873 /* Domain */,
 				CCAF60242C6CE9AD00219873 /* Presenter */,
+				CCAF60592C6E2F5C00219873 /* Architectures */,
+				CCAF60522C6E1FDE00219873 /* Utils */,
 				CCAF60232C6CE8A500219873 /* App */,
 			);
 			path = Sources;
@@ -123,6 +161,7 @@
 		CCAF60242C6CE9AD00219873 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				CCAF603D2C6DDF9300219873 /* Screens */,
 				CCAF60342C6DD7C900219873 /* Component */,
 				CCAF60292C6DD0FD00219873 /* Base */,
 			);
@@ -135,6 +174,8 @@
 				CCAF602A2C6DD10800219873 /* BaseViewController.swift */,
 				CCAF60302C6DD74C00219873 /* BaseView.swift */,
 				CCAF60322C6DD77E00219873 /* BaseCollectionViewCell.swift */,
+				CCAF60472C6DF8AE00219873 /* BaseButton.swift */,
+				CCAF604E2C6E1B8100219873 /* BaseStackView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -142,18 +183,19 @@
 		CCAF60342C6DD7C900219873 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				CCAF60352C6DD7D700219873 /* Controller */,
+				CCAF60442C6DF64F00219873 /* Buttons */,
+				CCAF60352C6DD7D700219873 /* Controllers */,
 			);
 			path = Component;
 			sourceTree = "<group>";
 		};
-		CCAF60352C6DD7D700219873 /* Controller */ = {
+		CCAF60352C6DD7D700219873 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				CCAF60362C6DD7EC00219873 /* TabBarController.swift */,
 				CCAF60382C6DD83000219873 /* NavigationController.swift */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		CCAF603A2C6DDB0100219873 /* Common */ = {
@@ -162,6 +204,142 @@
 				CCAF603B2C6DDB2500219873 /* UIImage+Extension.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		CCAF603D2C6DDF9300219873 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF603E2C6DDFCA00219873 /* ClimbingGymSearch */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		CCAF603E2C6DDFCA00219873 /* ClimbingGymSearch */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF60702C6F61DD00219873 /* PresentationModel */,
+				CCAF60562C6E226400219873 /* ViewModel */,
+				CCAF603F2C6DE0CE00219873 /* View */,
+			);
+			path = ClimbingGymSearch;
+			sourceTree = "<group>";
+		};
+		CCAF603F2C6DE0CE00219873 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF60402C6DE0DD00219873 /* ClimbingGymSearchViewController.swift */,
+				CCAF60422C6DE10A00219873 /* ClimbingGymSearchRootView.swift */,
+				CCAF60492C6E15CD00219873 /* ClimbingGymCardView.swift */,
+				CCAF60502C6E1F2900219873 /* ClimbingGymCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CCAF60442C6DF64F00219873 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF60452C6DF67E00219873 /* LocationButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		CCAF60522C6E1FDE00219873 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF606A2C6F4BF400219873 /* Mangers */,
+				CCAF60532C6E1FE700219873 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CCAF60532C6E1FE700219873 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF60542C6E1FFB00219873 /* NSObject+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CCAF60562C6E226400219873 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF60572C6E2F2000219873 /* ClimbingGymSearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CCAF60592C6E2F5C00219873 /* Architectures */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF605A2C6E2F7200219873 /* ViewModelType.swift */,
+			);
+			path = Architectures;
+			sourceTree = "<group>";
+		};
+		CCAF605C2C6F173C00219873 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF60632C6F324D00219873 /* Interfaces */,
+				CCAF60622C6F322F00219873 /* UseCases */,
+				CCAF605D2C6F28F500219873 /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		CCAF605D2C6F28F500219873 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF605E2C6F292300219873 /* ClimbingGym.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		CCAF60602C6F31F100219873 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF60612C6F320000219873 /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		CCAF60612C6F320000219873 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF60662C6F365200219873 /* DefaultClimbingGymRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		CCAF60622C6F322F00219873 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF60682C6F397800219873 /* SearchClimbingGymUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		CCAF60632C6F324D00219873 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF60642C6F32BC00219873 /* ClimbingGymRepository.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		CCAF606A2C6F4BF400219873 /* Mangers */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF606B2C6F4C0B00219873 /* DateFormatManger.swift */,
+			);
+			path = Mangers;
+			sourceTree = "<group>";
+		};
+		CCAF60702C6F61DD00219873 /* PresentationModel */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF606D2C6F60E500219873 /* ClimbingGymItem.swift */,
+			);
+			path = PresentationModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +368,7 @@
 				CCAF601D2C6CE2F300219873 /* Then */,
 				CCAF60272C6CFECC00219873 /* NMapsMap */,
 				CCAF602D2C6DD49700219873 /* RxGesture */,
+				CCAF604C2C6E190400219873 /* Cosmos */,
 			);
 			productName = Clchin;
 			productReference = CCAF5FF12C6CE01100219873 /* Clchin.app */;
@@ -228,6 +407,7 @@
 				CCAF60192C6CE2A300219873 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				CCAF601C2C6CE2F300219873 /* XCRemoteSwiftPackageReference "Then" */,
 				CCAF602C2C6DD49700219873 /* XCRemoteSwiftPackageReference "RxGesture" */,
+				CCAF604B2C6E190400219873 /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			productRefGroup = CCAF5FF22C6CE01100219873 /* Products */;
 			projectDirPath = "";
@@ -255,15 +435,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCAF60582C6E2F2000219873 /* ClimbingGymSearchViewModel.swift in Sources */,
+				CCAF60652C6F32BC00219873 /* ClimbingGymRepository.swift in Sources */,
+				CCAF60672C6F365200219873 /* DefaultClimbingGymRepository.swift in Sources */,
+				CCAF60482C6DF8AE00219873 /* BaseButton.swift in Sources */,
+				CCAF60462C6DF67E00219873 /* LocationButton.swift in Sources */,
 				CCAF602B2C6DD10800219873 /* BaseViewController.swift in Sources */,
 				CCAF60332C6DD77E00219873 /* BaseCollectionViewCell.swift in Sources */,
 				CCAF5FF52C6CE01100219873 /* AppDelegate.swift in Sources */,
+				CCAF606C2C6F4C0B00219873 /* DateFormatManger.swift in Sources */,
+				CCAF604A2C6E15CD00219873 /* ClimbingGymCardView.swift in Sources */,
 				CCAF603C2C6DDB2500219873 /* UIImage+Extension.swift in Sources */,
 				CCAF60202C6CE7ED00219873 /* API.swift in Sources */,
+				CCAF60412C6DE0DD00219873 /* ClimbingGymSearchViewController.swift in Sources */,
+				CCAF60432C6DE10A00219873 /* ClimbingGymSearchRootView.swift in Sources */,
+				CCAF60552C6E1FFB00219873 /* NSObject+Extension.swift in Sources */,
+				CCAF606E2C6F60E500219873 /* ClimbingGymItem.swift in Sources */,
 				CCAF60392C6DD83000219873 /* NavigationController.swift in Sources */,
 				CCAF60312C6DD74C00219873 /* BaseView.swift in Sources */,
+				CCAF604F2C6E1B8100219873 /* BaseStackView.swift in Sources */,
 				CCAF5FF72C6CE01100219873 /* SceneDelegate.swift in Sources */,
+				CCAF605B2C6E2F7200219873 /* ViewModelType.swift in Sources */,
+				CCAF60692C6F397800219873 /* SearchClimbingGymUseCase.swift in Sources */,
 				CCAF60372C6DD7EC00219873 /* TabBarController.swift in Sources */,
+				CCAF605F2C6F292300219873 /* ClimbingGym.swift in Sources */,
+				CCAF60512C6E1F2900219873 /* ClimbingGymCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,6 +750,14 @@
 				minimumVersion = 4.0.4;
 			};
 		};
+		CCAF604B2C6E190400219873 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 25.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -601,6 +805,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CCAF602C2C6DD49700219873 /* XCRemoteSwiftPackageReference "RxGesture" */;
 			productName = RxGesture;
+		};
+		CCAF604C2C6E190400219873 /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCAF604B2C6E190400219873 /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

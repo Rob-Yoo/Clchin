@@ -26,6 +26,7 @@ final class ClimbingGymSearchRootView: BaseView {
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout()).then {
         $0.register(ClimbingGymCollectionViewCell.self, forCellWithReuseIdentifier: ClimbingGymCollectionViewCell.identifier)
+        $0.keyboardDismissMode = .onDrag
     }
     
     private func createLayout() -> UICollectionViewLayout {

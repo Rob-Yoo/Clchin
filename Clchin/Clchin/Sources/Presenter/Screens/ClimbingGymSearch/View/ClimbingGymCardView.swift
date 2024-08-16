@@ -18,7 +18,7 @@ final class ClimbingGymCardView: BaseView {
         $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         $0.clipsToBounds = true
         $0.contentMode = .scaleAspectFill
-        $0.backgroundColor = .lightGray
+        $0.backgroundColor = .lightGray.withAlphaComponent(0.6)
         $0.layer.borderWidth = 0.5
         $0.layer.borderColor = UIColor.lightGray.cgColor
     }
@@ -44,9 +44,9 @@ final class ClimbingGymCardView: BaseView {
         self.layer.borderWidth = 0.5
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.cornerRadius = 15
-        self.layer.shadowOffset = CGSize(width: 5, height: 5)
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowRadius = 3
+        self.layer.shadowOffset = CGSize(width: 2, height: 2)
+        self.layer.shadowOpacity = 0.35
+        self.layer.shadowRadius = 1
         self.layer.masksToBounds = false
     }
     
@@ -66,13 +66,13 @@ final class ClimbingGymCardView: BaseView {
         }
         
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(gymImageView.snp.bottom)
+            make.top.equalTo(gymImageView.snp.bottom).offset(7)
             make.leading.equalToSuperview().offset(10)
             make.width.equalToSuperview().multipliedBy(0.7)
         }
         
         addressLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom)
+            make.top.equalTo(nameLabel.snp.bottom).offset(7)
             make.leading.equalTo(nameLabel.snp.leading)
             make.width.equalToSuperview().multipliedBy(0.7)
         }
@@ -86,7 +86,8 @@ final class ClimbingGymCardView: BaseView {
         openingHourStackView.snp.makeConstraints { make in
             make.top.equalTo(ratingStackView.snp.bottom).offset(5)
             make.leading.equalTo(ratingStackView.snp.leading)
-            make.bottom.equalToSuperview().offset(-5)
+            make.height.equalTo(15)
+//            make.bottom.equalToSuperview().offset(-5)
         }
     }
 }

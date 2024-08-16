@@ -25,6 +25,7 @@ final class ClimbingGymCollectionViewCell: BaseCollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.cardView.gymImageView.image = nil
+        self.cardView.openingHourStackView.isOpenLabel.text = nil
     }
     
     func bind(gym: ClimbingGym) {
@@ -33,10 +34,17 @@ final class ClimbingGymCollectionViewCell: BaseCollectionViewCell {
         self.cardView.ratingStackView.ratingLabel.text = String(format: "%.1f", gym.rate)
         self.cardView.ratingStackView.ratingView.rating = Double(gym.rate)
         self.cardView.ratingStackView.userRatingCountLabel.text = "(" + String(gym.userRatingCount) + ")"
-        self.cardView.openingHourStackView.isOpenLabel.text = gym.isOpen ? "영업 중" : "영업 종료"
-        self.cardView.openingHourStackView.isOpenLabel.textColor = gym.isOpen ? .systemGreen : .systemRed
-        self.cardView.openingHourStackView.openingHourLabel.text = gym.currentOpeningHour
-        self.loadImage(photos: gym.phots)
+        
+        if (gym.currentOpeningHour.isEmpty) {
+            self.cardView.openingHourStackView.openingHourLabel.text = "(영업 시간 정보 없음)"
+            self.cardView.openingHourStackView.spacing = 0
+        } else {
+            self.cardView.openingHourStackView.spacing = 5
+            self.cardView.openingHourStackView.openingHourLabel.text = gym.currentOpeningHour
+            self.cardView.openingHourStackView.isOpenLabel.text = gym.isOpen ? "영업 중" : "영업 종료"
+            self.cardView.openingHourStackView.isOpenLabel.textColor = gym.isOpen ? .systemGreen : .systemRed
+            self.loadImage(photos: gym.photos)
+        }
     }
     
     private func loadImage(photos: [GMSPlacePhotoMetadata]) {
