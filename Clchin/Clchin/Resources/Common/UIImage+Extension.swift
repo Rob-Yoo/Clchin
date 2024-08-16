@@ -9,6 +9,8 @@ import UIKit
 
 extension UIImage {
     static let searchIcon = UIImage(systemName: "magnifyingglass")
+    static let keyboardDismissIcon = UIImage(systemName: "keyboard.chevron.compact.down")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+    static let locationIcon = UIImage(systemName: "dot.scope")
     
     static let loungeTabIcon = UIImage(systemName: "doc.plaintext")
     static let loungeFillTabIcon = UIImage(systemName: "doc.plaintext.fill")

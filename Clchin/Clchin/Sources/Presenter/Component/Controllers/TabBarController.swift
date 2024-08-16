@@ -53,7 +53,7 @@ extension TabBarController {
             case .lounge:
                 return ViewController()
             case .search:
-                return ViewController()
+                return ClimbingGymSearchViewController()
             case .crew:
                 return ViewController()
             case .myPage:
