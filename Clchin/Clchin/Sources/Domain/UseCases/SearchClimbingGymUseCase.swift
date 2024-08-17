@@ -92,7 +92,7 @@ extension DefaultSearchClimbingGymUseCase {
         let components = currentOpeningHour.components(separatedBy: ": ")
         let times = components[1].components(separatedBy: "~")
         let openTimes = times[0]
-        let closeTimes = times[1].first!.isLetter ? times[1] : "오후 " + times[1]
+        let closeTimes = times[1].trimmingCharacters(in: .whitespaces).first!.isLetter ? times[1] : "오후 " + times[1]
 
         let open = DateFormatManger.shared.convertTimeFormat(inputFormat: "a hh:mm", outputFormat: "HH:mm", from: openTimes).components(separatedBy: ":")
         let close = DateFormatManger.shared.convertTimeFormat(inputFormat: "a hh:mm", outputFormat: "HH:mm", from: closeTimes).components(separatedBy: ":")
