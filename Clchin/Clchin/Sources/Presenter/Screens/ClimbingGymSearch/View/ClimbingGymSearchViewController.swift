@@ -25,7 +25,7 @@ final class ClimbingGymSearchViewController: BaseViewController<ClimbingGymSearc
     }
     
     override func bindViewModel() {
-        let input = ClimbingGymSearchViewModel.Input(viewDidLoad: self.rx.viewDidLoad, searchText: contentView.searchController.searchBar.rx.text.orEmpty)
+        let input = ClimbingGymSearchViewModel.Input(viewDidLoad: self.rx.viewDidLoad, searchText: contentView.searchController.searchBar.rx.text.orEmpty, sortButtonsTapped: contentView.sortButtonsStackView.sortButtons.map { $0.rx.tap })
         let output = self.viewModel.transform(input: input)
         
         output.gymList
@@ -33,6 +33,10 @@ final class ClimbingGymSearchViewController: BaseViewController<ClimbingGymSearc
             .bind(to: contentView.collectionView.rx.items(cellIdentifier: ClimbingGymCollectionViewCell.identifier, cellType: ClimbingGymCollectionViewCell.self)) { item, element, cell in
                 cell.bind(gym: element)
             }
+            .disposed(by: disposeBag)
+        
+        output.sortStatusArray
+            .bind(to: contentView.sortButtonsStackView.rx.binder)
             .disposed(by: disposeBag)
     }
     

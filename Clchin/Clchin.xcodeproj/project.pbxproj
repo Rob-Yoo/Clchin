@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC9358E92C70848A00AFAC26 /* SortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9358E82C70848A00AFAC26 /* SortButton.swift */; };
+		CC9358EB2C70D25E00AFAC26 /* SortButtonsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9358EA2C70D25E00AFAC26 /* SortButtonsStackView.swift */; };
 		CCAF5FF52C6CE01100219873 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF5FF42C6CE01100219873 /* AppDelegate.swift */; };
 		CCAF5FF72C6CE01100219873 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF5FF62C6CE01100219873 /* SceneDelegate.swift */; };
 		CCAF5FFE2C6CE01200219873 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCAF5FFD2C6CE01200219873 /* Assets.xcassets */; };
@@ -44,9 +46,12 @@
 		CCAF60692C6F397800219873 /* SearchClimbingGymUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60682C6F397800219873 /* SearchClimbingGymUseCase.swift */; };
 		CCAF606C2C6F4C0B00219873 /* DateFormatManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF606B2C6F4C0B00219873 /* DateFormatManger.swift */; };
 		CCAF606E2C6F60E500219873 /* ClimbingGymItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF606D2C6F60E500219873 /* ClimbingGymItem.swift */; };
+		CCAF60772C7078DE00219873 /* RxCoreLocation in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF60762C7078DE00219873 /* RxCoreLocation */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC9358E82C70848A00AFAC26 /* SortButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButton.swift; sourceTree = "<group>"; };
+		CC9358EA2C70D25E00AFAC26 /* SortButtonsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButtonsStackView.swift; sourceTree = "<group>"; };
 		CCAF5FF12C6CE01100219873 /* Clchin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clchin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCAF5FF42C6CE01100219873 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCAF5FF62C6CE01100219873 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCAF60772C7078DE00219873 /* RxCoreLocation in Frameworks */,
 				CCAF604D2C6E190400219873 /* Cosmos in Frameworks */,
 				CCAF60182C6CE28300219873 /* Kingfisher in Frameworks */,
 				CCAF602E2C6DD49700219873 /* RxGesture in Frameworks */,
@@ -229,6 +235,7 @@
 			children = (
 				CCAF60402C6DE0DD00219873 /* ClimbingGymSearchViewController.swift */,
 				CCAF60422C6DE10A00219873 /* ClimbingGymSearchRootView.swift */,
+				CC9358EA2C70D25E00AFAC26 /* SortButtonsStackView.swift */,
 				CCAF60492C6E15CD00219873 /* ClimbingGymCardView.swift */,
 				CCAF60502C6E1F2900219873 /* ClimbingGymCollectionViewCell.swift */,
 			);
@@ -239,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				CCAF60452C6DF67E00219873 /* LocationButton.swift */,
+				CC9358E82C70848A00AFAC26 /* SortButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -369,6 +377,7 @@
 				CCAF60272C6CFECC00219873 /* NMapsMap */,
 				CCAF602D2C6DD49700219873 /* RxGesture */,
 				CCAF604C2C6E190400219873 /* Cosmos */,
+				CCAF60762C7078DE00219873 /* RxCoreLocation */,
 			);
 			productName = Clchin;
 			productReference = CCAF5FF12C6CE01100219873 /* Clchin.app */;
@@ -408,6 +417,7 @@
 				CCAF601C2C6CE2F300219873 /* XCRemoteSwiftPackageReference "Then" */,
 				CCAF602C2C6DD49700219873 /* XCRemoteSwiftPackageReference "RxGesture" */,
 				CCAF604B2C6E190400219873 /* XCRemoteSwiftPackageReference "Cosmos" */,
+				CCAF60752C7078DE00219873 /* XCRemoteSwiftPackageReference "RxCoreLocation" */,
 			);
 			productRefGroup = CCAF5FF22C6CE01100219873 /* Products */;
 			projectDirPath = "";
@@ -450,10 +460,12 @@
 				CCAF60412C6DE0DD00219873 /* ClimbingGymSearchViewController.swift in Sources */,
 				CCAF60432C6DE10A00219873 /* ClimbingGymSearchRootView.swift in Sources */,
 				CCAF60552C6E1FFB00219873 /* NSObject+Extension.swift in Sources */,
+				CC9358E92C70848A00AFAC26 /* SortButton.swift in Sources */,
 				CCAF606E2C6F60E500219873 /* ClimbingGymItem.swift in Sources */,
 				CCAF60392C6DD83000219873 /* NavigationController.swift in Sources */,
 				CCAF60312C6DD74C00219873 /* BaseView.swift in Sources */,
 				CCAF604F2C6E1B8100219873 /* BaseStackView.swift in Sources */,
+				CC9358EB2C70D25E00AFAC26 /* SortButtonsStackView.swift in Sources */,
 				CCAF5FF72C6CE01100219873 /* SceneDelegate.swift in Sources */,
 				CCAF605B2C6E2F7200219873 /* ViewModelType.swift in Sources */,
 				CCAF60692C6F397800219873 /* SearchClimbingGymUseCase.swift in Sources */,
@@ -758,6 +770,14 @@
 				minimumVersion = 25.0.1;
 			};
 		};
+		CCAF60752C7078DE00219873 /* XCRemoteSwiftPackageReference "RxCoreLocation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxCoreLocation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -810,6 +830,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CCAF604B2C6E190400219873 /* XCRemoteSwiftPackageReference "Cosmos" */;
 			productName = Cosmos;
+		};
+		CCAF60762C7078DE00219873 /* RxCoreLocation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCAF60752C7078DE00219873 /* XCRemoteSwiftPackageReference "RxCoreLocation" */;
+			productName = RxCoreLocation;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -19,8 +19,8 @@ final class ClimbingGymCardView: BaseView {
         $0.clipsToBounds = true
         $0.contentMode = .scaleAspectFill
         $0.backgroundColor = .lightGray.withAlphaComponent(0.6)
-        $0.layer.borderWidth = 0.5
-        $0.layer.borderColor = UIColor.lightGray.cgColor
+        $0.layer.borderWidth = 0.1
+        $0.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.1).cgColor
     }
     
     let nameLabel = UILabel().then {
@@ -42,11 +42,11 @@ final class ClimbingGymCardView: BaseView {
     override func configureView() {
         self.backgroundColor = .white
         self.layer.borderWidth = 0.5
-        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.6).cgColor
         self.layer.cornerRadius = 15
         self.layer.shadowOffset = CGSize(width: 2, height: 2)
-        self.layer.shadowOpacity = 0.35
-        self.layer.shadowRadius = 1
+        self.layer.shadowOpacity = 0.25
+        self.layer.shadowRadius = 5
         self.layer.masksToBounds = false
     }
     
@@ -66,15 +66,15 @@ final class ClimbingGymCardView: BaseView {
         }
         
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(gymImageView.snp.bottom).offset(7)
+            make.top.equalTo(gymImageView.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(10)
-            make.width.equalToSuperview().multipliedBy(0.7)
+            make.width.equalToSuperview().multipliedBy(0.9)
         }
         
         addressLabel.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp.bottom).offset(7)
             make.leading.equalTo(nameLabel.snp.leading)
-            make.width.equalToSuperview().multipliedBy(0.7)
+            make.width.equalToSuperview().multipliedBy(0.9)
         }
 
         ratingStackView.snp.makeConstraints { make in
@@ -84,10 +84,9 @@ final class ClimbingGymCardView: BaseView {
         }
         
         openingHourStackView.snp.makeConstraints { make in
-            make.top.equalTo(ratingStackView.snp.bottom).offset(5)
+            make.top.equalTo(ratingStackView.snp.bottom).offset(8)
             make.leading.equalTo(ratingStackView.snp.leading)
             make.height.equalTo(15)
-//            make.bottom.equalToSuperview().offset(-5)
         }
     }
 }

@@ -78,6 +78,8 @@ extension DefaultSearchClimbingGymUseCase {
         
         guard let hour = components.hour,
               let minute = components.minute,
+              // "토요일: 휴무일" 인 경우
+              let _ = currentOpeningHour.first(where: {$0.isNumber}),
               !currentOpeningHour.isEmpty else {
             return false
         }

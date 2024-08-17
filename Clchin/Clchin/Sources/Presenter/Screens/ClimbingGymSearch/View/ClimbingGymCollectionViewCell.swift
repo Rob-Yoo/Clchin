@@ -18,7 +18,9 @@ final class ClimbingGymCollectionViewCell: BaseCollectionViewCell {
     
     override func configureLayout() {
         cardView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(20)
+            make.top.equalToSuperview()
+            make.horizontalEdges.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview().inset(25)
         }
     }
     
@@ -61,11 +63,3 @@ final class ClimbingGymCollectionViewCell: BaseCollectionViewCell {
         }
     }
 }
-
-//extension Reactive where Base: ClimbingGymCollectionViewCell {
-//    var binder: Binder<ClimbingGym> {
-//        return Binder(base) { base, gym in
-//            base.bind(gym: gym)
-//        }
-//    }
-//}

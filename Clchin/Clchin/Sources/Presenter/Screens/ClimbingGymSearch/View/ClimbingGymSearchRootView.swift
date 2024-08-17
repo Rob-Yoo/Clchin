@@ -20,9 +20,7 @@ final class ClimbingGymSearchRootView: BaseView {
         $0.searchBar.setValue("취소", forKey: "cancelButtonText")
     }
     
-    let locationButton = LocationButton().then {
-        $0.isSelected = false
-    }
+    let sortButtonsStackView = SortButtonsStackView()
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout()).then {
         $0.register(ClimbingGymCollectionViewCell.self, forCellWithReuseIdentifier: ClimbingGymCollectionViewCell.identifier)
@@ -45,22 +43,23 @@ final class ClimbingGymSearchRootView: BaseView {
     }
     
     override func configureHierarchy() {
-        self.addSubview(locationButton)
+        self.addSubview(sortButtonsStackView)
         self.addSubview(collectionView)
     }
     
     override func configureLayout() {
-        locationButton.snp.makeConstraints { make in
-            make.top.equalTo(self.safeAreaLayoutGuide).offset(10)
-            make.trailing.equalToSuperview().offset(-20)
-            make.size.equalTo(30)
+        
+        sortButtonsStackView.snp.makeConstraints { make in
+            make.top.equalTo(self.safeAreaLayoutGuide)
+            make.leading.equalToSuperview().offset(20)
+            make.width.equalToSuperview().multipliedBy(0.55)
+            make.height.equalTo(35)
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(locationButton.snp.bottom).offset(10)
+            make.top.equalTo(sortButtonsStackView.snp.bottom).offset(15)
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
 }
-
