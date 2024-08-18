@@ -47,9 +47,15 @@
 		CCAF606C2C6F4C0B00219873 /* DateFormatManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF606B2C6F4C0B00219873 /* DateFormatManger.swift */; };
 		CCAF606E2C6F60E500219873 /* ClimbingGymItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF606D2C6F60E500219873 /* ClimbingGymItem.swift */; };
 		CCAF60772C7078DE00219873 /* RxCoreLocation in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF60762C7078DE00219873 /* RxCoreLocation */; };
+		CCCD14492C72598D0037D8D5 /* ClimbingGymDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCD14482C72598C0037D8D5 /* ClimbingGymDetailViewModel.swift */; };
+		CCCD144B2C725B600037D8D5 /* DetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCD144A2C725B600037D8D5 /* DetailContentView.swift */; };
+		CCCD144D2C725B8F0037D8D5 /* ContactOptionStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCD144C2C725B8F0037D8D5 /* ContactOptionStackView.swift */; };
+		CCCD144F2C725BB60037D8D5 /* LocationInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCD144E2C725BB60037D8D5 /* LocationInfoView.swift */; };
 		CCDEB2B42C71C924004B94F3 /* LocationServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEB2B32C71C924004B94F3 /* LocationServiceManager.swift */; };
 		CCDEB2B62C7207AC004B94F3 /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEB2B52C7207AC004B94F3 /* CLLocationCoordinate2D+Extension.swift */; };
 		CCDEB2B82C723A69004B94F3 /* UIAlertController+Extesion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEB2B72C723A69004B94F3 /* UIAlertController+Extesion.swift */; };
+		CCDEB2BC2C723F35004B94F3 /* ClimbingGymDetailRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEB2BB2C723F35004B94F3 /* ClimbingGymDetailRootView.swift */; };
+		CCDEB2BE2C72512D004B94F3 /* ClimbingGymDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDEB2BD2C72512D004B94F3 /* ClimbingGymDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,9 +90,15 @@
 		CCAF60682C6F397800219873 /* SearchClimbingGymUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchClimbingGymUseCase.swift; sourceTree = "<group>"; };
 		CCAF606B2C6F4C0B00219873 /* DateFormatManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatManger.swift; sourceTree = "<group>"; };
 		CCAF606D2C6F60E500219873 /* ClimbingGymItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymItem.swift; sourceTree = "<group>"; };
+		CCCD14482C72598C0037D8D5 /* ClimbingGymDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymDetailViewModel.swift; sourceTree = "<group>"; };
+		CCCD144A2C725B600037D8D5 /* DetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentView.swift; sourceTree = "<group>"; };
+		CCCD144C2C725B8F0037D8D5 /* ContactOptionStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactOptionStackView.swift; sourceTree = "<group>"; };
+		CCCD144E2C725BB60037D8D5 /* LocationInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoView.swift; sourceTree = "<group>"; };
 		CCDEB2B32C71C924004B94F3 /* LocationServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceManager.swift; sourceTree = "<group>"; };
 		CCDEB2B52C7207AC004B94F3 /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 		CCDEB2B72C723A69004B94F3 /* UIAlertController+Extesion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extesion.swift"; sourceTree = "<group>"; };
+		CCDEB2BB2C723F35004B94F3 /* ClimbingGymDetailRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymDetailRootView.swift; sourceTree = "<group>"; };
+		CCDEB2BD2C72512D004B94F3 /* ClimbingGymDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +233,7 @@
 		CCAF603D2C6DDF9300219873 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				CCDEB2B92C723F13004B94F3 /* ClimbingGymDetail */,
 				CCAF603E2C6DDFCA00219873 /* ClimbingGymSearch */,
 			);
 			path = Screens;
@@ -359,6 +372,35 @@
 			path = PresentationModel;
 			sourceTree = "<group>";
 		};
+		CCCD14472C7259810037D8D5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CCCD14482C72598C0037D8D5 /* ClimbingGymDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CCDEB2B92C723F13004B94F3 /* ClimbingGymDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CCCD14472C7259810037D8D5 /* ViewModel */,
+				CCDEB2BA2C723F28004B94F3 /* View */,
+			);
+			path = ClimbingGymDetail;
+			sourceTree = "<group>";
+		};
+		CCDEB2BA2C723F28004B94F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CCDEB2BD2C72512D004B94F3 /* ClimbingGymDetailViewController.swift */,
+				CCDEB2BB2C723F35004B94F3 /* ClimbingGymDetailRootView.swift */,
+				CCCD144A2C725B600037D8D5 /* DetailContentView.swift */,
+				CCCD144C2C725B8F0037D8D5 /* ContactOptionStackView.swift */,
+				CCCD144E2C725BB60037D8D5 /* LocationInfoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -458,12 +500,17 @@
 				CCAF60652C6F32BC00219873 /* ClimbingGymRepository.swift in Sources */,
 				CCAF60672C6F365200219873 /* DefaultClimbingGymRepository.swift in Sources */,
 				CCAF60482C6DF8AE00219873 /* BaseButton.swift in Sources */,
+				CCDEB2BE2C72512D004B94F3 /* ClimbingGymDetailViewController.swift in Sources */,
 				CCDEB2B82C723A69004B94F3 /* UIAlertController+Extesion.swift in Sources */,
 				CCAF60462C6DF67E00219873 /* LocationButton.swift in Sources */,
 				CCAF602B2C6DD10800219873 /* BaseViewController.swift in Sources */,
+				CCCD144D2C725B8F0037D8D5 /* ContactOptionStackView.swift in Sources */,
 				CCAF60332C6DD77E00219873 /* BaseCollectionViewCell.swift in Sources */,
 				CCAF5FF52C6CE01100219873 /* AppDelegate.swift in Sources */,
+				CCCD14492C72598D0037D8D5 /* ClimbingGymDetailViewModel.swift in Sources */,
+				CCDEB2BC2C723F35004B94F3 /* ClimbingGymDetailRootView.swift in Sources */,
 				CCAF606C2C6F4C0B00219873 /* DateFormatManger.swift in Sources */,
+				CCCD144B2C725B600037D8D5 /* DetailContentView.swift in Sources */,
 				CCAF604A2C6E15CD00219873 /* ClimbingGymCardView.swift in Sources */,
 				CCAF603C2C6DDB2500219873 /* UIImage+Extension.swift in Sources */,
 				CCAF60202C6CE7ED00219873 /* API.swift in Sources */,
@@ -482,6 +529,7 @@
 				CCAF60692C6F397800219873 /* SearchClimbingGymUseCase.swift in Sources */,
 				CCDEB2B42C71C924004B94F3 /* LocationServiceManager.swift in Sources */,
 				CCAF60372C6DD7EC00219873 /* TabBarController.swift in Sources */,
+				CCCD144F2C725BB60037D8D5 /* LocationInfoView.swift in Sources */,
 				CCAF605F2C6F292300219873 /* ClimbingGym.swift in Sources */,
 				CCAF60512C6E1F2900219873 /* ClimbingGymCollectionViewCell.swift in Sources */,
 			);

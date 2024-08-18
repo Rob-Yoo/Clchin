@@ -49,6 +49,15 @@ final class ClimbingGymSearchViewController: BaseViewController<ClimbingGymSearc
                 owner.present(alert, animated: true)
             }
             .disposed(by: disposeBag)
+        
+        contentView.collectionView.rx.modelSelected(ClimbingGym.self)
+            .bind(with: self) { owner, gym in
+                let vc = ClimbingGymDetailViewController(viewModel: ClimbingGymDetailViewModel(climbingGym: gym))
+                vc.hidesBottomBarWhenPushed = true
+                
+                owner.navigationController?.pushViewController(vc, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func configureNavigationBar() {
