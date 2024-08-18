@@ -121,7 +121,7 @@ extension ClimbingGymSearchViewModel {
                 case .isOpenNow:
                     sortedClimbingGymList = sortedClimbingGymList.filter { $0.isOpen }
                 case .distance:
-                    sortedClimbingGymList = sortedClimbingGymList.sorted { $0.coordinate.distance(from: userCoordinate) < $1.coordinate.distance(from: userCoordinate) }
+                    sortedClimbingGymList = sortedClimbingGymList.sorted { $0.distance < $1.distance }
                 case .rating:
                     sortedClimbingGymList = sortedClimbingGymList.sorted { $0.rate > $1.rate }
                 }

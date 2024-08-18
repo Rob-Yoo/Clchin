@@ -61,7 +61,7 @@ final class LocationInfoView: BaseView {
 extension Reactive where Base: LocationInfoView {
     var binder: Binder<ClimbingGym> {
         return Binder(base) { base, gym in
-            base.bind(lat: gym.coordinate.latitude, lng: gym.coordinate.longitude, markerCaption: gym.name)
+            base.bind(lat: gym.lat, lng: gym.lng, markerCaption: gym.name)
         }
     }
 }

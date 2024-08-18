@@ -5,7 +5,6 @@
 //  Created by Jinyoung Yoo on 8/16/24.
 //
 
-import CoreLocation
 import GooglePlaces
 
 struct ClimbingGym: Identifiable {
@@ -15,11 +14,14 @@ struct ClimbingGym: Identifiable {
     let name: String
     let address: String
     let photos: [GMSPlacePhotoMetadata]
-    let coordinate: CLLocationCoordinate2D
-    let distance: String
+    let lat: Double
+    let lng: Double
+    let distance: Double
     let rate: Float
     let userRatingCount: Int
     let openingHours: [String]
     let currentOpeningHour: String
     let isOpen: Bool
+    let phoneNumber: String
+    let website: URL?
 }

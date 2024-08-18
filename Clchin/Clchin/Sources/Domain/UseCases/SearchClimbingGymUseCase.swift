@@ -16,7 +16,7 @@ protocol SearchClimbingGymUseCase {
 final class DefaultSearchClimbingGymUseCase: SearchClimbingGymUseCase {
 
     private let climbingRepository: ClimbingGymRepository
-    private let placeProperties: [GMSPlaceProperty] = [.placeID, .name, .coordinate, .formattedAddress, .rating, .userRatingsTotal, .openingHours, .photos]
+    private let placeProperties: [GMSPlaceProperty] = [.placeID, .name, .coordinate, .formattedAddress, .rating, .userRatingsTotal, .openingHours, .photos, .website, .phoneNumber]
     
     init(climbingRepository: ClimbingGymRepository) {
         self.climbingRepository = climbingRepository
@@ -57,13 +57,17 @@ final class DefaultSearchClimbingGymUseCase: SearchClimbingGymUseCase {
                 name: place.name ?? "",
                 address: address,
                 photos: place.photos ?? [],
-                coordinate: place.coordinate,
-                distance: place.coordinate.distance(from: userCoordinate).formattedString(),
+                lat: place.coordinate.latitude,
+                lng: place.coordinate.longitude,
+                distance: place.coordinate.distance(from: userCoordinate),
                 rate: place.rating,
                 userRatingCount: Int(place.userRatingsTotal),
                 openingHours: openingHourPerWeekday,
                 currentOpeningHour: currentOpeningHour,
-                isOpen: isOpen)
+                isOpen: isOpen,
+                phoneNumber: place.phoneNumber ?? "",
+                website: place.website
+            )
             
             list.append(climbingGym)
         }
