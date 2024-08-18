@@ -7,9 +7,10 @@
 
 import GooglePlaces
 import RxSwift
+import CoreLocation
 
 protocol SearchClimbingGymUseCase {
-    func execute(textQuery: String) -> Single<Result<[ClimbingGym], Error>>
+    func execute(textQuery: String, userCoordinate: CLLocationCoordinate2D) -> Single<Result<[ClimbingGym], Error>>
 }
 
 final class DefaultSearchClimbingGymUseCase: SearchClimbingGymUseCase {
@@ -21,7 +22,7 @@ final class DefaultSearchClimbingGymUseCase: SearchClimbingGymUseCase {
         self.climbingRepository = climbingRepository
     }
     
-    func execute(textQuery: String) -> Single<Result<[ClimbingGym], Error>> {
+    func execute(textQuery: String, userCoordinate: CLLocationCoordinate2D) -> Single<Result<[ClimbingGym], Error>> {
         return Single.create { [weak self] observer in
             guard let self else { return Disposables.create() }
 
@@ -31,7 +32,7 @@ final class DefaultSearchClimbingGymUseCase: SearchClimbingGymUseCase {
             self.climbingRepository.fetchClimbingGymList(request: request) { result in
                 switch result {
                 case .success(let placeList):
-                    let climbingGymList = self.toDomain(placeList: placeList)
+                    let climbingGymList = self.toDomain(placeList: placeList, userCoordinate: userCoordinate)
                     observer(.success(.success(climbingGymList)))
                 case .failure(let error):
                     observer(.success(.failure(error)))
@@ -42,7 +43,7 @@ final class DefaultSearchClimbingGymUseCase: SearchClimbingGymUseCase {
         }
     }
     
-    private func toDomain(placeList: [GMSPlace]) -> [ClimbingGym] {
+    private func toDomain(placeList: [GMSPlace], userCoordinate: CLLocationCoordinate2D) -> [ClimbingGym] {
         var list = [ClimbingGym]()
 
         for place in placeList {
@@ -57,6 +58,7 @@ final class DefaultSearchClimbingGymUseCase: SearchClimbingGymUseCase {
                 address: address,
                 photos: place.photos ?? [],
                 coordinate: place.coordinate,
+                distance: place.coordinate.distance(from: userCoordinate).formattedString(),
                 rate: place.rating,
                 userRatingCount: Int(place.userRatingsTotal),
                 openingHours: openingHourPerWeekday,

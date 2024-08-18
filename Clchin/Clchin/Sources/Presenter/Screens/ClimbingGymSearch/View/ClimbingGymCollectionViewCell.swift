@@ -36,6 +36,7 @@ final class ClimbingGymCollectionViewCell: BaseCollectionViewCell {
         self.cardView.ratingStackView.ratingLabel.text = String(format: "%.1f", gym.rate)
         self.cardView.ratingStackView.ratingView.rating = Double(gym.rate)
         self.cardView.ratingStackView.userRatingCountLabel.text = "(" + String(gym.userRatingCount) + ")"
+        self.cardView.ratingStackView.distanceLabel.text = gym.distance.isEmpty ? "" : "・ " + gym.distance
         
         if (gym.currentOpeningHour.isEmpty) {
             self.cardView.openingHourStackView.openingHourLabel.text = "(영업 시간 정보 없음)"

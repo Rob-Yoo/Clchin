@@ -16,6 +16,7 @@ struct ClimbingGym: Identifiable {
     let address: String
     let photos: [GMSPlacePhotoMetadata]
     let coordinate: CLLocationCoordinate2D
+    let distance: String
     let rate: Float
     let userRatingCount: Int
     let openingHours: [String]

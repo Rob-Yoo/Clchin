@@ -80,6 +80,7 @@ final class ClimbingGymCardView: BaseView {
         ratingStackView.snp.makeConstraints { make in
             make.top.equalTo(addressLabel.snp.bottom).offset(5)
             make.leading.equalTo(addressLabel.snp.leading)
+            make.trailing.lessThanOrEqualToSuperview().offset(-50)
             make.height.equalTo(15)
         }
         
@@ -94,7 +95,7 @@ final class ClimbingGymCardView: BaseView {
 final class RatingStackView: BaseStackView {
 
     let ratingLabel = UILabel().then {
-        $0.textColor = .systemGray2
+        $0.textColor = .systemGray
         $0.font = .systemFont(ofSize: 13)
     }
     
@@ -105,19 +106,24 @@ final class RatingStackView: BaseStackView {
     }
     
     let userRatingCountLabel = UILabel().then {
-        $0.textColor = .systemGray2
+        $0.textColor = .systemGray
+        $0.font = .systemFont(ofSize: 13)
+    }
+    
+    let distanceLabel = UILabel().then {
+        $0.textColor = .systemGray
         $0.font = .systemFont(ofSize: 13)
     }
     
     private var arrangedViews: [UIView] {
-        return [ratingLabel, ratingView, userRatingCountLabel]
+        return [ratingLabel, ratingView, userRatingCountLabel, distanceLabel]
     }
     
     override func configureStackView() {
         self.axis = .horizontal
         self.alignment = .fill
         self.distribution = .fillProportionally
-        self.spacing = 5
+        self.spacing = 3
         self.arrangedViews.forEach { self.addArrangedSubview($0) }
     }
 }
