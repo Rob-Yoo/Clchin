@@ -18,7 +18,6 @@ class BaseViewController<ContentView: UIView>: UIViewController {
     init(contentView: ContentView = ContentView()) {
         self.contentView = contentView
         super.init(nibName: nil, bundle: nil)
-        self.bindViewModel()
     }
     
     @available(*, unavailable)
@@ -28,6 +27,11 @@ class BaseViewController<ContentView: UIView>: UIViewController {
     
     override func loadView() {
         self.view = contentView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.bindViewModel()
     }
     
     //MARK: - Overriding Methods

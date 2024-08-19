@@ -12,13 +12,12 @@ import UIKit
 
 final class ClimbingGymDetailViewModel: ViewModelType {
     struct Input {
-        let viewDidLoad: ControlEvent<Void>
         let locationPinButtonTapped: ControlEvent<UITapGestureRecognizer>
         let instaButtonTapped: ControlEvent<UITapGestureRecognizer>
     }
     
     struct Output {
-        let gymDetail: PublishRelay<ClimbingGym>
+        let gymDetail: BehaviorRelay<ClimbingGym>
         let name: PublishRelay<String>
         let website: PublishRelay<URL?>
     }
@@ -31,15 +30,9 @@ final class ClimbingGymDetailViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let gymDetail = PublishRelay<ClimbingGym>()
+        let gymDetail = BehaviorRelay(value: climbingGym)
         let address = PublishRelay<String>()
         let website = PublishRelay<URL?>()
-        
-        input.viewDidLoad
-            .bind(with: self) { owner, _ in
-                gymDetail.accept(owner.climbingGym)
-            }
-            .disposed(by: disposeBag)
         
         input.locationPinButtonTapped
             .bind(with: self) { owner, _ in

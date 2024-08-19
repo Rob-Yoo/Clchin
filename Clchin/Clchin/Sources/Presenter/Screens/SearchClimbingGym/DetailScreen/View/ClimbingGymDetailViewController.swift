@@ -26,7 +26,6 @@ final class ClimbingGymDetailViewController: BaseViewController<ClimbingGymDetai
     
     override func bindViewModel() {
         let input = ClimbingGymDetailViewModel.Input(
-            viewDidLoad: self.rx.viewDidLoad,
             locationPinButtonTapped: contentView.detailContentView.contentOptionButtonStackView.locationPinButton.rx.tapGesture(),
             instaButtonTapped: contentView.detailContentView.contentOptionButtonStackView.instaButton.rx.tapGesture()
         )
