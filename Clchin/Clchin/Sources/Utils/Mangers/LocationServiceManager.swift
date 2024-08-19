@@ -27,9 +27,9 @@ final class LocationServiceManager: NSObject {
     private override init() {
         super.init()
     }
-  
-    func requestLocation() -> Single<Result<CLLocationCoordinate2D, LocationServiceError>> {
-        return Single.create { [weak self] observer in
+
+    func requestLocation() -> Observable<Result<CLLocationCoordinate2D, LocationServiceError>> {
+        return Observable.create { [weak self] observer in
             guard let self else { return Disposables.create() }
             
             self.locationManager.rx.didChangeAuthorization
@@ -39,7 +39,7 @@ final class LocationServiceManager: NSObject {
                     case .notDetermined:
                         self.locationManager.requestWhenInUseAuthorization()
                     case .denied, .restricted:
-                        observer(.success(.failure(LocationServiceError.authorizationDenied)))
+                        observer.onNext(.failure(LocationServiceError.authorizationDenied))
                         return
                     case .authorizedWhenInUse:
                         self.locationManager.requestLocation()
@@ -52,14 +52,13 @@ final class LocationServiceManager: NSObject {
             locationManager.rx.location
                 .compactMap { $0?.coordinate }
                 .bind { coord in
-                    observer(.success(.success(coord)))
+                    observer.onNext(.success(coord))
                 }
                 .disposed(by: self.disposeBag)
             
             return Disposables.create()
         }
     }
-    
         
 }
 

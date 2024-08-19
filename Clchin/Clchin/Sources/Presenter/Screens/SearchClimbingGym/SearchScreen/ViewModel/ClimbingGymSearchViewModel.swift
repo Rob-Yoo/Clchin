@@ -12,56 +12,50 @@ import Then
 
 final class ClimbingGymSearchViewModel: ViewModelType {
     struct Input {
-        let viewDidLoad: ControlEvent<Void>
         let searchText: ControlProperty<String>
+        let searchBarCancelButtonTapped: ControlEvent<Void>
         let sortButtonsTapped: [ControlEvent<Void>]
-//        let userLocation: Observable<Result<CLLocationCoordinate2D, LocationServiceManager.LocationServiceError>>
+        let userLocation: Observable<Result<CLLocationCoordinate2D, LocationServiceManager.LocationServiceError>>
     }
     
     struct Output {
         let gymList: BehaviorRelay<[ClimbingGym]>
         let sortStatusArray: BehaviorRelay<[Bool]>
         let authorizationAlertTrigger: PublishRelay<Void>
+        let scrollToTopTrigger: PublishRelay<Void>
     }
     
     private let disposeBag = DisposeBag()
     private let searchClimbingGymUseCase: SearchClimbingGymUseCase
     
     private var userCoordinate = CLLocationCoordinate2D(latitude: .nan, longitude: .nan)
+    private var searchText = ""
     private var climbingGymList = [ClimbingGym]()
     private var sortStatusArray = Array(repeating: false, count: SortType.allCases.count)
+    
+    private lazy var climbingGymListRelay = BehaviorRelay(value: climbingGymList)
+    private lazy var sortStatusArrayRelay = BehaviorRelay(value: sortStatusArray)
+    private let authorizationAlertTrigger = PublishRelay<Void>()
+    private let scrollToTopTrigger = PublishRelay<Void>()
     
     init(searchClimbingGymUseCase: SearchClimbingGymUseCase) {
         self.searchClimbingGymUseCase = searchClimbingGymUseCase
     }
     
     func transform(input: Input) -> Output {
-        let climbingGymListRelay = BehaviorRelay(value: climbingGymList)
-        let sortStatusArrayRelay = BehaviorRelay(value: sortStatusArray)
-        let authorizationAlertTrigger = PublishRelay<Void>()
         
-        input.viewDidLoad
-            .flatMap { LocationServiceManager.shared.requestLocation() }
+        input.userLocation
             .flatMap { [weak self] result in
                 guard let self else {
                     return Single<Result<[ClimbingGym], Error>>.never()
                 }
                 
-                switch result {
-                case .success(let coord):
-                    self.userCoordinate = coord
-                    return self.searchClimbingGymUseCase.execute(textQuery: "", userCoordinate: coord)
-                case .failure:
-                    authorizationAlertTrigger.accept(())
-                    return self.searchClimbingGymUseCase.execute(textQuery: "", userCoordinate: self.userCoordinate)
-                }
+                return executeUseCaseWithUserLocation(result: result)
             }
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let gymList):
-                    let sortedClimbingGymList = owner.sortClimbingGymList(climbingGymList: gymList)
-                    owner.climbingGymList = sortedClimbingGymList
-                    climbingGymListRelay.accept(sortedClimbingGymList)
+                    owner.emitClimbingGymList(list: gymList)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
@@ -70,46 +64,90 @@ final class ClimbingGymSearchViewModel: ViewModelType {
         
         input.searchText
             .skip(1)
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(800), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .flatMap { [weak self] text in
                 guard let self else {
                     return Single<Result<[ClimbingGym], Error>>.never()
                 }
-                return self.searchClimbingGymUseCase.execute(textQuery: text, userCoordinate: self.userCoordinate)
+                
+                return executeUseCaseWithSearchText(text: text)
             }
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let gymList):
-                    let sortedClimbingGymList = owner.sortClimbingGymList(climbingGymList: gymList)
-                    owner.climbingGymList = sortedClimbingGymList
-                    climbingGymListRelay.accept(sortedClimbingGymList)
+                    owner.emitClimbingGymList(list: gymList)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
             }
             .disposed(by: disposeBag)
-
+        
+        input.searchBarCancelButtonTapped
+            .bind {
+                input.searchText.onNext("")
+            }
+            .disposed(by: disposeBag)
         
         zip(input.sortButtonsTapped, SortType.allCases)
             .forEach { event, sortType in
                 event
                     .bind(with: self) { owner, _ in
-                        owner.sortStatusArray[sortType.rawValue].toggle()
-                        sortStatusArrayRelay.accept(owner.sortStatusArray)
-
-                        let sortedClimbingGymList = owner.sortClimbingGymList(climbingGymList: owner.climbingGymList)
-
-                        climbingGymListRelay.accept(sortedClimbingGymList)
+                        owner.emitSortedClimbingGymList(sortType: sortType)
                     }
                     .disposed(by: disposeBag)
             }
 
-        return Output(gymList: climbingGymListRelay, sortStatusArray: sortStatusArrayRelay, authorizationAlertTrigger: authorizationAlertTrigger)
+        return Output(gymList: climbingGymListRelay, sortStatusArray: sortStatusArrayRelay, authorizationAlertTrigger: authorizationAlertTrigger,
+            scrollToTopTrigger: scrollToTopTrigger
+        )
     }
 }
 
+//MARK: - Execute UseCase
 extension ClimbingGymSearchViewModel {
+    private func executeUseCaseWithUserLocation(result: Result<CLLocationCoordinate2D, LocationServiceManager.LocationServiceError>) -> Single<Result<[ClimbingGym], any Error>> {
+        
+        switch result {
+        case .success(let coord):
+            userCoordinate = coord
+        case .failure:
+            authorizationAlertTrigger.accept(())
+        }
+        
+        return self.searchClimbingGymUseCase.execute(textQuery: searchText, userCoordinate: userCoordinate)
+    }
+    
+    private func executeUseCaseWithSearchText(text: String) -> Single<Result<[ClimbingGym], Error>> {
+        searchText = text
+        return self.searchClimbingGymUseCase.execute(textQuery: searchText, userCoordinate: userCoordinate)
+    }
+}
+
+//MARK: - Emit Climbing Gym List
+extension ClimbingGymSearchViewModel {
+    private func emitClimbingGymList(list: [ClimbingGym]) {
+        let sortedClimbingGymList = sortClimbingGymList(climbingGymList: list)
+        
+        climbingGymList = sortedClimbingGymList
+        climbingGymListRelay.accept(sortedClimbingGymList)
+        if !climbingGymList.isEmpty {
+            scrollToTopTrigger.accept(())
+        }
+    }
+    
+    private func emitSortedClimbingGymList(sortType: SortType) {
+        sortStatusArray[sortType.rawValue].toggle()
+        sortStatusArrayRelay.accept(sortStatusArray)
+
+        let sortedClimbingGymList = sortClimbingGymList(climbingGymList: climbingGymList)
+
+        climbingGymListRelay.accept(sortedClimbingGymList)
+        if !sortedClimbingGymList.isEmpty {
+            scrollToTopTrigger.accept(())
+        }
+    }
+    
     private func sortClimbingGymList(climbingGymList: [ClimbingGym]) -> [ClimbingGym] {
         var sortedClimbingGymList = climbingGymList
         

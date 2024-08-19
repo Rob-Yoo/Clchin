@@ -26,9 +26,10 @@ final class ClimbingGymSearchViewController: BaseViewController<ClimbingGymSearc
     
     override func bindViewModel() {
         let input = ClimbingGymSearchViewModel.Input(
-            viewDidLoad: self.rx.viewDidLoad,
             searchText: contentView.searchController.searchBar.rx.text.orEmpty,
-            sortButtonsTapped: contentView.sortButtonsStackView.sortButtons.map { $0.rx.tap }
+            searchBarCancelButtonTapped: contentView.searchController.searchBar.rx.cancelButtonClicked,
+            sortButtonsTapped: contentView.sortButtonsStackView.sortButtons.map { $0.rx.tap },
+            userLocation: LocationServiceManager.shared.requestLocation()
         )
         let output = self.viewModel.transform(input: input)
         
@@ -47,6 +48,12 @@ final class ClimbingGymSearchViewController: BaseViewController<ClimbingGymSearc
             .bind(with: self) { owner, _ in
                 let alert = UIAlertController.makeLocationSettingAlert()
                 owner.present(alert, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        output.scrollToTopTrigger
+            .bind(with: self) { owner, _ in
+                owner.contentView.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
             }
             .disposed(by: disposeBag)
         
