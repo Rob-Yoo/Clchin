@@ -123,6 +123,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC02AB512C731A7A00A440E2 /* SearchClimbingGym */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF603E2C6DDFCA00219873 /* SearchScreen */,
+				CCDEB2B92C723F13004B94F3 /* DetailScreen */,
+			);
+			path = SearchClimbingGym;
+			sourceTree = "<group>";
+		};
 		CCAF5FE82C6CE01100219873 = {
 			isa = PBXGroup;
 			children = (
@@ -233,20 +242,19 @@
 		CCAF603D2C6DDF9300219873 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				CCDEB2B92C723F13004B94F3 /* ClimbingGymDetail */,
-				CCAF603E2C6DDFCA00219873 /* ClimbingGymSearch */,
+				CC02AB512C731A7A00A440E2 /* SearchClimbingGym */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		CCAF603E2C6DDFCA00219873 /* ClimbingGymSearch */ = {
+		CCAF603E2C6DDFCA00219873 /* SearchScreen */ = {
 			isa = PBXGroup;
 			children = (
 				CCAF60702C6F61DD00219873 /* PresentationModel */,
 				CCAF60562C6E226400219873 /* ViewModel */,
 				CCAF603F2C6DE0CE00219873 /* View */,
 			);
-			path = ClimbingGymSearch;
+			path = SearchScreen;
 			sourceTree = "<group>";
 		};
 		CCAF603F2C6DE0CE00219873 /* View */ = {
@@ -380,13 +388,13 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		CCDEB2B92C723F13004B94F3 /* ClimbingGymDetail */ = {
+		CCDEB2B92C723F13004B94F3 /* DetailScreen */ = {
 			isa = PBXGroup;
 			children = (
 				CCCD14472C7259810037D8D5 /* ViewModel */,
 				CCDEB2BA2C723F28004B94F3 /* View */,
 			);
-			path = ClimbingGymDetail;
+			path = DetailScreen;
 			sourceTree = "<group>";
 		};
 		CCDEB2BA2C723F28004B94F3 /* View */ = {
