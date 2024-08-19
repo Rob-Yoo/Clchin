@@ -51,7 +51,7 @@ final class DetailContentView: BaseView {
         locationInfoView.snp.makeConstraints { make in
             make.top.equalTo(contentOptionButtonStackView.snp.bottom).offset(30)
             make.horizontalEdges.equalToSuperview().inset(20)
-            make.height.equalTo(200)
+            make.height.equalTo(400)
         }
     }
     
@@ -63,6 +63,7 @@ final class DetailContentView: BaseView {
 extension Reactive where Base: DetailContentView {
     var binder: Binder<ClimbingGym> {
         return Binder(base) { base, gym in
+            print(gym.phoneNumber, gym.website?.absoluteString)
             base.bind(gymName: gym.name)
         }
     }

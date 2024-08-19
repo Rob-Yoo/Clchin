@@ -60,6 +60,7 @@ final class ClimbingGymCollectionViewCell: BaseCollectionViewCell {
             guard let image, error == nil else {
                 print(error?.localizedDescription)
               return }
+//            let data = image.pngData()
             self?.cardView.gymImageView.image = image
         }
     }
