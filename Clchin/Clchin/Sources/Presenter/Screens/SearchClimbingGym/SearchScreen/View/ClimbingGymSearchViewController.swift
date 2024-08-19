@@ -24,6 +24,16 @@ final class ClimbingGymSearchViewController: BaseViewController<ClimbingGymSearc
         self.configureNavigationBar()
     }
     
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        self.navigationItem.title = "암장 검색"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.backgroundColor = .white        
+    }
+    
     override func bindViewModel() {
         let input = ClimbingGymSearchViewModel.Input(
             searchText: contentView.searchController.searchBar.rx.text.orEmpty,
@@ -69,7 +79,6 @@ final class ClimbingGymSearchViewController: BaseViewController<ClimbingGymSearc
     
     private func configureNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = "암장 검색"
         self.navigationItem.searchController = contentView.searchController
     }
 }

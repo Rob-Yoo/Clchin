@@ -24,6 +24,12 @@ final class ClimbingGymDetailViewController: BaseViewController<ClimbingGymDetai
         self.navigationController?.navigationBar.tintColor = .black
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.backgroundColor = .clear
+        self.navigationController?.navigationBar.topItem?.title = ""
+    }
+    
     override func bindViewModel() {
         let input = ClimbingGymDetailViewModel.Input(
             locationPinButtonTapped: contentView.detailContentView.contentOptionButtonStackView.locationPinButton.rx.tapGesture(),

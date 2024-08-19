@@ -84,8 +84,10 @@ final class ClimbingGymSearchViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.searchBarCancelButtonTapped
-            .bind {
-                input.searchText.onNext("")
+            .bind(with: self) { owner, _ in
+                if !owner.searchText.isEmpty {
+                    input.searchText.onNext("")                    
+                }
             }
             .disposed(by: disposeBag)
         
