@@ -17,6 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GMSPlacesClient.provideAPIKey(APIKey.gpKey)
         NMFAuthManager.shared().clientId = APIKey.nClientID
+        
+//        if !(UserDefaultsStorage.isAuthorized) {
+//        }
+        AuthManager.shared.login(LoginBodyDTO(email: "qwerty", password: "1234"))
+
         return true
     }
 
