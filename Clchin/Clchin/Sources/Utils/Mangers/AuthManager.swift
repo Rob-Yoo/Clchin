@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Kingfisher
 import RxSwift
 
 final class AuthManager {
@@ -22,6 +23,7 @@ final class AuthManager {
                     UserDefaultsStorage.accessToken = response.accessToken
                     UserDefaultsStorage.refreshToken = response.refreshToken
                     UserDefaultsStorage.isAuthorized = true
+                    UserDefaultsStorage.userId = response.userId
                 case .failure(let error):
                     print(error)
                 }
@@ -34,9 +36,8 @@ final class AuthManager {
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let response):
-                    print("저장 전")
                     UserDefaultsStorage.accessToken = response.accessToken
-                    print("저장 후")
+                    KingfisherManager.shared.setHeaders()
                     completionHandler()
                 case .failure(let error):
                     switch error {

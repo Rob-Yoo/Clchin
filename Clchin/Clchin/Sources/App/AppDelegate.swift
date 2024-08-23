@@ -7,6 +7,7 @@
 
 import UIKit
 import NMapsMap
+import Kingfisher
 import GooglePlaces
 
 @main
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GMSPlacesClient.provideAPIKey(APIKey.gpKey)
         NMFAuthManager.shared().clientId = APIKey.nClientID
+        KingfisherManager.shared.setHeaders()
         
 //        if !(UserDefaultsStorage.isAuthorized) {
 //        }
