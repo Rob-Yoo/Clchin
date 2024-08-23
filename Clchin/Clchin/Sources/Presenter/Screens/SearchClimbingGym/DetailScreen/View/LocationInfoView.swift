@@ -18,10 +18,10 @@ final class LocationInfoView: BaseView {
         $0.textColor = .black
     }
     
-    private let mapView = NMFMapView().then {
-        $0.isIndoorMapEnabled = true
+    private let mapView = NMFNaverMapView().then {
         $0.layer.cornerRadius = 15
         $0.clipsToBounds = true
+        $0.mapView.zoomLevel = 16.0
     }
     
     private let marker = NMFMarker().then {
@@ -46,15 +46,12 @@ final class LocationInfoView: BaseView {
     }
     
     fileprivate func bind(lat: Double, lng: Double, markerCaption: String) {
-        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat, lng: lng))
+        let cameraUpdate = NMFCameraUpdate(position: .init(NMGLatLng(lat: lat, lng: lng), zoom: mapView.mapView.zoomLevel))
 
         marker.position = NMGLatLng(lat: lat, lng: lng)
         marker.captionText = markerCaption
-        marker.mapView = mapView
-        mapView.moveCamera(cameraUpdate)
-        
-        print(mapView.cameraPosition.target)
-        print(lat, lng)
+        marker.mapView = mapView.mapView
+        mapView.mapView.moveCamera(cameraUpdate)
     }
 }
 
