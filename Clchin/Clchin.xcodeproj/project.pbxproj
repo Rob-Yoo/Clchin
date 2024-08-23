@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC02AB562C731CB900A440E2 /* LoungeRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02AB552C731CB900A440E2 /* LoungeRootView.swift */; };
+		CC02AB582C73212C00A440E2 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02AB572C73212C00A440E2 /* PostCollectionViewCell.swift */; };
+		CC02AB5B2C7322A500A440E2 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02AB5A2C7322A500A440E2 /* ProfileImageView.swift */; };
+		CC02AB5E2C73257D00A440E2 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02AB5D2C73257D00A440E2 /* UserInfoView.swift */; };
+		CC02AB802C73665500A440E2 /* PostActionStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02AB7F2C73665500A440E2 /* PostActionStackView.swift */; };
+		CC02AB832C73843A00A440E2 /* LoungeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC02AB822C73843A00A440E2 /* LoungeViewController.swift */; };
+		CC2EDE5A2C7718D500DBB3FA /* usket.NMaps-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = CC2EDE592C7718D500DBB3FA /* usket.NMaps-SPM */; };
 		CC9358E92C70848A00AFAC26 /* SortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9358E82C70848A00AFAC26 /* SortButton.swift */; };
 		CC9358EB2C70D25E00AFAC26 /* SortButtonsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9358EA2C70D25E00AFAC26 /* SortButtonsStackView.swift */; };
 		CCAF5FF52C6CE01100219873 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF5FF42C6CE01100219873 /* AppDelegate.swift */; };
@@ -21,7 +28,6 @@
 		CCAF601B2C6CE2A300219873 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF601A2C6CE2A300219873 /* SnapKit */; };
 		CCAF601E2C6CE2F300219873 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF601D2C6CE2F300219873 /* Then */; };
 		CCAF60202C6CE7ED00219873 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF601F2C6CE7ED00219873 /* API.swift */; };
-		CCAF60282C6CFECC00219873 /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF60272C6CFECC00219873 /* NMapsMap */; settings = {ATTRIBUTES = (Required, ); }; };
 		CCAF602B2C6DD10800219873 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF602A2C6DD10800219873 /* BaseViewController.swift */; };
 		CCAF602E2C6DD49700219873 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF602D2C6DD49700219873 /* RxGesture */; };
 		CCAF60312C6DD74C00219873 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF60302C6DD74C00219873 /* BaseView.swift */; };
@@ -47,6 +53,22 @@
 		CCAF606C2C6F4C0B00219873 /* DateFormatManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF606B2C6F4C0B00219873 /* DateFormatManger.swift */; };
 		CCAF606E2C6F60E500219873 /* ClimbingGymItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF606D2C6F60E500219873 /* ClimbingGymItem.swift */; };
 		CCAF60772C7078DE00219873 /* RxCoreLocation in Frameworks */ = {isa = PBXBuildFile; productRef = CCAF60762C7078DE00219873 /* RxCoreLocation */; };
+		CCCBC5262C74BE300006A570 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBC5252C74BE300006A570 /* AuthAPI.swift */; };
+		CCCBC5292C74C2940006A570 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBC5282C74C2940006A570 /* NetworkError.swift */; };
+		CCCBC52E2C74C3EB0006A570 /* LoginBodyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBC52D2C74C3EB0006A570 /* LoginBodyDTO.swift */; };
+		CCCBC5302C74C5110006A570 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBC52F2C74C5110006A570 /* Header.swift */; };
+		CCCBC5332C74C9120006A570 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBC5322C74C9120006A570 /* AuthManager.swift */; };
+		CCCBC5502C75D1440006A570 /* LoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBC54F2C75D1440006A570 /* LoginResponseDTO.swift */; };
+		CCCBC5532C75D4C60006A570 /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBC5522C75D4C60006A570 /* UserDefaultsStorage.swift */; };
+		CCCBC5552C75DC010006A570 /* MoyaProvider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBC5542C75DC010006A570 /* MoyaProvider+Extension.swift */; };
+		CCCBC5572C75DE390006A570 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBC5562C75DE390006A570 /* NetworkProvider.swift */; };
+		CCCBC5592C75EAB00006A570 /* RefreshResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBC5582C75EAB00006A570 /* RefreshResponseDTO.swift */; };
+		CCCBC55D2C76102C0006A570 /* PostReadResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBC55C2C76102C0006A570 /* PostReadResponseDTO.swift */; };
+		CCCBC55F2C7613E50006A570 /* PostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBC55E2C7613E50006A570 /* PostAPI.swift */; };
+		CCCBC5612C7617A00006A570 /* UploadPostBodyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBC5602C7617A00006A570 /* UploadPostBodyDTO.swift */; };
+		CCCBC5632C7644B70006A570 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBC5622C7644B70006A570 /* PostRepository.swift */; };
+		CCCBC5652C7647AB0006A570 /* DefaultPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBC5642C7647AB0006A570 /* DefaultPostRepository.swift */; };
+		CCCBC5672C7668B30006A570 /* MoyaResponse+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBC5662C7668B30006A570 /* MoyaResponse+Extension.swift */; };
 		CCCD14492C72598D0037D8D5 /* ClimbingGymDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCD14482C72598C0037D8D5 /* ClimbingGymDetailViewModel.swift */; };
 		CCCD144B2C725B600037D8D5 /* DetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCD144A2C725B600037D8D5 /* DetailContentView.swift */; };
 		CCCD144D2C725B8F0037D8D5 /* ContactOptionStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCD144C2C725B8F0037D8D5 /* ContactOptionStackView.swift */; };
@@ -59,6 +81,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC02AB552C731CB900A440E2 /* LoungeRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoungeRootView.swift; sourceTree = "<group>"; };
+		CC02AB572C73212C00A440E2 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
+		CC02AB5A2C7322A500A440E2 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		CC02AB5D2C73257D00A440E2 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		CC02AB7F2C73665500A440E2 /* PostActionStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostActionStackView.swift; sourceTree = "<group>"; };
+		CC02AB822C73843A00A440E2 /* LoungeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoungeViewController.swift; sourceTree = "<group>"; };
 		CC9358E82C70848A00AFAC26 /* SortButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButton.swift; sourceTree = "<group>"; };
 		CC9358EA2C70D25E00AFAC26 /* SortButtonsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButtonsStackView.swift; sourceTree = "<group>"; };
 		CCAF5FF12C6CE01100219873 /* Clchin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clchin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +118,22 @@
 		CCAF60682C6F397800219873 /* SearchClimbingGymUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchClimbingGymUseCase.swift; sourceTree = "<group>"; };
 		CCAF606B2C6F4C0B00219873 /* DateFormatManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatManger.swift; sourceTree = "<group>"; };
 		CCAF606D2C6F60E500219873 /* ClimbingGymItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymItem.swift; sourceTree = "<group>"; };
+		CCCBC5252C74BE300006A570 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		CCCBC5282C74C2940006A570 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		CCCBC52D2C74C3EB0006A570 /* LoginBodyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBodyDTO.swift; sourceTree = "<group>"; };
+		CCCBC52F2C74C5110006A570 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		CCCBC5322C74C9120006A570 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		CCCBC54F2C75D1440006A570 /* LoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseDTO.swift; sourceTree = "<group>"; };
+		CCCBC5522C75D4C60006A570 /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
+		CCCBC5542C75DC010006A570 /* MoyaProvider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaProvider+Extension.swift"; sourceTree = "<group>"; };
+		CCCBC5562C75DE390006A570 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		CCCBC5582C75EAB00006A570 /* RefreshResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshResponseDTO.swift; sourceTree = "<group>"; };
+		CCCBC55C2C76102C0006A570 /* PostReadResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReadResponseDTO.swift; sourceTree = "<group>"; };
+		CCCBC55E2C7613E50006A570 /* PostAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAPI.swift; sourceTree = "<group>"; };
+		CCCBC5602C7617A00006A570 /* UploadPostBodyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostBodyDTO.swift; sourceTree = "<group>"; };
+		CCCBC5622C7644B70006A570 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
+		CCCBC5642C7647AB0006A570 /* DefaultPostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostRepository.swift; sourceTree = "<group>"; };
+		CCCBC5662C7668B30006A570 /* MoyaResponse+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaResponse+Extension.swift"; sourceTree = "<group>"; };
 		CCCD14482C72598C0037D8D5 /* ClimbingGymDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymDetailViewModel.swift; sourceTree = "<group>"; };
 		CCCD144A2C725B600037D8D5 /* DetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentView.swift; sourceTree = "<group>"; };
 		CCCD144C2C725B8F0037D8D5 /* ContactOptionStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactOptionStackView.swift; sourceTree = "<group>"; };
@@ -114,8 +158,8 @@
 				CCAF601E2C6CE2F300219873 /* Then in Frameworks */,
 				CCAF601B2C6CE2A300219873 /* SnapKit in Frameworks */,
 				CCAF60152C6CE26D00219873 /* RxCocoa in Frameworks */,
-				CCAF60282C6CFECC00219873 /* NMapsMap in Frameworks */,
 				CCAF60122C6CE24800219873 /* RxMoya in Frameworks */,
+				CC2EDE5A2C7718D500DBB3FA /* usket.NMaps-SPM in Frameworks */,
 				CCAF60102C6CE24800219873 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,6 +174,58 @@
 				CCDEB2B92C723F13004B94F3 /* DetailScreen */,
 			);
 			path = SearchClimbingGym;
+			sourceTree = "<group>";
+		};
+		CC02AB522C731AF100A440E2 /* Lounge */ = {
+			isa = PBXGroup;
+			children = (
+				CC02AB532C731C6000A440E2 /* FeedScreen */,
+			);
+			path = Lounge;
+			sourceTree = "<group>";
+		};
+		CC02AB532C731C6000A440E2 /* FeedScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CC02AB812C73841C00A440E2 /* ViewModel */,
+				CC02AB542C731C7200A440E2 /* View */,
+			);
+			path = FeedScreen;
+			sourceTree = "<group>";
+		};
+		CC02AB542C731C7200A440E2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CC02AB822C73843A00A440E2 /* LoungeViewController.swift */,
+				CC02AB552C731CB900A440E2 /* LoungeRootView.swift */,
+				CC02AB5C2C73256000A440E2 /* Post */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CC02AB592C73229B00A440E2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CC02AB5A2C7322A500A440E2 /* ProfileImageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CC02AB5C2C73256000A440E2 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				CC02AB572C73212C00A440E2 /* PostCollectionViewCell.swift */,
+				CC02AB5D2C73257D00A440E2 /* UserInfoView.swift */,
+				CC02AB7F2C73665500A440E2 /* PostActionStackView.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		CC02AB812C73841C00A440E2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		CCAF5FE82C6CE01100219873 = {
@@ -174,6 +270,7 @@
 			children = (
 				CCAF60602C6F31F100219873 /* Data */,
 				CCAF605C2C6F173C00219873 /* Domain */,
+				CCCBC5232C74BD680006A570 /* Network */,
 				CCAF60242C6CE9AD00219873 /* Presenter */,
 				CCAF60592C6E2F5C00219873 /* Architectures */,
 				CCAF60522C6E1FDE00219873 /* Utils */,
@@ -216,6 +313,7 @@
 		CCAF60342C6DD7C900219873 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				CC02AB592C73229B00A440E2 /* Views */,
 				CCAF60442C6DF64F00219873 /* Buttons */,
 				CCAF60352C6DD7D700219873 /* Controllers */,
 			);
@@ -242,6 +340,7 @@
 		CCAF603D2C6DDF9300219873 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				CC02AB522C731AF100A440E2 /* Lounge */,
 				CC02AB512C731A7A00A440E2 /* SearchClimbingGym */,
 			);
 			path = Screens;
@@ -293,6 +392,8 @@
 				CCAF60542C6E1FFB00219873 /* NSObject+Extension.swift */,
 				CCDEB2B52C7207AC004B94F3 /* CLLocationCoordinate2D+Extension.swift */,
 				CCDEB2B72C723A69004B94F3 /* UIAlertController+Extesion.swift */,
+				CCCBC5542C75DC010006A570 /* MoyaProvider+Extension.swift */,
+				CCCBC5662C7668B30006A570 /* MoyaResponse+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -334,6 +435,8 @@
 		CCAF60602C6F31F100219873 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				CCCBC52B2C74C3D00006A570 /* DTOs */,
+				CCCBC5512C75D4A60006A570 /* PersistenceStorages */,
 				CCAF60612C6F320000219873 /* Repositories */,
 			);
 			path = Data;
@@ -343,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				CCAF60662C6F365200219873 /* DefaultClimbingGymRepository.swift */,
+				CCCBC5642C7647AB0006A570 /* DefaultPostRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -359,6 +463,7 @@
 			isa = PBXGroup;
 			children = (
 				CCAF60642C6F32BC00219873 /* ClimbingGymRepository.swift */,
+				CCCBC5622C7644B70006A570 /* PostRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -368,6 +473,7 @@
 			children = (
 				CCAF606B2C6F4C0B00219873 /* DateFormatManger.swift */,
 				CCDEB2B32C71C924004B94F3 /* LocationServiceManager.swift */,
+				CCCBC5322C74C9120006A570 /* AuthManager.swift */,
 			);
 			path = Mangers;
 			sourceTree = "<group>";
@@ -378,6 +484,70 @@
 				CCAF606D2C6F60E500219873 /* ClimbingGymItem.swift */,
 			);
 			path = PresentationModel;
+			sourceTree = "<group>";
+		};
+		CCCBC5232C74BD680006A570 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CCCBC5562C75DE390006A570 /* NetworkProvider.swift */,
+				CCCBC52F2C74C5110006A570 /* Header.swift */,
+				CCCBC5272C74C28A0006A570 /* Error */,
+				CCCBC5242C74BE0F0006A570 /* APIs */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CCCBC5242C74BE0F0006A570 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				CCCBC5252C74BE300006A570 /* AuthAPI.swift */,
+				CCCBC55E2C7613E50006A570 /* PostAPI.swift */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		CCCBC5272C74C28A0006A570 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				CCCBC5282C74C2940006A570 /* NetworkError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		CCCBC52B2C74C3D00006A570 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				CCCBC52C2C74C3DF0006A570 /* Request */,
+				CCCBC54E2C75D1230006A570 /* Response */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		CCCBC52C2C74C3DF0006A570 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				CCCBC52D2C74C3EB0006A570 /* LoginBodyDTO.swift */,
+				CCCBC5602C7617A00006A570 /* UploadPostBodyDTO.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		CCCBC54E2C75D1230006A570 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				CCCBC54F2C75D1440006A570 /* LoginResponseDTO.swift */,
+				CCCBC5582C75EAB00006A570 /* RefreshResponseDTO.swift */,
+				CCCBC55C2C76102C0006A570 /* PostReadResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		CCCBC5512C75D4A60006A570 /* PersistenceStorages */ = {
+			isa = PBXGroup;
+			children = (
+				CCCBC5522C75D4C60006A570 /* UserDefaultsStorage.swift */,
+			);
+			path = PersistenceStorages;
 			sourceTree = "<group>";
 		};
 		CCCD14472C7259810037D8D5 /* ViewModel */ = {
@@ -433,10 +603,10 @@
 				CCAF60172C6CE28300219873 /* Kingfisher */,
 				CCAF601A2C6CE2A300219873 /* SnapKit */,
 				CCAF601D2C6CE2F300219873 /* Then */,
-				CCAF60272C6CFECC00219873 /* NMapsMap */,
 				CCAF602D2C6DD49700219873 /* RxGesture */,
 				CCAF604C2C6E190400219873 /* Cosmos */,
 				CCAF60762C7078DE00219873 /* RxCoreLocation */,
+				CC2EDE592C7718D500DBB3FA /* usket.NMaps-SPM */,
 			);
 			productName = Clchin;
 			productReference = CCAF5FF12C6CE01100219873 /* Clchin.app */;
@@ -468,7 +638,6 @@
 			mainGroup = CCAF5FE82C6CE01100219873;
 			packageReferences = (
 				CCAF60082C6CE13100219873 /* XCRemoteSwiftPackageReference "ios-places-sdk" */,
-				CCAF600B2C6CE18600219873 /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */,
 				CCAF600E2C6CE24800219873 /* XCRemoteSwiftPackageReference "Moya" */,
 				CCAF60132C6CE26D00219873 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				CCAF60162C6CE28300219873 /* XCRemoteSwiftPackageReference "Kingfisher" */,
@@ -477,6 +646,7 @@
 				CCAF602C2C6DD49700219873 /* XCRemoteSwiftPackageReference "RxGesture" */,
 				CCAF604B2C6E190400219873 /* XCRemoteSwiftPackageReference "Cosmos" */,
 				CCAF60752C7078DE00219873 /* XCRemoteSwiftPackageReference "RxCoreLocation" */,
+				CC2EDE582C7718D500DBB3FA /* XCRemoteSwiftPackageReference "usket.NMaps-SPM" */,
 			);
 			productRefGroup = CCAF5FF22C6CE01100219873 /* Products */;
 			projectDirPath = "";
@@ -504,39 +674,61 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCCBC5592C75EAB00006A570 /* RefreshResponseDTO.swift in Sources */,
 				CCAF60582C6E2F2000219873 /* ClimbingGymSearchViewModel.swift in Sources */,
+				CCCBC5532C75D4C60006A570 /* UserDefaultsStorage.swift in Sources */,
 				CCAF60652C6F32BC00219873 /* ClimbingGymRepository.swift in Sources */,
+				CCCBC5262C74BE300006A570 /* AuthAPI.swift in Sources */,
 				CCAF60672C6F365200219873 /* DefaultClimbingGymRepository.swift in Sources */,
+				CCCBC55D2C76102C0006A570 /* PostReadResponseDTO.swift in Sources */,
 				CCAF60482C6DF8AE00219873 /* BaseButton.swift in Sources */,
+				CCCBC5672C7668B30006A570 /* MoyaResponse+Extension.swift in Sources */,
 				CCDEB2BE2C72512D004B94F3 /* ClimbingGymDetailViewController.swift in Sources */,
 				CCDEB2B82C723A69004B94F3 /* UIAlertController+Extesion.swift in Sources */,
 				CCAF60462C6DF67E00219873 /* LocationButton.swift in Sources */,
 				CCAF602B2C6DD10800219873 /* BaseViewController.swift in Sources */,
+				CCCBC5292C74C2940006A570 /* NetworkError.swift in Sources */,
 				CCCD144D2C725B8F0037D8D5 /* ContactOptionStackView.swift in Sources */,
 				CCAF60332C6DD77E00219873 /* BaseCollectionViewCell.swift in Sources */,
 				CCAF5FF52C6CE01100219873 /* AppDelegate.swift in Sources */,
+				CCCBC55F2C7613E50006A570 /* PostAPI.swift in Sources */,
 				CCCD14492C72598D0037D8D5 /* ClimbingGymDetailViewModel.swift in Sources */,
 				CCDEB2BC2C723F35004B94F3 /* ClimbingGymDetailRootView.swift in Sources */,
+				CCCBC5332C74C9120006A570 /* AuthManager.swift in Sources */,
 				CCAF606C2C6F4C0B00219873 /* DateFormatManger.swift in Sources */,
+				CCCBC5302C74C5110006A570 /* Header.swift in Sources */,
+				CC02AB832C73843A00A440E2 /* LoungeViewController.swift in Sources */,
 				CCCD144B2C725B600037D8D5 /* DetailContentView.swift in Sources */,
+				CCCBC52E2C74C3EB0006A570 /* LoginBodyDTO.swift in Sources */,
 				CCAF604A2C6E15CD00219873 /* ClimbingGymCardView.swift in Sources */,
+				CC02AB562C731CB900A440E2 /* LoungeRootView.swift in Sources */,
 				CCAF603C2C6DDB2500219873 /* UIImage+Extension.swift in Sources */,
 				CCAF60202C6CE7ED00219873 /* API.swift in Sources */,
+				CCCBC5612C7617A00006A570 /* UploadPostBodyDTO.swift in Sources */,
+				CCCBC5572C75DE390006A570 /* NetworkProvider.swift in Sources */,
+				CCCBC5552C75DC010006A570 /* MoyaProvider+Extension.swift in Sources */,
+				CC02AB5E2C73257D00A440E2 /* UserInfoView.swift in Sources */,
+				CC02AB802C73665500A440E2 /* PostActionStackView.swift in Sources */,
 				CCAF60412C6DE0DD00219873 /* ClimbingGymSearchViewController.swift in Sources */,
 				CCAF60432C6DE10A00219873 /* ClimbingGymSearchRootView.swift in Sources */,
 				CCAF60552C6E1FFB00219873 /* NSObject+Extension.swift in Sources */,
 				CC9358E92C70848A00AFAC26 /* SortButton.swift in Sources */,
 				CCAF606E2C6F60E500219873 /* ClimbingGymItem.swift in Sources */,
+				CCCBC5502C75D1440006A570 /* LoginResponseDTO.swift in Sources */,
 				CCAF60392C6DD83000219873 /* NavigationController.swift in Sources */,
 				CCDEB2B62C7207AC004B94F3 /* CLLocationCoordinate2D+Extension.swift in Sources */,
 				CCAF60312C6DD74C00219873 /* BaseView.swift in Sources */,
 				CCAF604F2C6E1B8100219873 /* BaseStackView.swift in Sources */,
+				CCCBC5652C7647AB0006A570 /* DefaultPostRepository.swift in Sources */,
 				CC9358EB2C70D25E00AFAC26 /* SortButtonsStackView.swift in Sources */,
+				CCCBC5632C7644B70006A570 /* PostRepository.swift in Sources */,
 				CCAF5FF72C6CE01100219873 /* SceneDelegate.swift in Sources */,
+				CC02AB5B2C7322A500A440E2 /* ProfileImageView.swift in Sources */,
 				CCAF605B2C6E2F7200219873 /* ViewModelType.swift in Sources */,
 				CCAF60692C6F397800219873 /* SearchClimbingGymUseCase.swift in Sources */,
 				CCDEB2B42C71C924004B94F3 /* LocationServiceManager.swift in Sources */,
 				CCAF60372C6DD7EC00219873 /* TabBarController.swift in Sources */,
+				CC02AB582C73212C00A440E2 /* PostCollectionViewCell.swift in Sources */,
 				CCCD144F2C725BB60037D8D5 /* LocationInfoView.swift in Sources */,
 				CCAF605F2C6F292300219873 /* ClimbingGym.swift in Sources */,
 				CCAF60512C6E1F2900219873 /* ClimbingGymCollectionViewCell.swift in Sources */,
@@ -766,20 +958,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CC2EDE582C7718D500DBB3FA /* XCRemoteSwiftPackageReference "usket.NMaps-SPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/9oHigh/usket.NMaps-SPM.git";
+			requirement = {
+				kind = exactVersion;
+				version = 3.18.1;
+			};
+		};
 		CCAF60082C6CE13100219873 /* XCRemoteSwiftPackageReference "ios-places-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googlemaps/ios-places-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 9.0.0;
-			};
-		};
-		CCAF600B2C6CE18600219873 /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stleamist/NMapsMap-SwiftPM.git";
-			requirement = {
-				kind = exactVersion;
-				version = 3.11.0;
 			};
 		};
 		CCAF600E2C6CE24800219873 /* XCRemoteSwiftPackageReference "Moya" */ = {
@@ -849,6 +1041,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CC2EDE592C7718D500DBB3FA /* usket.NMaps-SPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC2EDE582C7718D500DBB3FA /* XCRemoteSwiftPackageReference "usket.NMaps-SPM" */;
+			productName = "usket.NMaps-SPM";
+		};
 		CCAF60092C6CE13100219873 /* GooglePlaces */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CCAF60082C6CE13100219873 /* XCRemoteSwiftPackageReference "ios-places-sdk" */;
@@ -883,11 +1080,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CCAF601C2C6CE2F300219873 /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
-		};
-		CCAF60272C6CFECC00219873 /* NMapsMap */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CCAF600B2C6CE18600219873 /* XCRemoteSwiftPackageReference "NMapsMap-SwiftPM" */;
-			productName = NMapsMap;
 		};
 		CCAF602D2C6DD49700219873 /* RxGesture */ = {
 			isa = XCSwiftPackageProductDependency;
