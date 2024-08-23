@@ -9,8 +9,8 @@ import Foundation
 
 protocol PostRepository {
     func fetchPostList(
-        next: String?,
-        completionHandler: @escaping (Result<PostReadResponseDTO, NetworkError>) -> Void
+        isPagination: Bool,
+        completionHandler: @escaping (Result<[Post], NetworkError>) -> Void
     )
     
     func uploadPost(post: UploadPostBodyDTO)
