@@ -21,7 +21,7 @@ extension PostAPI: TargetType {
     var path: String {
         switch self {
         case .getPosts, .uploadPost:
-            return "/v1/posts"
+            return "/posts"
         }
     }
     
