@@ -34,11 +34,15 @@ final class NetworkProvider {
         let provider = MoyaProvider<Target>(session: session)
         
         return Single.create { observer in
+
             provider.request(target) { result in
                 switch result {
                 case .success(let response):
-                    print(response.statusCode)
-
+                    
+                    if responseType == EmptyResponse.self {
+                        return
+                    }
+                    
                     let result = response.mapResult(Response.self)
                     
                     switch result {

@@ -5,20 +5,28 @@
 //  Created by Jinyoung Yoo on 8/22/24.
 //
 
-import Foundation
-import Alamofire
 import RxSwift
 
 final class DefaultPostRepository: PostRepository {
 
+    private var next: String? = nil
     private let disposeBag = DisposeBag()
 
-    func fetchPostList(next: String?, completionHandler: @escaping (Result<PostReadResponseDTO, NetworkError>) -> Void) {
+    func fetchPostList(isPagination: Bool, completionHandler: @escaping (Result<[Post], NetworkError>) -> Void) {
+        
+        if (isPagination == true), let next, next == "0" {
+            print("마지막 페이지임")
+            return
+        } else if (isPagination == false) {
+            next = nil
+        }
+
         NetworkProvider.shared.requestAPI(PostAPI.getPosts(next: next), responseType: PostReadResponseDTO.self)
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let response):
-                    completionHandler(.success(response))
+                    owner.next = response.nextCursor
+                    completionHandler(.success(response.toDomain()))
                 case .failure(let error):
                     completionHandler(.failure(error))
                 }
@@ -27,8 +35,8 @@ final class DefaultPostRepository: PostRepository {
     }
     
     func uploadPost(post: UploadPostBodyDTO) {
-        return
+        NetworkProvider.shared.requestAPI(PostAPI.uploadPost(post), responseType: EmptyResponse.self)
+            .subscribe(with: self) { owner, _ in }
+            .disposed(by: disposeBag)
     }
-    
-    
 }
