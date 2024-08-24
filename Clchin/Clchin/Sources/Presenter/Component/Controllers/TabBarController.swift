@@ -51,7 +51,7 @@ extension TabBarController {
         var viewController: UIViewController {
             switch self {
             case .lounge:
-                return LoungeViewController()
+                return LoungeViewController(viewModel: LoungeViewModel(postServiceUseCase: DefaultPostServiceUseCase(postRepository: DefaultPostRepository())))
             case .search:
                 return ClimbingGymSearchViewController(viewModel: ClimbingGymSearchViewModel(searchClimbingGymUseCase: DefaultSearchClimbingGymUseCase(climbingRepository: DefaultClimbingGymRepository())))
             case .crew:

@@ -12,6 +12,11 @@ import Then
 final class LoungeRootView: BaseView {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout()).then {
         $0.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: PostCollectionViewCell.identifier)
+        $0.refreshControl = self.refreshControl
+    }
+    
+    let refreshControl = UIRefreshControl().then {
+        $0.tintColor = .black
     }
     
     override func configureView() {

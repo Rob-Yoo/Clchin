@@ -11,11 +11,9 @@ import Then
 import RxSwift
 
 extension Reactive where Base: PostActionStackView {
-    var binder: Binder<Post> {
-        return Binder(base) { base, post in
-            base.bind(isBookmarked: post.isBookMarked)
-            base.likeActionView.bind(isLike: post.isLike, likeCount: post.likeCount)
-            base.commentActionView.bind(commentCount: post.commentCount)
+    var binder: Binder<PostItem> {
+        return Binder(base) { base, postItem in
+            base.bind(isLike: postItem.isLike, likeCount: postItem.likeCount, commentCount: postItem.commentCount)
         }
     }
 }
@@ -23,12 +21,9 @@ extension Reactive where Base: PostActionStackView {
 final class PostActionStackView: BaseStackView {
     let likeActionView = LikeActionView()
     let commentActionView = CommentActionView()
-    let bookmarkButton = UIButton().then {
-        $0.setImage(.bookmarkIcon, for: .normal)
-    }
     
     private var arrangedViews: [UIView] {
-        return [likeActionView, commentActionView, bookmarkButton]
+        return [likeActionView, commentActionView]
     }
     
     override func configureStackView() {
@@ -39,13 +34,9 @@ final class PostActionStackView: BaseStackView {
         self.arrangedViews.forEach { self.addArrangedSubview($0) }
     }
     
-    fileprivate func bind(isBookmarked: Bool) {
-        let bookmarkImage: UIImage? = isBookmarked ? .bookmarkFillIcon : .bookmarkIcon
-        
-        bookmarkButton.setImage(bookmarkImage, for: .normal)
-//        bookmarkButton.snp.updateConstraints { make in
-//            make.width.equalTo(bookmarkButton.imageView!.frame.width)
-//        }
+    fileprivate func bind(isLike: Bool, likeCount: Int, commentCount: Int) {
+        likeActionView.bind(isLike: isLike, likeCount: likeCount)
+        commentActionView.bind(commentCount: commentCount)
     }
 }
 
@@ -64,6 +55,7 @@ final class LikeActionView: BaseView {
     }
     
     override func configureLayout() {
+        print()
         likeButton.snp.makeConstraints { make in
             make.verticalEdges.equalToSuperview()
             make.leading.equalToSuperview()
@@ -81,7 +73,7 @@ final class LikeActionView: BaseView {
         
         likeButton.setImage(likeImage, for: .normal)
         likeCountLabel.text = likeCount.formatted()
-        self.snp.remakeConstraints { make in
+        self.snp.updateConstraints { make in
             make.width.equalTo(likeButton.frame.width + likeCountLabel.intrinsicContentSize.width + 5)
         }
     }
@@ -116,7 +108,7 @@ final class CommentActionView: BaseView {
     
     fileprivate func bind(commentCount: Int) {
         commentCountLabel.text = commentCount.formatted()
-        self.snp.remakeConstraints { make in
+        self.snp.updateConstraints { make in
             make.width.equalTo(commentButton.frame.width + commentCountLabel.intrinsicContentSize.width + 5)
         }
     }

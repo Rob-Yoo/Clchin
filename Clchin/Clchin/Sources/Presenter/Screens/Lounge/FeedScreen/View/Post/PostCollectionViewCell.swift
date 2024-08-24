@@ -9,11 +9,22 @@ import UIKit
 import SnapKit
 import Then
 import RxSwift
+import Kingfisher
+//
+//extension Reactive where Base: UIImageView {
+//    var binder: Binder<[String]> {
+//        return Binder(base) { base, images in
+//            base.bind(creator: postItem.creator, climbingGymName: postItem.climbingGymName, elapsedTime: postItem.elapsedTime)
+//        }
+//    }
+
 
 final class PostCollectionViewCell: BaseCollectionViewCell {
     let userInfoView = UserInfoView()
     let postImageView = UIImageView().then {
         $0.backgroundColor = .lightGray.withAlphaComponent(0.7)
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     let postActionStackView = PostActionStackView()
     
@@ -22,6 +33,7 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         disposeBag = DisposeBag()
+        postImageView.image = nil
         postActionStackView.likeActionView.likeCountLabel.text = nil
         postActionStackView.commentActionView.commentCountLabel.text = nil
     }
@@ -50,10 +62,16 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
         }
         
         postActionStackView.snp.makeConstraints { make in
-            make.top.equalTo(postImageView.snp.bottom).offset(20)
+            make.top.equalTo(postImageView.snp.bottom).offset(5)
             make.leading.equalToSuperview().offset(10)
             make.height.equalTo(38)
-            make.width.equalToSuperview().multipliedBy(0.7)
+            make.trailing.lessThanOrEqualToSuperview().offset(-30)
+        }
+    }
+    
+    func loadImages(imageURLs: [String]) {
+        for imageURL in imageURLs {
+            self.postImageView.kf.setImage(with: URL(string: imageURL))
         }
     }
 }
