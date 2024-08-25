@@ -39,18 +39,6 @@ struct PostDataDTO: Decodable {
     }
 }
 
-struct CreatorDTO: Decodable {
-    let userId: String
-    let nickName: String
-    let profileImageURL: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case userId = "user_id"
-        case nickName = "nick"
-        case profileImageURL = "profileImage"
-    }
-}
-
 struct CommentDTO: Decodable {
     let commentId: String
     let content: String
@@ -73,7 +61,7 @@ extension PostReadResponseDTO {
 
 extension PostDataDTO {
     func toDomain() -> Post {
-        let createdAt = DateFormatManger.shared.convertToDate(target: self.createdAt)
+        let createdAt = DateFormatManger.shared.convertToISOFormatDate(target: self.createdAt)
         let isLike = self.likes.contains(UserDefaultsStorage.userId)
         
         return Post(
@@ -94,7 +82,7 @@ extension PostDataDTO {
 
 extension CommentDTO {
     func toDomain() -> Post.Comment {
-        let createdAt = DateFormatManger.shared.convertToDate(target: self.createdAt)
+        let createdAt = DateFormatManger.shared.convertToISOFormatDate(target: self.createdAt)
         
         return Post.Comment(
             id: self.commentId,

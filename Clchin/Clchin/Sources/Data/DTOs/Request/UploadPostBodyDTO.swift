@@ -8,8 +8,15 @@
 import Foundation
 
 struct UploadPostBodyDTO: Encodable {
-    let content: String
-    let content1: String
-    let product_id: String
-    let files: [String]
+    let climbingGymName: String
+    let contentText: String
+    let productId: String
+    let images: [String]
+    
+    enum CodingKeys: String, CodingKey {
+        case climbingGymName = "content"
+        case contentText = "content1"
+        case productId = "product_id"
+        case images = "files"
+    }
 }
