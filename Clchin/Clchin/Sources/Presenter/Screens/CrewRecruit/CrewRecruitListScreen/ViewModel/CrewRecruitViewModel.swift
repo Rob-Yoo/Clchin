@@ -5,6 +5,7 @@
 //  Created by Jinyoung Yoo on 8/25/24.
 //
 
+import Foundation
 import RxSwift
 import RxCocoa
 
@@ -12,10 +13,12 @@ final class CrewRecruitViewModel: ViewModelType {
     struct Input {
         let crewRecruitRequestTrigger: BehaviorRelay<Void>
         let refreshControlValueChanged: ControlEvent<Void>
+        let crewRecruitItemSelected: ControlEvent<IndexPath>
     }
     
     struct Output {
         let crewRecruitItemList = PublishRelay<[CrewRecruitItem]>()
+        let selectedCrewRecruit = PublishRelay<CrewRecruit>()
         let refreshControlShouldStop = PublishRelay<Void>()
     }
     
@@ -24,7 +27,8 @@ final class CrewRecruitViewModel: ViewModelType {
     private let output = Output()
     
     private var isPagination = false
-    private var crewRecruitItemList = [CrewRecruitItem]()
+    private var crewRecruitList = [CrewRecruit]() // Entity
+    private var crewRecruitItemList = [CrewRecruitItem]() // PresentationModel
     
     init(crewRecruitUseCase: CrewRecruitUseCase) {
         self.crewRecruitUseCase = crewRecruitUseCase
@@ -47,10 +51,18 @@ final class CrewRecruitViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        
         input.refreshControlValueChanged
             .bind(with: self) { owner, _ in
                 owner.isPagination = false
                 input.crewRecruitRequestTrigger.accept(())
+            }
+            .disposed(by: disposeBag)
+        
+        input.crewRecruitItemSelected
+            .bind(with: self) { owner, indexPath in
+                let selectedCrewRecruit = owner.crewRecruitList[indexPath.item]
+                owner.output.selectedCrewRecruit.accept(selectedCrewRecruit)
             }
             .disposed(by: disposeBag)
         
@@ -64,8 +76,10 @@ extension CrewRecruitViewModel {
         let crewRecruitItemList = itemList.map { CrewRecruitItem.makeCrewRecruitItemModel($0) }
         
         if (isPagination) {
+            self.crewRecruitList.append(contentsOf: itemList)
             self.crewRecruitItemList.append(contentsOf: crewRecruitItemList)
         } else {
+            self.crewRecruitList = itemList
             self.crewRecruitItemList = crewRecruitItemList
         }
 

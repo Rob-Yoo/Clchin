@@ -18,7 +18,11 @@ final class CrewRecruitViewController: BaseViewController<CrewRecruitRootView> {
     }
     
     override func bindViewModel() {
-        let input = CrewRecruitViewModel.Input(crewRecruitRequestTrigger: BehaviorRelay(value: ()), refreshControlValueChanged: contentView.refreshControl.rx.controlEvent(.valueChanged))
+        let input = CrewRecruitViewModel.Input(
+            crewRecruitRequestTrigger: BehaviorRelay(value: ()),
+            refreshControlValueChanged: contentView.refreshControl.rx.controlEvent(.valueChanged),
+            crewRecruitItemSelected: contentView.collectionView.rx.itemSelected
+        )
         let output = self.viewModel.transform(input: input)
         
         output.crewRecruitItemList
@@ -30,6 +34,15 @@ final class CrewRecruitViewController: BaseViewController<CrewRecruitRootView> {
         output.refreshControlShouldStop
             .map { _ in false }
             .bind(to: contentView.refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
+        
+        output.selectedCrewRecruit
+            .bind(with: self) { owner, crewRecruit in
+                let detailVC = CrewRecruitDetailViewController(viewModel: CrewRecruitDetailViewModel(crewRecruit: crewRecruit))
+                
+                detailVC.hidesBottomBarWhenPushed = true
+                owner.navigationController?.pushViewController(detailVC, animated: true)
+            }
             .disposed(by: disposeBag)
     }
 }

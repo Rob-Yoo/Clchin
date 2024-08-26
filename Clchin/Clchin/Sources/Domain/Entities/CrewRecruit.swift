@@ -31,6 +31,7 @@ struct CrewRecruit: Identifiable {
 
     let recruitTitle: String
     let recruitContentText: String
+    let price: Int
     let climbingGymName: String
     let location: Coordinate
     let meetingDate: Date
@@ -39,5 +40,6 @@ struct CrewRecruit: Identifiable {
     let images: [String]
     let isLike: Bool
     let likeCount: Int
+//    let participants: [Creator]
     let participantCount: Int
 }

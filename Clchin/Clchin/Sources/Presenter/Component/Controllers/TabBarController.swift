@@ -45,7 +45,7 @@ extension TabBarController {
     enum Tab: CaseIterable {
         case lounge
         case search
-        case crew
+        case crewRecruit
         case myPage
         
         var viewController: UIViewController {
@@ -54,8 +54,8 @@ extension TabBarController {
                 return LoungeViewController(viewModel: LoungeViewModel(postServiceUseCase: DefaultPostServiceUseCase(postRepository: DefaultPostRepository())))
             case .search:
                 return ClimbingGymSearchViewController(viewModel: ClimbingGymSearchViewModel(searchClimbingGymUseCase: DefaultSearchClimbingGymUseCase(climbingRepository: DefaultClimbingGymRepository())))
-            case .crew:
-                return ViewController()
+            case .crewRecruit:
+                return CrewRecruitViewController(viewModel: CrewRecruitViewModel(crewRecruitUseCase: DefaultCrewRecruitUseCase(crewRecruitRepository: DefaultCrewRecruitRepository())))
             case .myPage:
                 return ViewController()
             }
@@ -67,7 +67,7 @@ extension TabBarController {
                 return (title: "라운지", image: UIImage.loungeTabIcon, selectedImage: UIImage.loungeFillTabIcon)
             case .search:
                 return (title: "암장 검색", image: UIImage.searchIcon, selectedImage: UIImage.searchIcon)
-            case .crew:
+            case .crewRecruit:
                 return (title: "크루 모집", image: UIImage.crewTabIcon, selectedImage: UIImage.crewTabIcon)
             case .myPage:
                 return (title: "마이", image: UIImage.myPageTabIcon, selectedImage: UIImage.myPageFillTabIcon)
