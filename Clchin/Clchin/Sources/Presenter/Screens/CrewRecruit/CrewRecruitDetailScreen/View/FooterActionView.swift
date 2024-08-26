@@ -12,7 +12,7 @@ import Then
 final class FooterActionView: BaseView {
     
     let lineView = UIView().then {
-        $0.backgroundColor = .lightGray.withAlphaComponent(0.7)
+        $0.backgroundColor = .lightGray
     }
     
     let heartButton = UIImageView().then {

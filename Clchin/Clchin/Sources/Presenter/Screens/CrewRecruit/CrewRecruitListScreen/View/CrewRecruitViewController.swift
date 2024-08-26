@@ -17,6 +17,11 @@ final class CrewRecruitViewController: BaseViewController<CrewRecruitRootView> {
         super.init()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureNavBar()
+    }
+    
     override func bindViewModel() {
         let input = CrewRecruitViewModel.Input(
             crewRecruitRequestTrigger: BehaviorRelay(value: ()),
@@ -44,5 +49,26 @@ final class CrewRecruitViewController: BaseViewController<CrewRecruitRootView> {
                 owner.navigationController?.pushViewController(detailVC, animated: true)
             }
             .disposed(by: disposeBag)
+    }
+}
+
+extension CrewRecruitViewController {
+    private func configureNavBar() {
+        let appearence = UINavigationBarAppearance()
+        
+        appearence.configureWithOpaqueBackground()
+        self.navigationController?.navigationBar.scrollEdgeAppearance = appearence
+        self.navigationController?.navigationBar.standardAppearance = appearence
+        configureLeftNavBar()
+    }
+    
+    private func configureLeftNavBar() {
+        let titleLabel = UILabel().then {
+            $0.text = "크루모집"
+            $0.textColor = .black.withAlphaComponent(0.85)
+            $0.font = .systemFont(ofSize: 20, weight: .bold)
+        }
+        let navTitleView = UIBarButtonItem(customView: titleLabel)
+        self.navigationItem.leftBarButtonItem = navTitleView
     }
 }

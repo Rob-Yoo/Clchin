@@ -18,6 +18,7 @@ final class CrewRecruitRootView: BaseView {
         $0.backgroundColor = .secondary
     }
     
+    let createButton = CreateButton()
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
@@ -38,11 +39,31 @@ final class CrewRecruitRootView: BaseView {
     
     override func configureHierarchy() {
         self.addSubview(collectionView)
+        self.addSubview(createButton)
     }
     
     override func configureLayout() {
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(self.safeAreaLayoutGuide)
         }
+        
+        createButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-15)
+            make.bottom.equalTo(collectionView).offset(-15)
+            make.size.equalTo(50)
+        }
+    }
+}
+
+final class CreateButton: BaseButton {
+    override func configureButton() {
+        self.backgroundColor = .black
+        self.setImage(UIImage.plusIcon, for: .normal)
+        self.tintColor = .white
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.layer.cornerRadius = self.frame.width / 2
     }
 }
