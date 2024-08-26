@@ -10,22 +10,8 @@ import Moya
 import Alamofire
 import RxSwift
 
-final class AccessTokenRetrier: RequestInterceptor {
-    func retry(_ request: Request, for session: Session, dueTo error: any Error, completion: @escaping (RetryResult) -> Void) {
-        guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 419 else {
-            completion(.doNotRetry)
-            return
-        }
-        print("retry")
-        AuthManager.shared.refreshAccessToken {
-            completion(.retry)
-        }
-    }
-}
-
 final class NetworkProvider {
     static let shared = NetworkProvider()
-//    private let session = Session(interceptor: AccessTokenRetrier())
     
     private init() {}
     

@@ -54,7 +54,6 @@ extension AuthAPI: TargetType {
             ]
         case .refresh:
             return [
-                Header.authoriztion.rawValue: UserDefaultsStorage.accessToken ?? "",
                 Header.sesacKey.rawValue: APIKey.sesacKey,
                 Header.refresh.rawValue: UserDefaultsStorage.refreshToken ?? ""
             ]

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Moya
 import Kingfisher
 import RxSwift
 
@@ -16,19 +17,26 @@ final class AuthManager {
     private init() {}
     
     func login(_ query: LoginBodyDTO) {
-        NetworkProvider.shared.requestAPI(AuthAPI.login(query), responseType: LoginResponseDTO.self)
-            .subscribe(with: self) { owner, result in
+        let provider = MoyaProvider<AuthAPI>()
+        
+        provider.request(.login(query)) { result in
+            switch result {
+            case .success(let response):
+                let result = response.mapResult(LoginResponseDTO.self)
+                
                 switch result {
-                case .success(let response):
-                    UserDefaultsStorage.accessToken = response.accessToken
-                    UserDefaultsStorage.refreshToken = response.refreshToken
+                case .success(let res):
+                    UserDefaultsStorage.accessToken = res.accessToken
+                    UserDefaultsStorage.refreshToken = res.refreshToken
                     UserDefaultsStorage.isAuthorized = true
-                    UserDefaultsStorage.userId = response.userId
+                    UserDefaultsStorage.userId = res.userId
                 case .failure(let error):
-                    print(error)
+                    print(error.localizedDescription)
                 }
+            case .failure(let error):
+                print(error)
             }
-            .disposed(by: disposeBag)
+        }
     }
     
     func refreshAccessToken(completionHandler: @escaping () -> Void) {

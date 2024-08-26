@@ -48,12 +48,10 @@ extension PostAPI: TargetType {
         switch self {
         case .getPosts:
             return [
-                Header.authoriztion.rawValue: UserDefaultsStorage.accessToken ?? "",
                 Header.sesacKey.rawValue: APIKey.sesacKey
             ]
         case .uploadPost:
             return [
-                Header.authoriztion.rawValue: UserDefaultsStorage.accessToken ?? "",
                 Header.contentType.rawValue: Header.json.rawValue,
                 Header.sesacKey.rawValue: APIKey.sesacKey
             ]

@@ -48,12 +48,10 @@ extension CrewRecruitAPI: TargetType {
         switch self {
         case .getRecruits:
             return [
-                Header.authoriztion.rawValue: UserDefaultsStorage.accessToken ?? "",
                 Header.sesacKey.rawValue: APIKey.sesacKey
             ]
         case .uploadRecruit:
             return [
-                Header.authoriztion.rawValue: UserDefaultsStorage.accessToken ?? "",
                 Header.contentType.rawValue: Header.json.rawValue,
                 Header.sesacKey.rawValue: APIKey.sesacKey
             ]
