@@ -20,29 +20,23 @@ final class CrewRecruitItemCollectionViewCell: BaseCollectionViewCell {
     
     let likeButton = UIButton()
     
-    let climbingTypeLabel = UILabel().then {
-        $0.backgroundColor = .lightGray.withAlphaComponent(0.7)
-        $0.layer.cornerRadius = 15
-        $0.clipsToBounds = true
-        $0.textColor = .black
-        $0.font = .systemFont(ofSize: 15, weight: .light)
-    }
+    let climbingTypeTagView = ClimbingTypeTagView()
     
     let titleLabel = UILabel().then {
         $0.textColor = .black
-        $0.font = .systemFont(ofSize: 17)
+        $0.font = .systemFont(ofSize: 15, weight: .medium)
         $0.numberOfLines = 1
     }
     
     let pinIconImageView = UIImageView().then {
-        $0.image = UIImage.locationPinFill
+        $0.image = UIImage.locationPinFillIcon
         $0.contentMode = .scaleAspectFit
     }
     
     let climbingGymNameLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 15)
+        $0.font = .systemFont(ofSize: 13)
         $0.numberOfLines = 1
-        $0.textColor = .lightGray
+        $0.textColor = .gray
     }
     
     let calendarIconImageView = UIImageView().then {
@@ -51,9 +45,9 @@ final class CrewRecruitItemCollectionViewCell: BaseCollectionViewCell {
     }
     
     let meetingDateLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 15)
+        $0.font = .systemFont(ofSize: 13)
         $0.numberOfLines = 1
-        $0.textColor = .lightGray
+        $0.textColor = .gray
     }
     
     let hostProfileImageView = ProfileImageView(frame: .zero).then {
@@ -62,8 +56,8 @@ final class CrewRecruitItemCollectionViewCell: BaseCollectionViewCell {
     }
     
     let hostNicknameLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 14)
-        $0.textColor = .lightGray.withAlphaComponent(0.8)
+        $0.font = .systemFont(ofSize: 12)
+        $0.textColor = .lightGray
         $0.numberOfLines = 1
     }
     
@@ -73,8 +67,8 @@ final class CrewRecruitItemCollectionViewCell: BaseCollectionViewCell {
     }
     
     let participantStatusLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 14)
-        $0.textColor = .lightGray.withAlphaComponent(0.8)
+        $0.font = .systemFont(ofSize: 12)
+        $0.textColor = .lightGray
         $0.numberOfLines = 1
     }
     
@@ -86,7 +80,7 @@ final class CrewRecruitItemCollectionViewCell: BaseCollectionViewCell {
     override func configureHierarchy() {
         self.contentView.addSubview(titleImageView)
         self.contentView.addSubview(likeButton)
-        self.contentView.addSubview(climbingTypeLabel)
+        self.contentView.addSubview(climbingTypeTagView)
         self.contentView.addSubview(titleLabel)
         self.contentView.addSubview(pinIconImageView)
         self.contentView.addSubview(climbingGymNameLabel)
@@ -100,43 +94,57 @@ final class CrewRecruitItemCollectionViewCell: BaseCollectionViewCell {
     
     override func configureLayout() {
         titleImageView.snp.makeConstraints { make in
-            make.verticalEdges.equalToSuperview().inset(7)
-            make.leading.equalToSuperview().offset(5)
+            make.verticalEdges.equalToSuperview().inset(9)
+            make.leading.equalToSuperview().offset(9)
             make.width.equalTo(titleImageView.snp.height)
         }
         
         likeButton.snp.makeConstraints { make in
-            make.leading.equalTo(titleImageView.snp.leading).offset(5)
-            make.bottom.equalTo(titleImageView.snp.bottom).offset(-5)
-            make.size.equalTo(15)
+            make.leading.equalTo(titleImageView.snp.leading).offset(7)
+            make.bottom.equalTo(titleImageView.snp.bottom).offset(-7)
+            make.size.equalTo(20)
         }
         
-        climbingTypeLabel.snp.makeConstraints { make in
+        climbingTypeTagView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(7)
-            make.leading.equalTo(titleImageView.snp.trailing).offset(6)
+            make.leading.equalTo(titleImageView.snp.trailing).offset(10)
+            make.width.equalTo(76)
+            make.height.equalTo(24)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(climbingTypeLabel.snp.bottom).offset(5)
-            make.leading.equalTo(titleImageView.snp.trailing).offset(6)
+            make.top.equalTo(climbingTypeTagView.snp.bottom).offset(5)
+            make.leading.equalTo(titleImageView.snp.trailing).offset(10)
             make.trailing.lessThanOrEqualToSuperview().offset(-35)
         }
         
         pinIconImageView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(5)
-            make.leading.equalTo(titleImageView.snp.trailing).offset(6)
-            make.size.equalTo(7)
+            make.top.equalTo(titleLabel.snp.bottom).offset(7)
+            make.leading.equalTo(titleImageView.snp.trailing).offset(10)
+            make.size.equalTo(15)
         }
         
         climbingGymNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(5)
+            make.top.equalTo(pinIconImageView)
             make.leading.equalTo(pinIconImageView.snp.trailing).offset(3)
             make.trailing.lessThanOrEqualToSuperview().offset(-35)
         }
         
+        calendarIconImageView.snp.makeConstraints { make in
+            make.top.equalTo(pinIconImageView.snp.bottom).offset(7)
+            make.leading.equalTo(titleImageView.snp.trailing).offset(10)
+            make.size.equalTo(15)
+        }
+        
+        meetingDateLabel.snp.makeConstraints { make in
+            make.top.equalTo(calendarIconImageView)
+            make.leading.equalTo(calendarIconImageView.snp.trailing).offset(3)
+            make.trailing.lessThanOrEqualToSuperview().offset(-35)
+        }
+        
         hostProfileImageView.snp.makeConstraints { make in
-            make.top.equalTo(climbingGymNameLabel.snp.bottom).offset(5)
-            make.leading.equalTo(titleImageView.snp.trailing).offset(6)
+            make.top.equalTo(calendarIconImageView.snp.bottom).offset(7)
+            make.leading.equalTo(titleImageView.snp.trailing).offset(10)
             make.size.equalTo(15)
         }
         
@@ -148,6 +156,7 @@ final class CrewRecruitItemCollectionViewCell: BaseCollectionViewCell {
         peopleIconImageView.snp.makeConstraints { make in
             make.top.equalTo(hostProfileImageView)
             make.leading.equalTo(hostNicknameLabel.snp.trailing).offset(3)
+            make.size.equalTo(15)
         }
         
         participantStatusLabel.snp.makeConstraints { make in
@@ -161,7 +170,7 @@ final class CrewRecruitItemCollectionViewCell: BaseCollectionViewCell {
 
         titleImageView.kf.setImage(with: URL(string: item.titleImage))
         likeButton.setImage(likeImage, for: .normal)
-        climbingTypeLabel.text = item.climbingType.title
+        climbingTypeTagView.typeLabel.text = item.climbingType.title
         titleLabel.text = item.title
         climbingGymNameLabel.text = item.climbingGymName
         meetingDateLabel.text = item.meetingDate
@@ -178,6 +187,28 @@ final class CrewRecruitItemCollectionViewCell: BaseCollectionViewCell {
                     self?.hostProfileImageView.image = .emptyProfileIcon
                 }
             }
+        }
+    }
+}
+
+final class ClimbingTypeTagView: BaseView {
+    let typeLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 11, weight: .medium)
+        $0.textColor = .black.withAlphaComponent(0.7)
+    }
+    
+    override func configureView() {
+        self.backgroundColor = .secondary
+        self.layer.cornerRadius = 13
+    }
+    
+    override func configureHierarchy() {
+        self.addSubview(typeLabel)
+    }
+    
+    override func configureLayout() {
+        typeLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
     }
 }

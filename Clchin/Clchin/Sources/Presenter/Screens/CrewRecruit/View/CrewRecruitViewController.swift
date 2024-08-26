@@ -26,5 +26,10 @@ final class CrewRecruitViewController: BaseViewController<CrewRecruitRootView> {
                 cell.bind(item: element)
             }
             .disposed(by: disposeBag)
+        
+        output.refreshControlShouldStop
+            .map { _ in false }
+            .bind(to: contentView.refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
     }
 }

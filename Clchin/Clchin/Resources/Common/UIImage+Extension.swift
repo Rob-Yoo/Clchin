@@ -13,10 +13,12 @@ extension UIImage {
     static let locationIcon = UIImage(systemName: "dot.scope")
     static let emptyProfileIcon = UIImage.emptyProfile.withTintColor(.lightGray.withAlphaComponent(0.6), renderingMode: .alwaysOriginal)
     static let addPostIcon = UIImage.addPost.withTintColor(.black, renderingMode: .alwaysOriginal)
-    
+    static let calenderIcon = UIImage(systemName: "calendar")?.withTintColor(.gray, renderingMode: .alwaysOriginal)
+    static let peopleIcon = UIImage(systemName: "person.2.fill")?.withTintColor(.lightGray.withAlphaComponent(0.8), renderingMode: .alwaysOriginal)
     static let phoneIcon = UIImage(systemName: "phone")?.withTintColor(.black, renderingMode: .alwaysOriginal)
     static let instaIcon = UIImage.insta.withTintColor(#colorLiteral(red: 1, green: 0, blue: 0.6556545496, alpha: 1), renderingMode: .alwaysOriginal)
     static let locationPinIcon = UIImage.locationPin.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
+    static let locationPinFillIcon = UIImage.locationPinFill.withTintColor(.gray, renderingMode: .alwaysOriginal)
     
     static let loungeTabIcon = UIImage(systemName: "doc.plaintext")
     static let loungeFillTabIcon = UIImage(systemName: "doc.plaintext.fill")
