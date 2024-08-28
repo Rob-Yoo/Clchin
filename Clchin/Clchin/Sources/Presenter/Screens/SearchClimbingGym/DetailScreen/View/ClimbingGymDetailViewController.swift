@@ -47,7 +47,7 @@ final class ClimbingGymDetailViewController: BaseViewController<ClimbingGymDetai
         datasource.configureSupplementaryView = {(dataSource, collectionView, kind, indexPath) -> UICollectionReusableView in
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ClimbingGymPhotosHeaderView.identifier, for: indexPath) as? ClimbingGymPhotosHeaderView else { return UICollectionReusableView() }
             if !(output.gymDetail.value.photos.isEmpty) {
-                header.bind(photo: output.gymDetail.value.photos[0])
+                header.bind(photo: output.gymDetail.value.photos[0], isOpen: output.gymDetail.value.isOpen)
             }
             return header
         }

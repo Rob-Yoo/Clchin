@@ -18,7 +18,7 @@ final class ClimbingGymDetailRootView: BaseView {
     private func createLayout() -> UICollectionViewLayout {
         let layout = StretchyHeaderLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 600)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 800)
         layout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 150)
         return layout
     }
@@ -33,7 +33,9 @@ final class ClimbingGymDetailRootView: BaseView {
     
     override func configureLayout() {
         collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalTo(self.safeAreaLayoutGuide)
         }
     }
 }

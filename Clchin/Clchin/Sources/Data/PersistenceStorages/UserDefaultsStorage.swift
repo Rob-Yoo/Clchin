@@ -26,6 +26,7 @@ enum UserDefaultsStorage {
         case refreshToken
         case isAuthorized
         case userId
+        case userProfileImage
     }
 
     @UserDefault(key: Keys.accessToken.rawValue, defaultValue: nil)
@@ -39,6 +40,9 @@ enum UserDefaultsStorage {
     
     @UserDefault(key: Keys.userId.rawValue, defaultValue: "")
     static var userId: String
+    
+    @UserDefault(key: Keys.userProfileImage.rawValue, defaultValue: "")
+    static var userProfileImage: String
     
     static func deleteAll() {
         Keys.allCases.forEach {

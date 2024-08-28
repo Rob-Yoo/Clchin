@@ -33,11 +33,7 @@ final class DetailContentView: BaseView {
         $0.textColor = .black
     }
     
-    let openTimeLabel = UILabel().then {
-        $0.numberOfLines = 0
-        $0.font = .systemFont(ofSize: 16)
-        $0.textColor = .black
-    }
+    let openingHourView = OpeningHourView()
     
     override func configureView() {
         self.backgroundColor = .white
@@ -49,7 +45,7 @@ final class DetailContentView: BaseView {
         self.addSubview(locationInfoView)
         self.addSubview(lineView)
         self.addSubview(openTimeTitleLabel)
-        self.addSubview(openTimeLabel)
+        self.addSubview(openingHourView)
     }
     
     override func configureLayout() {
@@ -81,21 +77,35 @@ final class DetailContentView: BaseView {
             make.leading.equalToSuperview().offset(20)
         }
         
-        openTimeLabel.snp.makeConstraints { make in
-            make
+        openingHourView.snp.makeConstraints { make in
+            make.top.equalTo(openTimeTitleLabel.snp.bottom).offset(15)
+            make.leading.equalToSuperview().offset(20)
+            make.height.equalTo(150)
+            make.width.equalTo(280)
         }
     }
     
-    func bind(gymName: String) {
+    func bind(gymName: String, openingHours: [String]) {
+        var days = [String]()
+        var openHours = [String]()
+        
         self.gymNameLabel.text = gymName
+        
+        for openingHour in openingHours {
+            let components = openingHour.components(separatedBy: ": ")
+            let (day, hour) = (components[0], components[1])
+            days.append(day)
+            openHours.append(hour)
+        }
+        
+        openingHourView.openingHourLabelStackView.bind(days: days, openingHours: openHours)
     }
 }
 
 extension Reactive where Base: DetailContentView {
     var binder: Binder<ClimbingGym> {
         return Binder(base) { base, gym in
-            print(gym.phoneNumber, gym.website?.absoluteString)
-            base.bind(gymName: gym.name)
+            base.bind(gymName: gym.name, openingHours: gym.openingHours)
         }
     }
 }
