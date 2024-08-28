@@ -22,6 +22,7 @@ final class LocationInfoView: BaseView {
         $0.layer.cornerRadius = 15
         $0.clipsToBounds = true
         $0.mapView.zoomLevel = 16.0
+        $0.showZoomControls = false
     }
     
     private let marker = NMFMarker().then {
@@ -45,7 +46,7 @@ final class LocationInfoView: BaseView {
         }
     }
     
-    fileprivate func bind(lat: Double, lng: Double, markerCaption: String) {
+    func bind(lat: Double, lng: Double, markerCaption: String) {
         let cameraUpdate = NMFCameraUpdate(position: .init(NMGLatLng(lat: lat, lng: lng), zoom: mapView.mapView.zoomLevel))
 
         marker.position = NMGLatLng(lat: lat, lng: lng)

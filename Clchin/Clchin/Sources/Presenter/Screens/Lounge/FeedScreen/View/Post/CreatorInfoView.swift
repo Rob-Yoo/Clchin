@@ -11,15 +11,15 @@ import Then
 import Kingfisher
 import RxSwift
 
-extension Reactive where Base: UserInfoView {
+extension Reactive where Base: CreatorInfoView {
     var binder: Binder<PostItem> {
         return Binder(base) { base, postItem in
-            base.bind(creator: postItem.creator, climbingGymName: postItem.climbingGymName, elapsedTime: postItem.elapsedTime)
+            base.bind(item: postItem)
         }
     }
 }
 
-final class UserInfoView: BaseView {
+final class CreatorInfoView: BaseView {
     let profileImageView = ProfileImageView(frame: .zero)
         .then {
             $0.contentMode = .scaleAspectFill
@@ -69,12 +69,12 @@ final class UserInfoView: BaseView {
         }
     }
     
-    fileprivate func bind(creator: Creator, climbingGymName: String, elapsedTime: String) {
-        userNameLabel.text = creator.nickName
-        climbingGymLabel.text = climbingGymName
-        elapsedTimeLabel.text = elapsedTime
+    fileprivate func bind(item: PostItem) {
+        userNameLabel.text = item.creator.nickName
+        climbingGymLabel.text = item.climbingGymName
+        elapsedTimeLabel.text = item.elapsedTime
 
-        self.profileImageView.kf.setImage(with: URL(string: creator.profileImage ?? "")) { result in
+        self.profileImageView.kf.setImage(with: URL(string: item.creator.profileImage ?? "")) { result in
             switch result {
             case .success:
                 return

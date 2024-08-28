@@ -5,47 +5,23 @@
 //  Created by Jinyoung Yoo on 8/19/24.
 //
 
-import Foundation
 import RxSwift
 import RxCocoa
-import UIKit
 
 final class ClimbingGymDetailViewModel: ViewModelType {
-    struct Input {
-        let locationPinButtonTapped: ControlEvent<UITapGestureRecognizer>
-        let instaButtonTapped: ControlEvent<UITapGestureRecognizer>
-    }
+    struct Input {}
     
     struct Output {
         let gymDetail: BehaviorRelay<ClimbingGym>
-        let name: PublishRelay<String>
-        let website: PublishRelay<URL?>
     }
-    
-    private let climbingGym: ClimbingGym
-    private let disposeBag = DisposeBag()
+
+    private let output: Output
     
     init(climbingGym: ClimbingGym) {
-        self.climbingGym = climbingGym
+        self.output = Output(gymDetail: BehaviorRelay(value: climbingGym))
     }
     
     func transform(input: Input) -> Output {
-        let gymDetail = BehaviorRelay(value: climbingGym)
-        let address = PublishRelay<String>()
-        let website = PublishRelay<URL?>()
-        
-        input.locationPinButtonTapped
-            .bind(with: self) { owner, _ in
-                address.accept(owner.climbingGym.name)
-            }
-            .disposed(by: disposeBag)
-        
-        input.instaButtonTapped
-            .bind(with: self) { owner, _ in
-                website.accept(owner.climbingGym.website)
-            }
-            .disposed(by: disposeBag)
-        
-        return Output(gymDetail: gymDetail, name: address, website: website)
+        return output
     }
 }

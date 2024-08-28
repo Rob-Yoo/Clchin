@@ -23,17 +23,33 @@ final class DetailContentView: BaseView {
     
     let locationInfoView = LocationInfoView()
     
+    let lineView = UIView().then {
+        $0.backgroundColor = .lightGray
+    }
+    
+    let openTimeTitleLabel = UILabel().then {
+        $0.text = "운영 시간"
+        $0.font = .systemFont(ofSize: 20, weight: .bold)
+        $0.textColor = .black
+    }
+    
+    let openTimeLabel = UILabel().then {
+        $0.numberOfLines = 0
+        $0.font = .systemFont(ofSize: 16)
+        $0.textColor = .black
+    }
+    
     override func configureView() {
         self.backgroundColor = .white
-        self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        self.layer.cornerRadius = 15
-        self.layer.masksToBounds = true
     }
     
     override func configureHierarchy() {
         self.addSubview(gymNameLabel)
         self.addSubview(contentOptionButtonStackView)
         self.addSubview(locationInfoView)
+        self.addSubview(lineView)
+        self.addSubview(openTimeTitleLabel)
+        self.addSubview(openTimeLabel)
     }
     
     override func configureLayout() {
@@ -51,11 +67,26 @@ final class DetailContentView: BaseView {
         locationInfoView.snp.makeConstraints { make in
             make.top.equalTo(contentOptionButtonStackView.snp.bottom).offset(30)
             make.horizontalEdges.equalToSuperview().inset(20)
-            make.height.equalTo(400)
+            make.height.equalTo(locationInfoView.snp.width).multipliedBy(0.7)
+        }
+        
+        lineView.snp.makeConstraints { make in
+            make.top.equalTo(locationInfoView.snp.bottom).offset(25)
+            make.height.equalTo(1)
+            make.horizontalEdges.equalToSuperview()
+        }
+        
+        openTimeTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(lineView.snp.bottom).offset(25)
+            make.leading.equalToSuperview().offset(20)
+        }
+        
+        openTimeLabel.snp.makeConstraints { make in
+            make
         }
     }
     
-    fileprivate func bind(gymName: String) {
+    func bind(gymName: String) {
         self.gymNameLabel.text = gymName
     }
 }

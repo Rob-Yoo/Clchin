@@ -10,33 +10,61 @@ import SnapKit
 import Then
 
 final class ClimbingGymDetailRootView: BaseView {
-    private let gymImageView = UIImageView().then {
-        $0.backgroundColor = .lightGray.withAlphaComponent(0.4)
-        $0.contentMode = .scaleAspectFill
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout()).then {
+        $0.register(ClimbingGymDetailCollectionViewCell.self, forCellWithReuseIdentifier: ClimbingGymDetailCollectionViewCell.identifier)
+        $0.register(ClimbingGymPhotosHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ClimbingGymPhotosHeaderView.identifier)
     }
     
-    let detailContentView = DetailContentView()
+    private func createLayout() -> UICollectionViewLayout {
+        let layout = StretchyHeaderLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 600)
+        layout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 150)
+        return layout
+    }
     
     override func configureView() {
         self.backgroundColor = .white
     }
     
     override func configureHierarchy() {
-        self.addSubview(gymImageView)
-        self.addSubview(detailContentView)
+        self.addSubview(collectionView)
     }
     
     override func configureLayout() {
-        gymImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.horizontalEdges.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.3)
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
-        
-        detailContentView.snp.makeConstraints { make in
-            make.top.equalTo(gymImageView.snp.bottom).offset(-20)
-            make.horizontalEdges.equalToSuperview()
-            make.bottom.equalToSuperview()
+    }
+}
+
+fileprivate final class StretchyHeaderLayout: UICollectionViewFlowLayout {
+    
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+            
+            let layoutAttributes = super.layoutAttributesForElements(in: rect)
+            
+            guard let offset = collectionView?.contentOffset, let stLayoutAttributes = layoutAttributes else {
+                return layoutAttributes
+            }
+            if offset.y < 0 {
+                
+                for attributes in stLayoutAttributes {
+                    
+                    if let elmKind = attributes.representedElementKind, elmKind == UICollectionView.elementKindSectionHeader {
+                        
+                        let diffValue = abs(offset.y)
+                        var frame = attributes.frame
+                        frame.size.height = max(0, headerReferenceSize.height + diffValue)
+                        frame.origin.y = frame.minY - diffValue
+                        attributes.frame = frame
+                    }
+                }
+            }
+            return layoutAttributes
         }
+    
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
     }
 }

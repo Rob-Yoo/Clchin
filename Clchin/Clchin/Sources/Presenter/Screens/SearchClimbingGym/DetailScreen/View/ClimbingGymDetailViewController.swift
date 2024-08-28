@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SafariServices
+import RxDataSources
 
 final class ClimbingGymDetailViewController: BaseViewController<ClimbingGymDetailRootView> {
     
@@ -21,49 +22,43 @@ final class ClimbingGymDetailViewController: BaseViewController<ClimbingGymDetai
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.tintColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.backgroundColor = .clear
+
+        navigationController?.navigationBar.backgroundColor = .clear
         self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     override func bindViewModel() {
-        let input = ClimbingGymDetailViewModel.Input(
-            locationPinButtonTapped: contentView.detailContentView.contentOptionButtonStackView.locationPinButton.rx.tapGesture(),
-            instaButtonTapped: contentView.detailContentView.contentOptionButtonStackView.instaButton.rx.tapGesture()
-        )
+        let input = ClimbingGymDetailViewModel.Input()
         let output = viewModel.transform(input: input)
         
+        let datasource = RxCollectionViewSectionedReloadDataSource<SectionModel<Int, ClimbingGym>> { datasource, collectionView, indexPath, item in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ClimbingGymDetailCollectionViewCell.identifier, for: indexPath) as? ClimbingGymDetailCollectionViewCell else { return UICollectionViewCell() }
+            
+            cell.viewModel = ClimbingGymDetailCellViewModel(climbingGym: output.gymDetail.value)
+            return cell
+        }
+        
+        datasource.configureSupplementaryView = {(dataSource, collectionView, kind, indexPath) -> UICollectionReusableView in
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ClimbingGymPhotosHeaderView.identifier, for: indexPath) as? ClimbingGymPhotosHeaderView else { return UICollectionReusableView() }
+            if !(output.gymDetail.value.photos.isEmpty) {
+                header.bind(photo: output.gymDetail.value.photos[0])
+            }
+            return header
+        }
+        
+        let section = [SectionModel(model: 0, items: [output.gymDetail.value])]
+        
+        
         output.gymDetail
-            .bind(to: contentView.detailContentView.rx.binder, contentView.detailContentView.locationInfoView.rx.binder)
-            .disposed(by: disposeBag)
-        
-        output.name
-            .bind(with: self) { owner, address in
-                let appName = Bundle.main.bundleIdentifier ?? ""
-                let urlString = "nmap://search?query=\(address)&appname=\(appName)"
-                guard let encodedStr = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
-                print(encodedStr)
-                guard let url = URL(string: encodedStr) else { return }
-                guard let appStoreURL = URL(string: "itms-apps://itunes.apple.com/app/id311867728?mt=8") else { return }
-                
-                if UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.open(url)
-                } else {
-                    UIApplication.shared.open(appStoreURL)
-                }
-            }
-            .disposed(by: disposeBag)
-        
-        output.website
-            .bind(with: self) { owner, url in
-                guard let url else { return }
-                let safariVC = SFSafariViewController(url: url)
-                owner.present(safariVC, animated: true)
-            }
+            .map { [SectionModel(model: 0, items: [$0])] }
+            .bind(to: contentView.collectionView.rx.items(dataSource: datasource))
             .disposed(by: disposeBag)
     }
 }
+
