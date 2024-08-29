@@ -29,9 +29,36 @@ final class LoungeViewController: BaseViewController<LoungeRootView> {
         output.postItemList
             .bind(to: contentView.collectionView.rx.items(cellIdentifier: PostCollectionViewCell.identifier, cellType: PostCollectionViewCell.self)) { item, element, cell in
                 Observable.just(element)
-                    .bind(to: cell.postActionStackView.rx.binder, cell.userInfoView.rx.binder)
+                    .bind(to: cell.creatorInfoView.rx.binder)
                     .disposed(by: cell.disposeBag)
-                cell.loadImages(imageURLs: element.postImages)
+                cell.bind(post: element)
+                
+                cell.readMoreActionLabel.rx.tapGesture()
+                    .when(.recognized)
+                    .bind { _ in
+                        cell.removeReadMoreActionLabel()
+                    }
+                    .disposed(by: cell.disposeBag)
+                
+                cell.commentButton.rx.tapGesture()
+                    .when(.recognized)
+                    .bind(with: self) { owner, _ in
+                        let nc = NavigationController(rootViewController: CommentViewController())
+                        
+                        nc.modalPresentationStyle = .pageSheet
+                        self.present(nc, animated: true)
+                    }
+                    .disposed(by: cell.disposeBag)
+                
+                cell.commentActionLabel.rx.tapGesture()
+                    .when(.recognized)
+                    .bind(with: self) { owner, _ in
+                        let nc = NavigationController(rootViewController: CommentViewController())
+                        
+                        nc.modalPresentationStyle = .pageSheet
+                        self.present(nc, animated: true)
+                    }
+                    .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)
         
