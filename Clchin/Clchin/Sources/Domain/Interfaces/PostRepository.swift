@@ -13,5 +13,9 @@ protocol PostRepository {
         completionHandler: @escaping (Result<[Post], NetworkError>) -> Void
     )
     
+    func uploadImages(
+        images: [Data],
+        completionHandler: @escaping (Result<PostImages, NetworkError>) -> Void
+    )
     func uploadPost(post: UploadPostBodyDTO)
 }

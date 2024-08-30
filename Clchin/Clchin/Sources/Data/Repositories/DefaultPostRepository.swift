@@ -5,6 +5,7 @@
 //  Created by Jinyoung Yoo on 8/22/24.
 //
 
+import Foundation
 import RxSwift
 
 final class DefaultPostRepository: PostRepository {
@@ -27,6 +28,20 @@ final class DefaultPostRepository: PostRepository {
                 case .success(let response):
                     owner.next = response.nextCursor
                     completionHandler(.success(response.toDomain()))
+                case .failure(let error):
+                    completionHandler(.failure(error))
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func uploadImages(images: [Data], completionHandler: @escaping (Result<PostImages, NetworkError>) -> Void) {
+        NetworkProvider.shared.requestAPI(PostAPI.uploadImages(images), responseType: PostImageResponseDTO.self)
+            .subscribe(with: self) { owner, result in
+                print("repository")
+                switch result {
+                case .success(let response):
+                    completionHandler(.success(PostImages(files: response.files)))
                 case .failure(let error):
                     completionHandler(.failure(error))
                 }

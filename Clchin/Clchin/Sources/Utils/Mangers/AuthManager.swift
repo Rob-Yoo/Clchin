@@ -30,6 +30,7 @@ final class AuthManager {
                     UserDefaultsStorage.refreshToken = res.refreshToken
                     UserDefaultsStorage.isAuthorized = true
                     UserDefaultsStorage.userId = res.userId
+                    UserDefaultsStorage.userProfileImage = APIKey.sesacBaseURL + "/" + (res.profileImageURL ?? "")
                 case .failure(let error):
                     print(error.localizedDescription)
                 }

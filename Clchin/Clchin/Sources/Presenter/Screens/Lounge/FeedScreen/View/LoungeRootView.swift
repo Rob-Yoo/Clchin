@@ -10,6 +10,9 @@ import SnapKit
 import Then
 
 final class LoungeRootView: BaseView {
+    
+    let writePostBarButton = UIBarButtonItem(image: UIImage.addPost.resizeImage(size: CGSize(width: 25, height: 25)), style: .plain, target: nil, action: nil)
+    
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout()).then {
         $0.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: PostCollectionViewCell.identifier)
         $0.refreshControl = self.refreshControl

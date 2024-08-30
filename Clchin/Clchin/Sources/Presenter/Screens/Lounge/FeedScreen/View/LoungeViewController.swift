@@ -66,6 +66,15 @@ final class LoungeViewController: BaseViewController<LoungeRootView> {
             .map { _ in false }
             .bind(to: contentView.refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
+        
+        contentView.writePostBarButton.rx.tap
+            .bind(with: self) { owner, _ in
+                let nextVC = AddFeedViewController(viewModel: AddFeedViewModel(postUseCase: DefaultPostServiceUseCase(postRepository: DefaultPostRepository())))
+                
+                nextVC.hidesBottomBarWhenPushed = true
+                owner.navigationController?.pushViewController(nextVC, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -92,9 +101,7 @@ extension LoungeViewController {
     }
     
     private func configureRightNavBar() {
-        let addPostBarButton = UIBarButtonItem(image: UIImage.addPost.resizeImage(size: CGSize(width: 25, height: 25)), style: .plain, target: nil, action: nil)
-
-        self.navigationItem.rightBarButtonItem = addPostBarButton
+        self.navigationItem.rightBarButtonItem = contentView.writePostBarButton
         self.navigationItem.rightBarButtonItem?.tintColor = .black
     }
 }

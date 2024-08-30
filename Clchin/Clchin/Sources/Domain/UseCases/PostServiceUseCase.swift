@@ -5,11 +5,13 @@
 //  Created by Jinyoung Yoo on 8/22/24.
 //
 
+import Foundation
 import RxSwift
 
 protocol PostServiceUseCase {
     func fetchPostList(isPagination: Bool) -> Single<Result<[Post], NetworkError>>
 
+    func uploadPostImages(images: [Data]) -> Single<Result<PostImages, NetworkError>>
     func uploadPost(post: UploadPostBodyDTO)
 }
 
@@ -35,6 +37,25 @@ final class DefaultPostServiceUseCase: PostServiceUseCase {
                 }
             }
             
+            return Disposables.create()
+        }
+    }
+    
+    func uploadPostImages(images: [Data]) -> Single<Result<PostImages, NetworkError>> {
+        print(#function)
+        return Single.create { [weak self] observer in
+            guard let self else { return Disposables.create() }
+            
+            postRepository.uploadImages(images: images) { result in
+                print("ㅁㄴㅇㄹ")
+                switch result {
+                case .success(let result):
+                    print("usecase success")
+                    observer(.success(.success(result)))
+                case .failure(let error):
+                    observer(.success(.failure(error)))
+                }
+            }
             return Disposables.create()
         }
     }
