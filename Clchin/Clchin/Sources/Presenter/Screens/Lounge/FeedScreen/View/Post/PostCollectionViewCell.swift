@@ -209,7 +209,6 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
     func bind(post: PostItem) {
         let heartIcon = post.isLike ? UIImage.heartFillIcon : UIImage.heartIcon
         
-        print(post.postImages)
         Observable.just(post.postImages)
             .bind(to: postImageCollectionView.rx.items(cellIdentifier: PostImageCollectionViewCell.identifier, cellType: PostImageCollectionViewCell.self)) { item, element, cell in
                 cell.bind(imageURL: element)

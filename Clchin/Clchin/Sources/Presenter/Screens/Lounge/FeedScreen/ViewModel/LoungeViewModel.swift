@@ -13,6 +13,7 @@ final class LoungeViewModel: ViewModelType {
     struct Input {
         let postRequestTrigger: BehaviorRelay<Void>
         let refreshControlValueChanged: ControlEvent<Void>
+        let prefetchItems: ControlEvent<[IndexPath]>
     }
     
     struct Output {
@@ -56,6 +57,17 @@ final class LoungeViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        input.prefetchItems
+            .subscribe(with: self) { owner, indexPaths in
+                for indexPath in indexPaths {
+                    if (owner.postItemList.count - 2 == indexPath.item) {
+                        owner.isPagination = true
+                        input.postRequestTrigger.accept(())
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
+        
         return Output(postItemList: postItemListRelay, refreshControlShouldStop: refreshControlShouldStop)
     }
 }
@@ -74,9 +86,9 @@ extension LoungeViewModel {
             self.postItemList.append(contentsOf: postItemList)
         } else {
             self.postItemList = postItemList
+            refreshControlShouldStop.accept(())
         }
         
-        refreshControlShouldStop.accept(())
         postItemListRelay.accept(self.postItemList)
     }
 }

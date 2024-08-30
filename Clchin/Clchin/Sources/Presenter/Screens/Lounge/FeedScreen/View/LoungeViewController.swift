@@ -23,7 +23,10 @@ final class LoungeViewController: BaseViewController<LoungeRootView> {
     }
     
     override func bindViewModel() {
-        let input = LoungeViewModel.Input(postRequestTrigger: BehaviorRelay(value: ()), refreshControlValueChanged: contentView.refreshControl.rx.controlEvent(.valueChanged))
+        let input = LoungeViewModel.Input(
+            postRequestTrigger: BehaviorRelay(value: ()),
+            refreshControlValueChanged: contentView.refreshControl.rx.controlEvent(.valueChanged),
+            prefetchItems: contentView.collectionView.rx.prefetchItems)
         let output = viewModel.transform(input: input)
         
         output.postItemList

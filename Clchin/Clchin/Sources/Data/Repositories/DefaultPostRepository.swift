@@ -38,7 +38,6 @@ final class DefaultPostRepository: PostRepository {
     func uploadImages(images: [Data], completionHandler: @escaping (Result<PostImages, NetworkError>) -> Void) {
         NetworkProvider.shared.requestAPI(PostAPI.uploadImages(images), responseType: PostImageResponseDTO.self)
             .subscribe(with: self) { owner, result in
-                print("repository")
                 switch result {
                 case .success(let response):
                     completionHandler(.success(PostImages(files: response.files)))

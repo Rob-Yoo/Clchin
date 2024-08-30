@@ -42,15 +42,13 @@ final class DefaultPostServiceUseCase: PostServiceUseCase {
     }
     
     func uploadPostImages(images: [Data]) -> Single<Result<PostImages, NetworkError>> {
-        print(#function)
+
         return Single.create { [weak self] observer in
             guard let self else { return Disposables.create() }
             
             postRepository.uploadImages(images: images) { result in
-                print("ㅁㄴㅇㄹ")
                 switch result {
                 case .success(let result):
-                    print("usecase success")
                     observer(.success(.success(result)))
                 case .failure(let error):
                     observer(.success(.failure(error)))

@@ -82,7 +82,6 @@ final class AddFeedViewModel: ViewModelType {
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let res):
-                    print("1234")
                     owner.uploadPostBodyBuilder.images(res.files)
                     let bodyDTO = owner.uploadPostBodyBuilder.build()
                     owner.postUseCase.uploadPost(post: bodyDTO)

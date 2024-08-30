@@ -40,7 +40,7 @@ extension PostAPI: TargetType {
     var task: Moya.Task {
         switch self {
         case .getPosts(let next):
-            let parameters = ["next": next ?? "", "limit": "10", "product_id": "climbing"]
+            let parameters = ["next": next ?? "", "product_id": "climbing"]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
         case .uploadPost(let body):
             return .requestJSONEncodable(body)
