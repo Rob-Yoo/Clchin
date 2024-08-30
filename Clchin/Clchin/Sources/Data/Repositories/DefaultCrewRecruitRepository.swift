@@ -39,4 +39,24 @@ final class DefaultCrewRecruitRepository: CrewRecruitRepository {
             .subscribe(with: self) { owner, _ in }
             .disposed(by: disposeBag)
     }
+    
+    func requestPaymentValidation(payment: PaymentValidationBodyDTO, completionHandler: @escaping (Result<Payment, NetworkError>) -> Void) {
+        NetworkProvider.shared.requestAPI(CrewRecruitAPI.validatePayment(payment), responseType: PaymentValidationResponseDTO.self)
+            .subscribe(with: self) { owner, result in
+                switch result {
+                case .success(let response):
+                    let payment = Payment(buyerId: response.buyerId, postId: response.postId)
+                    completionHandler(.success(payment))
+                case .failure(let error):
+                    completionHandler(.failure(error))
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func addParticipant(postId: String, _ body: AddParticipantBodyDTO) {
+        NetworkProvider.shared.requestAPI(CrewRecruitAPI.addNewParticipant(postId: postId, body), responseType: EmptyResponse.self)
+            .subscribe(with: self) { owner, _ in }
+            .disposed(by: disposeBag)
+    }
 }

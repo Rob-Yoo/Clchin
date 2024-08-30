@@ -79,6 +79,7 @@ extension CrewRecruitDataDTO {
             images: self.files,
             isLike: isLike,
             likeCount: self.likes.count,
+            participants: self.participants,
             participantCount: self.participants.count + 1
         )
     }

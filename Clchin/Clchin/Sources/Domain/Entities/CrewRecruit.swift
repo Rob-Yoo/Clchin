@@ -40,6 +40,6 @@ struct CrewRecruit: Identifiable {
     let images: [String]
     let isLike: Bool
     let likeCount: Int
-//    let participants: [Creator]
+    let participants: [String]
     let participantCount: Int
 }

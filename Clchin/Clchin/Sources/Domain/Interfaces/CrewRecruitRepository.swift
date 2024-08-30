@@ -14,4 +14,11 @@ protocol CrewRecruitRepository {
     )
     
     func uploadCrewRecruit(post: UploadCrewRecruitBodyDTO)
+    
+    func requestPaymentValidation(
+        payment: PaymentValidationBodyDTO,
+        completionHandler: @escaping (Result<Payment, NetworkError>) -> Void
+    )
+    
+    func addParticipant(postId: String, _ body: AddParticipantBodyDTO)
 }

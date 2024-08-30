@@ -37,6 +37,7 @@ struct CrewRecruitDetail {
         let lng: Double
     }
     
+    let postId: String
     let images: [String]
     let climbingType: ClimbingType
     let host: Member
@@ -56,6 +57,6 @@ struct CrewRecruitDetail {
         let meetingDate = DateFormatManger.shared.convertToString(format: "M.d(E) a h:mm", target: entity.meetingDate)
         let price = entity.price.formatted() + "원"
         
-        return CrewRecruitDetail(images: entity.images, climbingType: climbingType, host: Member.makeMember(entity.creator), title: entity.recruitTitle, contentText: entity.recruitContentText, climbingGymName: entity.climbingGymName, location: location, meetingDate: meetingDate, price: price, isLike: entity.isLike, likeCount: entity.likeCount)
+        return CrewRecruitDetail(postId: entity.id, images: entity.images, climbingType: climbingType, host: Member.makeMember(entity.creator), title: entity.recruitTitle, contentText: entity.recruitContentText, climbingGymName: entity.climbingGymName, location: location, meetingDate: meetingDate, price: price, isLike: entity.isLike, likeCount: entity.likeCount)
     }
 }

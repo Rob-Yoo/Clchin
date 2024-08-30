@@ -11,6 +11,8 @@ import Moya
 enum CrewRecruitAPI {
     case getRecruits(next: String?)
     case uploadRecruit(UploadCrewRecruitBodyDTO)
+    case validatePayment(PaymentValidationBodyDTO)
+    case addNewParticipant(postId: String, _ body: AddParticipantBodyDTO)
 }
 
 extension CrewRecruitAPI: TargetType {
@@ -22,6 +24,10 @@ extension CrewRecruitAPI: TargetType {
         switch self {
         case .getRecruits, .uploadRecruit:
             return "/posts"
+        case .validatePayment:
+            return "/payments/validation"
+        case .addNewParticipant(let postId, _):
+            return "/posts/\(postId)/like-2"
         }
     }
     
@@ -29,7 +35,7 @@ extension CrewRecruitAPI: TargetType {
         switch self {
         case .getRecruits:
             return .get
-        case .uploadRecruit:
+        case .uploadRecruit, .validatePayment, .addNewParticipant:
             return .post
         }
     }
@@ -41,6 +47,10 @@ extension CrewRecruitAPI: TargetType {
             return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
         case .uploadRecruit(let body):
             return .requestJSONEncodable(body)
+        case .validatePayment(let body):
+            return .requestJSONEncodable(body)
+        case .addNewParticipant(_, let body):
+            return .requestJSONEncodable(body)
         }
     }
     
@@ -51,6 +61,18 @@ extension CrewRecruitAPI: TargetType {
                 Header.sesacKey.rawValue: APIKey.sesacKey
             ]
         case .uploadRecruit:
+            return [
+                Header.contentType.rawValue: Header.json.rawValue,
+                Header.sesacKey.rawValue: APIKey.sesacKey
+            ]
+            
+        case .validatePayment:
+            return [
+                Header.contentType.rawValue: Header.json.rawValue,
+                Header.sesacKey.rawValue: APIKey.sesacKey
+            ]
+            
+        case .addNewParticipant:
             return [
                 Header.contentType.rawValue: Header.json.rawValue,
                 Header.sesacKey.rawValue: APIKey.sesacKey
