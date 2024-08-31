@@ -28,14 +28,21 @@ final class AddFeedViewController: BaseViewController<AddFeedRootView> {
         super.init()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let appearance = UINavigationBarAppearance()
+        
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.backgroundColor = .black
+        self.navigationController?.navigationBar.standardAppearance = appearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
         self.navigationItem.title = "피드 작성"
         self.navigationItem.rightBarButtonItem = contentView.addPostBarButton
-        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.topItem?.title = ""
     }
-    
+
     override func bindViewModel() {
         let input = AddFeedViewModel.Input(
             selectedPhotos: photos,
@@ -80,7 +87,7 @@ final class AddFeedViewController: BaseViewController<AddFeedRootView> {
         
         output.isValidate
             .bind(with: self) { owner, isValidate in
-                let color = isValidate ? UIColor.black : UIColor.lightGray
+                let color = isValidate ? UIColor.white : UIColor.lightGray
                 
                 owner.contentView.addPostBarButton.tintColor = color
                 owner.contentView.addPostBarButton.isEnabled = isValidate

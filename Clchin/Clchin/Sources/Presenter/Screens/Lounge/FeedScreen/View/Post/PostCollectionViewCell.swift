@@ -30,15 +30,9 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
         $0.textColor = .black
         $0.numberOfLines = 0
         $0.lineBreakStrategy = .hangulWordPriority
-//        $0.lineBreakMode = .byCharWrapping
     }
     
-     lazy var readMoreActionLabel = UILabel().then {
-        $0.text = "... 더보기"
-        $0.textColor = .lightGray
-        $0.font = .systemFont(ofSize: 14)
-        $0.isUserInteractionEnabled = true
-    }
+    
     
     let solvedTagView = TagView()
     
@@ -85,9 +79,7 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
         disposeBag = DisposeBag()
         likeCountLabel.text = nil
         commentCountLabel.text = nil
-//        contentTextLabel.numberOfLines = 2
         contentTextLabel.text = nil
-//        readMoreActionLabel.removeFromSuperview()
     }
     
     func createLayout() -> UICollectionViewLayout {
@@ -232,48 +224,6 @@ final class PostCollectionViewCell: BaseCollectionViewCell {
                 }
             }
         }
-    }
-    
-    private func addReadMoreActionLabel() {
-//        self.addSubview(readMoreActionLabel)
-//        
-//        readMoreActionLabel.snp.makeConstraints { make in
-//            make.top.equalTo(contentTextLabel.snp.bottom).offset(2)
-//            make.leading.equalToSuperview().offset(13)
-//        }
-//        
-//        likeButton.snp.remakeConstraints { make in
-//            make.top.equalTo(readMoreActionLabel.snp.bottom).offset(10)
-//            make.leading.equalToSuperview().offset(13)
-//        }
-    }
-    
-    func removeReadMoreActionLabel() {
-//        readMoreActionLabel.removeFromSuperview()
-//
-//        contentTextLabel.numberOfLines = 0
-//        
-//        likeButton.snp.remakeConstraints { make in
-//            make.top.equalTo(contentTextLabel.snp.bottom).offset(10)
-//            make.leading.equalToSuperview().offset(13)
-//        }
-//        
-//        self.layoutIfNeeded()
-//        self.invalidateIntrinsicContentSize()
-    }
-    
-    private func isLabelTruncated(label: UILabel) -> Bool {
-        guard let labelText = label.text else { return false }
-        
-        let labelWidth = label.frame.width
-        let maxLabelHeight = label.font.lineHeight * CGFloat(label.numberOfLines)
-
-        let size = CGSize(width: labelWidth, height: .greatestFiniteMagnitude)
-        let textAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: label.font]
-        
-        let boundingRect = (labelText as NSString).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
-        
-        return boundingRect.height > maxLabelHeight
     }
 }
 

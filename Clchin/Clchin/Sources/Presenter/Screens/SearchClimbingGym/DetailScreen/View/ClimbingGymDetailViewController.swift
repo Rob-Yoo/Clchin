@@ -39,7 +39,7 @@ final class ClimbingGymDetailViewController: BaseViewController<ClimbingGymDetai
         
         let datasource = RxCollectionViewSectionedReloadDataSource<SectionModel<Int, ClimbingGym>> { datasource, collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ClimbingGymDetailCollectionViewCell.identifier, for: indexPath) as? ClimbingGymDetailCollectionViewCell else { return UICollectionViewCell() }
-            
+
             cell.viewModel = ClimbingGymDetailCellViewModel(climbingGym: output.gymDetail.value)
             return cell
         }

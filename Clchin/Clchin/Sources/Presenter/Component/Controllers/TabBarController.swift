@@ -16,7 +16,7 @@ final class TabBarController: UITabBarController {
     }
 
     private func configureTabBarController() {
-        self.tabBar.backgroundColor = .black
+        self.tabBar.backgroundColor = .white
         
         self.viewControllers = Tab.allCases.map {
             let (title, image, selectedImage) = $0.itemResource
@@ -33,8 +33,15 @@ final class TabBarController: UITabBarController {
         apearance.configureWithTransparentBackground()
         self.tabBar.standardAppearance = apearance
         self.tabBar.scrollEdgeAppearance = apearance
-        self.tabBar.tintColor = .white
+        self.tabBar.tintColor = .black
         self.tabBar.unselectedItemTintColor = .systemGray5
+//        guard let items = self.tabBar.items else {
+//            return
+//        }
+//        
+//        items.forEach {
+//            $0.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0)
+//        }
     }
 }
 

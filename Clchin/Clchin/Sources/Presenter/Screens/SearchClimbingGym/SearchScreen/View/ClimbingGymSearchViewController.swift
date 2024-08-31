@@ -19,19 +19,18 @@ final class ClimbingGymSearchViewController: BaseViewController<ClimbingGymSearc
         super.init()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.configureNavigationBar()
-    }
-    
     override func viewIsAppearing(_ animated: Bool) {
         super.viewIsAppearing(animated)
-        self.navigationItem.title = "암장 검색"
+        self.configureNavigationBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.navigationController?.navigationBar.backgroundColor = .white        
+        let appearance = UINavigationBarAppearance()
+        
+        appearance.configureWithTransparentBackground()
+        self.navigationController?.navigationBar.standardAppearance = appearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
     override func bindViewModel() {
@@ -78,6 +77,7 @@ final class ClimbingGymSearchViewController: BaseViewController<ClimbingGymSearc
     }
     
     private func configureNavigationBar() {
+        self.navigationItem.title = "암장 검색"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.searchController = contentView.searchController
     }

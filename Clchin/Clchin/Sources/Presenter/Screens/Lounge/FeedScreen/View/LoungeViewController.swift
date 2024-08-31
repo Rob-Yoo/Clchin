@@ -36,13 +36,6 @@ final class LoungeViewController: BaseViewController<LoungeRootView> {
                     .disposed(by: cell.disposeBag)
                 cell.bind(post: element)
                 
-                cell.readMoreActionLabel.rx.tapGesture()
-                    .when(.recognized)
-                    .bind { _ in
-                        cell.removeReadMoreActionLabel()
-                    }
-                    .disposed(by: cell.disposeBag)
-                
                 cell.commentButton.rx.tapGesture()
                     .when(.recognized)
                     .bind(with: self) { owner, _ in
@@ -87,6 +80,7 @@ extension LoungeViewController {
         let appearence = UINavigationBarAppearance()
         
         appearence.configureWithOpaqueBackground()
+        appearence.backgroundColor = .black
         self.navigationController?.navigationBar.scrollEdgeAppearance = appearence
         self.navigationController?.navigationBar.standardAppearance = appearence
         configureLeftNavBar()
@@ -96,7 +90,7 @@ extension LoungeViewController {
     private func configureLeftNavBar() {
         let titleLabel = UILabel().then {
             $0.text = "라운지"
-            $0.textColor = .black.withAlphaComponent(0.85)
+            $0.textColor = .white
             $0.font = .systemFont(ofSize: 20, weight: .bold)
         }
         let navTitleView = UIBarButtonItem(customView: titleLabel)
@@ -105,6 +99,6 @@ extension LoungeViewController {
     
     private func configureRightNavBar() {
         self.navigationItem.rightBarButtonItem = contentView.writePostBarButton
-        self.navigationItem.rightBarButtonItem?.tintColor = .black
+        self.navigationItem.rightBarButtonItem?.tintColor = .white
     }
 }
