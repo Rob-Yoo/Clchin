@@ -17,8 +17,9 @@ final class CrewRecruitViewController: BaseViewController<CrewRecruitRootView> {
         super.init()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        self.navigationController?.navigationBar.isHidden = false
         configureNavBar()
     }
     
@@ -57,15 +58,16 @@ extension CrewRecruitViewController {
         let appearence = UINavigationBarAppearance()
         
         appearence.configureWithOpaqueBackground()
+        appearence.backgroundColor = .black
         self.navigationController?.navigationBar.scrollEdgeAppearance = appearence
         self.navigationController?.navigationBar.standardAppearance = appearence
         configureLeftNavBar()
-    }
+    } 
     
     private func configureLeftNavBar() {
         let titleLabel = UILabel().then {
             $0.text = "크루모집"
-            $0.textColor = .black.withAlphaComponent(0.85)
+            $0.textColor = .white
             $0.font = .systemFont(ofSize: 20, weight: .bold)
         }
         let navTitleView = UIBarButtonItem(customView: titleLabel)

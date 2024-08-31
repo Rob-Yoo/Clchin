@@ -56,7 +56,8 @@ struct CrewRecruitDetail {
         let location = Coordinate(lat: entity.location.lat, lng: entity.location.lng)
         let meetingDate = DateFormatManger.shared.convertToString(format: "M.d(E) a h:mm", target: entity.meetingDate)
         let price = entity.price.formatted() + "원"
+        let images = entity.images.map { APIKey.sesacBaseURL + "/" + $0 }
         
-        return CrewRecruitDetail(postId: entity.id, images: entity.images, climbingType: climbingType, host: Member.makeMember(entity.creator), title: entity.recruitTitle, contentText: entity.recruitContentText, climbingGymName: entity.climbingGymName, location: location, meetingDate: meetingDate, price: price, isLike: entity.isLike, likeCount: entity.likeCount)
+        return CrewRecruitDetail(postId: entity.id, images: images, climbingType: climbingType, host: Member.makeMember(entity.creator), title: entity.recruitTitle, contentText: entity.recruitContentText, climbingGymName: entity.climbingGymName, location: location, meetingDate: meetingDate, price: price, isLike: entity.isLike, likeCount: entity.likeCount)
     }
 }

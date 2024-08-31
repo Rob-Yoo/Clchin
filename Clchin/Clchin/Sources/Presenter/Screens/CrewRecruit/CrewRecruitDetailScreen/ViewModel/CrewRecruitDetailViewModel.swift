@@ -18,8 +18,8 @@ final class CrewRecruitDetailViewModel: ViewModelType {
     }
     
     struct Output {
-        var crewRecruitDetail = Observable<CrewRecruitDetail>.empty()
-        let payment = PublishRelay<IamportPayment>()
+        var detailSections = Observable<[RecruitDetailSectionModel]>.empty()
+        let payment = PublishRelay<Payment>()
     }
     
     private var output = Output()
@@ -36,7 +36,26 @@ final class CrewRecruitDetailViewModel: ViewModelType {
         input.crewRecruitDetailRequestTrigger
             .bind(with: self) { owner, _ in
                 let crewRecruitDetail = CrewRecruitDetail.makeCrewRecruitDetail(owner.crewRecruit)
-                owner.output.crewRecruitDetail = .just(crewRecruitDetail)
+                
+                let headerSection = RecruitDetailSectionModel(items: [
+                    .header(HeaderSectionModel(
+                        imageURL: crewRecruitDetail.images[0],
+                        recruitTitle: crewRecruitDetail.title,
+                        climbingType: crewRecruitDetail.climbingType.title))
+                ])
+                
+                let bodySection = RecruitDetailSectionModel(items: [
+                    .body(BodySectionModel(
+                        hostProfileImageURL: crewRecruitDetail.host.profileImage,
+                        hostName: crewRecruitDetail.host.nickName,
+                        recruitText: crewRecruitDetail.contentText))
+                ])
+                
+                let footerSection = RecruitDetailSectionModel(items: [
+                    .footer(FooterSectionModel(empty: ""))
+                ])
+                
+                owner.output.detailSections = .just([headerSection, bodySection, footerSection])
             }
             .disposed(by: disposeBag)
         
@@ -51,10 +70,19 @@ final class CrewRecruitDetailViewModel: ViewModelType {
                         $0.buyer_name = "유진영"
                         $0.app_scheme = "clchin"
                     }
-                owner.output.payment.accept(payment)
+                let postId = owner.crewRecruit.id
+                
+                owner.output.payment.accept(Payment(iamportPayment: payment, postId: postId))
             }
             .disposed(by: disposeBag)
 
         return self.output
+    }
+}
+
+extension CrewRecruitDetailViewModel {
+    struct Payment {
+        let iamportPayment: IamportPayment
+        let postId: String
     }
 }

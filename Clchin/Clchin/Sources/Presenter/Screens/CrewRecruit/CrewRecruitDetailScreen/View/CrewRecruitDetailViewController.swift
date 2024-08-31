@@ -8,10 +8,10 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 final class CrewRecruitDetailViewController: BaseViewController<CrewRecruitDetailRootView> {
     private let viewModel: CrewRecruitDetailViewModel
-    private var postId: String!
 
     init(viewModel: CrewRecruitDetailViewModel) {
         self.viewModel = viewModel
@@ -20,8 +20,11 @@ final class CrewRecruitDetailViewController: BaseViewController<CrewRecruitDetai
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = .black
-        self.navigationController?.navigationBar.topItem?.title = ""
+    }
+    
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     override func bindViewModel() {
@@ -29,18 +32,35 @@ final class CrewRecruitDetailViewController: BaseViewController<CrewRecruitDetai
             crewRecruitDetailRequestTrigger: Observable.just(()),
             joinButtonTapped: contentView.footerActionView.joinButton.rx.tap)
         let output = viewModel.transform(input: input)
-        
-        output.crewRecruitDetail
-            .bind(with: self) { owner, detail in
-                owner.postId = detail.postId
+        let dataSource = RxCollectionViewSectionedReloadDataSource<RecruitDetailSectionModel> { dataSource, collectionView, indexPath, sectionType in
+            switch sectionType {
+            case .header(let model):
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CrewRecruitHeaderCell.identifier, for: indexPath) as? CrewRecruitHeaderCell else { return UICollectionViewCell() }
+                
+                cell.bind(model: model)
+                return cell
+            case .body(let model):
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CrewRecruitBodyCell.identifier, for: indexPath) as? CrewRecruitBodyCell else { return UICollectionViewCell() }
+                
+                cell.bind(model: model)
+                return cell
+            case .footer(let model):
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CrewRecruitFooterCell.identifier, for: indexPath) as? CrewRecruitFooterCell else { return UICollectionViewCell() }
+                
+                cell.bind(model: model)
+                return cell
             }
+        }
+        
+        output.detailSections
+            .bind(to: contentView.collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
         output.payment
             .bind(with: self) { owner, payment in
                 let nextVC = PaymentWebViewController()
-                nextVC.payment = payment
-                nextVC.postId = owner.postId
+                nextVC.payment = payment.iamportPayment
+                nextVC.postId = payment.postId
                 nextVC.completionHandler = {
                     print("결제 및 참여자 성공")
                 }

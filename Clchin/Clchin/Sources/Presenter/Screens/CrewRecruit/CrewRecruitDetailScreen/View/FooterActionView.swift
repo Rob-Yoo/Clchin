@@ -15,28 +15,14 @@ final class FooterActionView: BaseView {
         $0.backgroundColor = .lightGray
     }
     
-    let heartButton = UIImageView().then {
-        $0.image = UIImage.heartIcon?.withTintColor(.red)
-        $0.isUserInteractionEnabled = true
-    }
-    
-    let likeCountLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 11)
-        $0.textColor = .red
-        $0.textAlignment = .center
-        $0.text = "3"
-    }
-    
     let joinButton = JoinButton()
     
     override func configureView() {
-        self.backgroundColor = .white
+        self.backgroundColor = .customGray
     }
     
     override func configureHierarchy() {
         self.addSubview(lineView)
-        self.addSubview(heartButton)
-        self.addSubview(likeCountLabel)
         self.addSubview(joinButton)
     }
     
@@ -44,25 +30,13 @@ final class FooterActionView: BaseView {
         lineView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(0.3)
-        }
-        
-        heartButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(15)
-            make.leading.equalToSuperview().offset(20)
-            make.size.equalTo(30)
-        }
-        
-        likeCountLabel.snp.makeConstraints { make in
-            make.top.equalTo(heartButton.snp.bottom).offset(3)
-            make.centerX.equalTo(heartButton)
+            make.height.equalTo(0.1)
         }
         
         joinButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
-            make.leading.equalTo(heartButton.snp.trailing).offset(20)
-            make.trailing.equalToSuperview().offset(-15)
-            make.bottom.equalTo(likeCountLabel)
+            make.horizontalEdges.equalToSuperview().inset(15)
+            make.height.equalTo(47)
         }
     }
 }
@@ -78,5 +52,4 @@ final class JoinButton: BaseButton {
         super.layoutSubviews()
         self.layer.cornerRadius = self.frame.height / 2
     }
-
 }

@@ -18,8 +18,6 @@ final class CrewRecruitItemCollectionViewCell: BaseCollectionViewCell {
         $0.clipsToBounds = true
     }
     
-    let likeButton = UIButton()
-    
     let climbingTypeTagView = ClimbingTypeTagView()
     
     let titleLabel = UILabel().then {
@@ -79,7 +77,6 @@ final class CrewRecruitItemCollectionViewCell: BaseCollectionViewCell {
     
     override func configureHierarchy() {
         self.contentView.addSubview(titleImageView)
-        self.contentView.addSubview(likeButton)
         self.contentView.addSubview(climbingTypeTagView)
         self.contentView.addSubview(titleLabel)
         self.contentView.addSubview(pinIconImageView)
@@ -97,12 +94,6 @@ final class CrewRecruitItemCollectionViewCell: BaseCollectionViewCell {
             make.verticalEdges.equalToSuperview().inset(9)
             make.leading.equalToSuperview().offset(9)
             make.width.equalTo(titleImageView.snp.height)
-        }
-        
-        likeButton.snp.makeConstraints { make in
-            make.leading.equalTo(titleImageView.snp.leading).offset(7)
-            make.bottom.equalTo(titleImageView.snp.bottom).offset(-7)
-            make.size.equalTo(20)
         }
         
         climbingTypeTagView.snp.makeConstraints { make in
@@ -166,10 +157,7 @@ final class CrewRecruitItemCollectionViewCell: BaseCollectionViewCell {
     }
     
     func bind(item: CrewRecruitItem) {
-        let likeImage = item.isLike ? UIImage.heartFillIcon?.withTintColor(.red) : UIImage.heartIcon?.withTintColor(.white)
-
         titleImageView.kf.setImage(with: URL(string: item.titleImage))
-        likeButton.setImage(likeImage, for: .normal)
         climbingTypeTagView.typeLabel.text = item.climbingType.title
         titleLabel.text = item.title
         climbingGymNameLabel.text = item.climbingGymName
