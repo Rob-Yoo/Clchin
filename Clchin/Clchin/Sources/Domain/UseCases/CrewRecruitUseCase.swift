@@ -8,11 +8,11 @@
 import RxSwift
 
 protocol CrewRecruitUseCase {
-    func fetchCrewRecruitList(isPagination: Bool) -> Single<Result<[CrewRecruit], NetworkError>>
+    func fetchCrewRecruitList(isPagination: Bool) -> Single<Result<[CrewRecruit], PostReadError>>
 
     func uploadCrewRecruit(post: UploadCrewRecruitBodyDTO)
     
-    func requestPaymentValidation(payment: PaymentValidationBodyDTO) -> Single<Result<Bool, NetworkError>>
+    func requestPaymentValidation(payment: PaymentValidationBodyDTO) -> Single<Result<Bool, PaymentValidationError>>
 }
 
 
@@ -24,7 +24,7 @@ final class DefaultCrewRecruitUseCase: CrewRecruitUseCase {
         self.crewRecruitRepository = crewRecruitRepository
     }
     
-    func fetchCrewRecruitList(isPagination: Bool) -> Single<Result<[CrewRecruit], NetworkError>> {
+    func fetchCrewRecruitList(isPagination: Bool) -> Single<Result<[CrewRecruit], PostReadError>> {
         return Single.create { [weak self] observer in
             guard let self else { return Disposables.create() }
             
@@ -45,7 +45,7 @@ final class DefaultCrewRecruitUseCase: CrewRecruitUseCase {
         crewRecruitRepository.uploadCrewRecruit(post: post)
     }
     
-    func requestPaymentValidation(payment: PaymentValidationBodyDTO) -> Single<Result<Bool, NetworkError>> {
+    func requestPaymentValidation(payment: PaymentValidationBodyDTO) -> Single<Result<Bool, PaymentValidationError>> {
         return Single.create { [weak self] observer in
             guard let self else { return Disposables.create() }
             

@@ -13,7 +13,7 @@ final class DefaultPostRepository: PostRepository {
     private var next: String? = nil
     private let disposeBag = DisposeBag()
 
-    func fetchPostList(isPagination: Bool, completionHandler: @escaping (Result<[Post], NetworkError>) -> Void) {
+    func fetchPostList(isPagination: Bool, completionHandler: @escaping (Result<[Post], PostReadError>) -> Void) {
         
         if (isPagination == true), let next, next == "0" {
             print("마지막 페이지임")
@@ -22,7 +22,7 @@ final class DefaultPostRepository: PostRepository {
             next = nil
         }
 
-        NetworkProvider.shared.requestAPI(PostAPI.getPosts(next: next), responseType: PostReadResponseDTO.self)
+        NetworkProvider.shared.requestAPI(PostAPI.getPosts(next: next), responseType: PostReadResponseDTO.self, errorType: PostReadError.self)
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let response):
@@ -35,8 +35,8 @@ final class DefaultPostRepository: PostRepository {
             .disposed(by: disposeBag)
     }
     
-    func uploadImages(images: [Data], completionHandler: @escaping (Result<PostImages, NetworkError>) -> Void) {
-        NetworkProvider.shared.requestAPI(PostAPI.uploadImages(images), responseType: PostImageResponseDTO.self)
+    func uploadImages(images: [Data], completionHandler: @escaping (Result<PostImages, PostImageUploadError>) -> Void) {
+        NetworkProvider.shared.requestAPI(PostAPI.uploadImages(images), responseType: PostImageResponseDTO.self, errorType: PostImageUploadError.self)
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let response):
@@ -49,7 +49,7 @@ final class DefaultPostRepository: PostRepository {
     }
     
     func uploadPost(post: UploadPostBodyDTO) {
-        NetworkProvider.shared.requestAPI(PostAPI.uploadPost(post), responseType: EmptyResponse.self)
+        NetworkProvider.shared.requestAPI(PostAPI.uploadPost(post), responseType: EmptyResponse.self, errorType: PostUploadError.self)
             .subscribe(with: self) { owner, _ in }
             .disposed(by: disposeBag)
     }

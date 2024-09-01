@@ -37,7 +37,7 @@ final class CrewRecruitViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         input.crewRecruitRequestTrigger
             .flatMap { [weak self] in
-                guard let self else { return Single<Result<[CrewRecruit], NetworkError>>.never() }
+                guard let self else { return Single<Result<[CrewRecruit], PostReadError>>.never() }
 
                 return crewRecruitUseCase.fetchCrewRecruitList(isPagination: isPagination)
             }
@@ -46,7 +46,7 @@ final class CrewRecruitViewModel: ViewModelType {
                 case .success(let list):
                     owner.emitCrewRecruitItemListRelay(list)
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    print(error)
                 }
             }
             .disposed(by: disposeBag)

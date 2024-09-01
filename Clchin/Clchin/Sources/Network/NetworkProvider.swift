@@ -15,7 +15,7 @@ final class NetworkProvider {
     
     private init() {}
     
-    func requestAPI<Target: TargetType, Response: Decodable>(_ target: Target, responseType: Response.Type) -> Single<Result<Response, NetworkError>> {
+    func requestAPI<Target: TargetType, R: Decodable, E: ErrorMapping>(_ target: Target, responseType: R.Type, errorType: E.Type) -> Single<Result<R, E>> {
         let session = Session(interceptor: AccessTokenRetrier())
         let provider = MoyaProvider<Target>(session: session)
         
@@ -29,13 +29,20 @@ final class NetworkProvider {
                         return
                     }
                     
-                    let result = response.mapResult(Response.self)
-                    
+                    let result = response.mapResult(R.self)
+
                     switch result {
                     case .success(let value):
                         observer(.success(.success(value)))
                     case .failure(let error):
-                        print(error.localizedDescription)
+                        let commonError = CommonError.map(statusCode: response.statusCode)
+                        let errorMapping: E
+                        
+                        if (commonError == .none) {
+                            errorMapping = errorType.map(statusCode: response.statusCode)
+                            observer(.success(.failure(errorMapping)))
+                        }
+                        
                     }
                 case .failure(let error):
                     print(error.localizedDescription)

@@ -32,7 +32,8 @@ final class AuthManager {
                     UserDefaultsStorage.userId = res.userId
                     UserDefaultsStorage.userProfileImage = APIKey.sesacBaseURL + "/" + (res.profileImageURL ?? "")
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    let errorMapping = LoginError.map(statusCode: response.statusCode)
+                    print(errorMapping)
                 }
             case .failure(let error):
                 print(error)
@@ -41,7 +42,7 @@ final class AuthManager {
     }
     
     func refreshAccessToken(completionHandler: @escaping () -> Void) {
-        NetworkProvider.shared.requestAPI(AuthAPI.refresh, responseType: RefreshResponseDTO.self)
+        NetworkProvider.shared.requestAPI(AuthAPI.refresh, responseType: RefreshResponseDTO.self, errorType: RefreshTokenError.self)
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let response):

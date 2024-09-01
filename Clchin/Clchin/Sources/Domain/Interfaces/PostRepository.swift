@@ -10,12 +10,12 @@ import Foundation
 protocol PostRepository {
     func fetchPostList(
         isPagination: Bool,
-        completionHandler: @escaping (Result<[Post], NetworkError>) -> Void
+        completionHandler: @escaping (Result<[Post], PostReadError>) -> Void
     )
     
     func uploadImages(
         images: [Data],
-        completionHandler: @escaping (Result<PostImages, NetworkError>) -> Void
+        completionHandler: @escaping (Result<PostImages, PostImageUploadError>) -> Void
     )
     func uploadPost(post: UploadPostBodyDTO)
 }

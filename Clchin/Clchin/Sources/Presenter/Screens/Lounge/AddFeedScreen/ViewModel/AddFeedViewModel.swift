@@ -76,7 +76,7 @@ final class AddFeedViewModel: ViewModelType {
         
         input.addPostButtonTapped
             .flatMap { [weak self] _ in
-                guard let self else { return Single<Result<PostImages, NetworkError>>.never() }
+                guard let self else { return Single<Result<PostImages, PostImageUploadError>>.never() }
                 return self.postUseCase.uploadPostImages(images: photos)
             }
             .subscribe(with: self) { owner, result in
@@ -87,7 +87,7 @@ final class AddFeedViewModel: ViewModelType {
                     owner.postUseCase.uploadPost(post: bodyDTO)
                     popViewControllerTrigger.accept(())
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    print(error)
                 }
             }
             .disposed(by: disposeBag)

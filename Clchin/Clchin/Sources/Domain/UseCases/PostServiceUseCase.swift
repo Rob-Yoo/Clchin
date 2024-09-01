@@ -9,9 +9,9 @@ import Foundation
 import RxSwift
 
 protocol PostServiceUseCase {
-    func fetchPostList(isPagination: Bool) -> Single<Result<[Post], NetworkError>>
+    func fetchPostList(isPagination: Bool) -> Single<Result<[Post], PostReadError>>
 
-    func uploadPostImages(images: [Data]) -> Single<Result<PostImages, NetworkError>>
+    func uploadPostImages(images: [Data]) -> Single<Result<PostImages, PostImageUploadError>>
     func uploadPost(post: UploadPostBodyDTO)
 }
 
@@ -24,7 +24,7 @@ final class DefaultPostServiceUseCase: PostServiceUseCase {
         self.postRepository = postRepository
     }
     
-    func fetchPostList(isPagination: Bool) -> Single<Result<[Post], NetworkError>> {
+    func fetchPostList(isPagination: Bool) -> Single<Result<[Post], PostReadError>> {
         return Single.create { [weak self] observer in
             guard let self else { return Disposables.create() }
             
@@ -41,7 +41,7 @@ final class DefaultPostServiceUseCase: PostServiceUseCase {
         }
     }
     
-    func uploadPostImages(images: [Data]) -> Single<Result<PostImages, NetworkError>> {
+    func uploadPostImages(images: [Data]) -> Single<Result<PostImages, PostImageUploadError>> {
 
         return Single.create { [weak self] observer in
             guard let self else { return Disposables.create() }

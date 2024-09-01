@@ -36,7 +36,7 @@ final class LoungeViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         input.postRequestTrigger
             .flatMap { [weak self] in
-                guard let self else { return Single<Result<[Post], NetworkError>>.never() }
+                guard let self else { return Single<Result<[Post], PostReadError>>.never() }
                 
                 return postServiceUseCase.fetchPostList(isPagination: isPagination)
             }
@@ -45,7 +45,7 @@ final class LoungeViewModel: ViewModelType {
                 case .success(let postList):
                     owner.emitPostItemListRelay(postList: postList)
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    print(error)
                 }
             }
             .disposed(by: disposeBag)

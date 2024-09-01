@@ -57,7 +57,7 @@ final class ClimbingGymSearchViewModel: ViewModelType {
                 case .success(let gymList):
                     owner.emitClimbingGymList(list: gymList)
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    print(error)
                 }
             }
             .disposed(by: disposeBag)
@@ -78,7 +78,7 @@ final class ClimbingGymSearchViewModel: ViewModelType {
                 case .success(let gymList):
                     owner.emitClimbingGymList(list: gymList)
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    print(error)
                 }
             }
             .disposed(by: disposeBag)
