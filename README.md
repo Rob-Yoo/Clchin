@@ -54,6 +54,13 @@
 
 ## 🧰 프로젝트 기술 사항
 
+### 아키텍처 - Clean Architecture + MVVM
+<img width="916" alt="Clean-Architecure" src="https://github.com/user-attachments/assets/1ea31654-2485-479e-b93d-75b73f29f749">
+
+### AccessToken 갱신
+
+- Alamofire의 `RequestInterceptor` 사용
+
 
 
 ## 🚨 트러블 슈팅
