@@ -57,13 +57,41 @@
 ### 아키텍처 - Clean Architecture + MVVM
 <img width="916" alt="Clean-Architecure" src="https://github.com/user-attachments/assets/1ea31654-2485-479e-b93d-75b73f29f749">
 
-### AccessToken 갱신
+<br>
 
-- Alamofire의 `RequestInterceptor` 사용
+### JWT 토큰 관리
 
+- UserDefaults에 Access 토큰과 Refresh 토큰 저장
+- Alamofire의 `RequestInterceptor`의 retry 메서드를 통해 토큰 재발급 로직 구현
+
+<br>
+
+### 커서 기반 페이지네이션
+
+- 페이지네이션 관련 상태값은 Repository에서만 관리
+
+  - ViewModel과 UseCase에서는 페이지네이션 여부만 인지
+
+<br>
+
+### API 별 네트워크 에러 상태코드 관리
+
+- 각각의 커스텀 에러 Enum 타입에 ErrorMapping이라는 프로토콜을 채택
+
+  - map(statusCode: Int) 메서드를 구현하여 상태코드에 맞는 case 반환
+
+<br>
 
 
 ## 🚨 트러블 슈팅
 
+### 1. RequestInterceptor의 retry 메서드 무한 호출 이슈
 
+- 원인 분석
 
+  - Moya의 `NetworkLoggerPlugin`을 사용하여 Request Header를 확인한 결과 이전 토큰을 그대로 사용
+  - retry 메서드가 호출될 때 TargetType에 정의된 Request Message를 새로 만드는 것이 아니라고 판단
+ 
+- 해결
+
+  - RequestInterceptor의 `adapt` 메서드를 사용하여 Request Message를 보내기 전 토큰을 삽입하는 방식으로 해결
