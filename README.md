@@ -26,7 +26,6 @@
       - 실시간 검색 기능
         
       - 사진 / 이름 / 주소 / 평점 / 평점인원 / 사용자와의 거리 / 영업 여부 / 영업 시간 정보 제공 기능
-
         
       - 지금 영업 중 / 거리순 / 평점순 다중 필터링 및 정렬 기능
 
@@ -52,7 +51,7 @@
 
 
 
-## 🧰 프로젝트 기술 사항
+## 🧰 프로젝트 주요 기술 사항
 
 ### 아키텍처 - Clean Architecture + MVVM
 <img width="916" alt="Clean-Architecure" src="https://github.com/user-attachments/assets/1ea31654-2485-479e-b93d-75b73f29f749">
@@ -62,7 +61,14 @@
 ### JWT 토큰 관리
 
 - UserDefaults에 Access 토큰과 Refresh 토큰 저장
+
 - Alamofire의 `RequestInterceptor`의 retry 메서드를 통해 토큰 재발급 로직 구현
+
+<br>
+
+### RxSwift를 활용한 네트워크 작업
+
+- flatMap 내에서 구독이 쌓이지 않고, error 발생 시 스트림이 끊기지 않게 하기 위해 `Single<Result>` 사용
 
 <br>
 
@@ -70,18 +76,38 @@
 
 - 페이지네이션 관련 상태값은 Repository에서만 관리
 
+  - 마지막 페이지일 경우 네트워크 요청하지 않게 처리
+
   - ViewModel과 UseCase에서는 페이지네이션 여부만 인지
 
 <br>
 
 ### API 별 네트워크 에러 상태코드 관리
 
-- 각각의 커스텀 에러 Enum 타입에 ErrorMapping이라는 프로토콜을 채택
+- API 별 커스텀 에러 타입에 ErrorMapping이라는 프로토콜을 만들어 채택
 
   - map(statusCode: Int) 메서드를 구현하여 상태코드에 맞는 case 반환
 
 <br>
 
+### 결제 기능
+
+- `포트원 SDK`를 사용하여 PG사를 웹뷰에 띄워 결제 진행
+
+- 서버로부터 결제 검증 작업을 요청하여 최종 결제 완료 판단
+
+<br>
+
+### 사진 업로드 및 로드 기능
+
+- `PHPickerViewController`를 사용하여 사진 보관함으로부터 사진 선택 기능 구현
+
+- multipart/form-data 업로드
+
+- Kingfisher의 `AnyModifier`를 사용하여 `Access 토큰이 필요한 이미지 로드` 기능 구현
+
+<br>
+  
 
 ## 🚨 트러블 슈팅
 
@@ -90,8 +116,13 @@
 - 원인 분석
 
   - Moya의 `NetworkLoggerPlugin`을 사용하여 Request Header를 확인한 결과 이전 토큰을 그대로 사용
-  - retry 메서드가 호출될 때 TargetType에 정의된 Request Message를 새로 만드는 것이 아니라고 판단
+  - retry 메서드가 호출될 때 TargetType에 정의된 Request를 새로 만드는 것이 아니라고 판단
  
 - 해결
 
-  - RequestInterceptor의 `adapt` 메서드를 사용하여 Request Message를 보내기 전 토큰을 삽입하는 방식으로 해결
+  - AccessToken을 TargetType의 헤더에 넣어주는 것이 아니라 RequestInterceptor의 `adapt` 메서드를 사용하여 Request Message를 보내기 전 토큰을 삽입하는 방식으로 해결
+
+<br>
+
+## 📋 회고
+
