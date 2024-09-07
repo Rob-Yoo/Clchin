@@ -66,11 +66,6 @@
 
 <br>
 
-### RxSwift를 활용한 네트워크 작업
-
-- flatMap 내에서 구독이 쌓이지 않고, error 발생 시 스트림이 끊기지 않게 하기 위해 `Single<Result>` 사용
-
-<br>
 
 ### 커서 기반 페이지네이션
 
@@ -82,6 +77,12 @@
 
 <br>
 
+### 사용자의 위치 권한 변경에 따른 위치 정보 자동 업데이트 
+
+- Observable.create 문 내에서 `denied`에서 `authorizedWhenInUse`으로 변경을 감지하고 사용자의 위치 정보를 방출
+
+<br>
+
 ### API 별 네트워크 에러 상태코드 관리
 
 - API 별 커스텀 에러 타입에 ErrorMapping이라는 프로토콜을 만들어 채택
@@ -90,7 +91,7 @@
 
 <br>
 
-### 결제 기능
+### 결제
 
 - `포트원 SDK`를 사용하여 PG사를 웹뷰에 띄워 결제 진행
 
@@ -98,7 +99,7 @@
 
 <br>
 
-### 사진 업로드 및 로드 기능
+### 사진 업로드 및 로드
 
 - `PHPickerViewController`를 사용하여 사진 보관함으로부터 사진 선택 기능 구현
 
@@ -126,3 +127,8 @@
 
 ## 📋 회고
 
+### 1. Domain 계층에서 GooglePlace 라이브러리를 import 한 것에 대한 아쉬움
+
+- UseCase가 아닌 Repository에서 모든 것을 담당하게 하여 라이브러리가 교체되었을 때의 변화가 Domain 계층까지 전파되지 않게 했었어야 한다는 생각
+
+- Entity에 이미지 관련 GooglePlace 타입이 존재하는데, DTO와 Entity 변환 과정에서 Data 타입으로 변환해줬어야 한다는 생각  
