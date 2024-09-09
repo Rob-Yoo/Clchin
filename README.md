@@ -177,4 +177,8 @@
 
 <br>
 
-### 2. 
+### 2. DI Container 사용에 대한 필요성
+
+- ViewController를 하나 생성하려면 외부에서 VM, UseCase, Repository 객체를 일일히 생성해서 주입시켜줘야 함
+
+- Swinject이나 직접 DI Container를 구현해서 사용해봐야겠다는 생각 
