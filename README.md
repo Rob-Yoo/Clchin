@@ -13,8 +13,8 @@
   - UI: `UIKit` `Webkit` `PhotosUI` `SnapKit` `Cosmos` `NMapsMap`
   - Reactive: `RxSwift` `RxCocoa` `RxGesture` `RxDataSources` `RxCoreLocation`
   - Network: `Moya` `Kingfisher` `GooglePlaces`
-  - 결제: `iamport-ios`
   - 기타: `Then`
+  
 - **프로젝트 주요 기능**
 
   - `SNS 피드 기능`
@@ -108,9 +108,9 @@
 
 ### 결제
 
-- `포트원 SDK`를 사용하여 PG사를 웹뷰에 띄워 결제 진행
+- PG사를 웹뷰에 띄워 결제 진행
 
-- 서버로부터 결제 검증 작업을 요청하여 최종 결제 완료 판단
+- 사용자의 결제 관련 어뷰징 방지를 위해 서버로부터 결제 검증 작업을 요청하여 최종 결제 완료 판단
 
 <br>
 
