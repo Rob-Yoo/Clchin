@@ -7,7 +7,7 @@
 
 ## 🗄️ 프로젝트 정보
 - **기간** : `2024.08.13 ~ 2024.09.02` (약 2주)
-- **개발 인원** : `iOS 1명`
+- **개발 인원** : `iOS 1명`, `백엔드 1명`
 - **지원 버전**: <img src="https://img.shields.io/badge/iOS-15.0+-black?logo=apple"/>
 - **기술 스택 및 라이브러리** :      
   - UI: `UIKit` `Webkit` `PhotosUI` `SnapKit` `Cosmos` `NMapsMap`
